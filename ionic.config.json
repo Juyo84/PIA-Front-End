@@ -1,0 +1,7 @@
+{
+  "name": "PIA-Front-End",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

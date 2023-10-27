@@ -1,0 +1,32 @@
+#nombrePlaneta {
+
+    color: white;
+    font-size: 50px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10px;
+    text-align: center;
+  
+  }
+  
+  #informacionPlaneta {
+  
+    background: white;
+    opacity: 40%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: block;
+    overflow: auto;
+    position: absolute;
+  
+    color: black;
+  
+  }
+  
+  #planeta {
+  
+    position: static;
+  
+  }
