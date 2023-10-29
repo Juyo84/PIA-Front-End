@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlanetaComponent } from '../planeta/planeta.component';
 
 @Component({
   selector: 'app-datos-planeta-component',

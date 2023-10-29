@@ -2,23 +2,27 @@
 
   <div class="fondoLogIn">
     
+    <div (click)="regresarHome()">
+      <ion-icon name="chevron-back-circle" id="iconoAtras"></ion-icon>
+    </div>
+
     <p id="titulo">
       Log In
     </p>
     
-    <ion-input label="Usuario o Email" label-placement="floating" fill="outline" id="usuario"></ion-input>
+    <ion-input label="Usuario o Email" color="primary" label-placement="floating" fill="solid" id="usuario"></ion-input>
 
-    <ion-input type="password" label="contraseña" label-placement="floating" fill="outline" id="contra"></ion-input>
+    <ion-input type="password" label="Contraseña" color="primary" label-placement="floating" fill="solid" id="contra"></ion-input>
     
     <p id="olvidoContra">
       ¿Se te olvido la contraseña?
     </p>
     
     <div id="ingresar">
-      <ion-button>Log In</ion-button>
+      <ion-button (click)="logIn()">Log In</ion-button>
     </div>
     
-    <p id="noCuenta">
+    <p id="noCuenta" (click)="irSignUp()">
       ¿No tienes una cuenta?
     </p>
   </div>

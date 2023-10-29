@@ -1,3 +1,8 @@
+ion-content {
+
+  --ion-background-color: rgba(12, 12, 31, 100);
+
+}
 
 .logo {
 
@@ -18,8 +23,8 @@
   
   .fondoLogIn {
   
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     position: relative;
     width: 40%;
     height: 83%;
@@ -53,7 +58,7 @@
     width: 150px;
     height: 50px;
     --color: white;
-    --background: black;
+    --background: rgba(194, 61, 121, 100);
     font-size: large;
     font-weight: bold;
   
@@ -72,6 +77,10 @@
   .fondoLogIn > ion-input {
   
     margin-top: 10px;
+    color: black;
+    --background:white;
+    --border-radius: 0;
+    height: var(--background + 100px);
   
   }
   
@@ -79,4 +88,14 @@
   
     font-weight: bold;
   
+  }
+
+  #iconoAtras {
+
+    position: absolute;
+    font-size: xx-large;
+    left: 5%;
+    top: 20px;
+    z-index: 1;
+
   }
