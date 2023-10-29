@@ -8,6 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { DatosPlanetaComponent } from '../datos-planeta/datos-planeta.component';
 import { PlanetaComponent } from '../planeta/planeta.component';
 import { InicioComponent } from '../inicio/inicio.component';
+import { SignUpComponent } from '../sign-up/sign-up.component';
+import { LogInComponent } from '../log-in/log-in.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { InicioComponent } from '../inicio/inicio.component';
   declarations: [HomePage,
     DatosPlanetaComponent,
     PlanetaComponent,
-    InicioComponent]
+    InicioComponent,
+    LogInComponent,
+    SignUpComponent]
 })
 export class HomePageModule {}

@@ -1,0 +1,82 @@
+
+.logo {
+
+    top: 20px;
+    position: absolute;
+    display: block;
+    text-align: center;
+    width: -webkit-fill-available;
+  
+  }
+  
+  .logo > img {
+  
+    border-radius: 50%;
+    width: 10%;
+  
+  }
+  
+  .fondoLogIn {
+  
+    background-color: white;
+    color: black;
+    position: relative;
+    width: 40%;
+    height: 83%;
+    top: 10%;
+    left: 30%;
+    border-radius: 5%;
+  
+  }
+  
+  .fondoLogIn > #titulo {
+  
+    position: relative;
+    top: 100px;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+  
+  }
+  
+  .fondoLogIn > :is(#ingresar, #noCuenta) {
+  
+    position: relative;
+    top: 170px;
+    font-size: medium;
+    text-align: center;
+  
+  }
+  
+  .fondoLogIn > #ingresar > ion-button{
+  
+    width: 150px;
+    height: 50px;
+    --color: white;
+    --background: black;
+    font-size: large;
+    font-weight: bold;
+  
+  }
+  
+  .fondoLogIn > :is(ion-input, #olvidoContra) {
+  
+    position: relative;
+    top: 150px;
+    font-size: medium;
+    left: 5%;
+    width: 90%;
+  
+  }
+  
+  .fondoLogIn > ion-input {
+  
+    margin-top: 10px;
+  
+  }
+  
+  #olvidoContra, #noCuenta {
+  
+    font-weight: bold;
+  
+  }

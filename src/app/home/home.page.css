@@ -1,27 +1,63 @@
-#container {
+ ion-toolbar > ion-button {
+
+  width: 150px;
+  height: 50px;
+  --color: black;
+  --background: white;
+  font-size: medium;
+  font-weight: bold;
+  margin-left: 15px;
+  margin-right: 15px;
+
+}
+
+ion-toolbar > p {
+
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 25px;
+
+}
+
+#informacion, #imagen {
+
+  flex: 1;
   text-align: center;
+  position: relative;
+  top: 15px;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.presentacion {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+#informacion > p {
 
-  color: #8c8c8c;
+  font-size: 50px;
+  font-weight: bold;
 
-  margin: 0;
 }
 
-#container a {
-  text-decoration: none;
+#informacion > ion-button{
+
+  width: 200px;
+  height: 70px;
+  --color: black;
+  --background: white;
+  font-size: x-large;
+  font-weight: bold;
+  
+}
+
+#fondo {
+
+  width: 100%;
+  position:fixed;
+
 }
