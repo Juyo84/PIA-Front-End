@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { InicioPageRoutingModule } from './inicio-routing.module';
 
 import { InicioPage } from './inicio.page';
+import { MenuInicioComponent } from '../menu-inicio/menu-inicio.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { InicioPage } from './inicio.page';
     IonicModule,
     InicioPageRoutingModule
   ],
-  declarations: [InicioPage]
+  declarations: [InicioPage,
+  MenuInicioComponent]
 })
 export class InicioPageModule {}

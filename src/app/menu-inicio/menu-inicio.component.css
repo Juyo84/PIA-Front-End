@@ -1,3 +1,15 @@
+ion-toolbar {
+
+  --background: rgba(12, 12, 31, 100);
+
+}
+
+ion-header > ion-toolbar {
+
+  --background: rgba(28, 28, 71, 100);
+
+}
+
 .menu {
 
     position: sticky;
@@ -28,4 +40,9 @@
     font-size: x-large;
   
   }
+
+#cerrarSesion {
+
+  color: red;
   
+}

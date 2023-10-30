@@ -1,4 +1,10 @@
- ion-toolbar > ion-button {
+ion-toolbar {
+
+  --background: rgba(12, 12, 31, 100);
+
+}
+
+ion-toolbar > ion-button {
 
   width: 150px;
   height: 50px;
@@ -53,6 +59,14 @@ ion-toolbar > p {
   font-size: x-large;
   font-weight: bold;
   
+}
+
+#imagen > img {
+
+  padding-right: 30px;
+  padding-top: 30px;
+  width: 70%;
+
 }
 
 #fondo {

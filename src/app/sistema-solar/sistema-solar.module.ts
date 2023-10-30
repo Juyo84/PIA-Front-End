@@ -7,6 +7,9 @@ import { IonicModule, MenuController } from '@ionic/angular';
 import { SistemaSolarPageRoutingModule } from './sistema-solar-routing.module';
 
 import { SistemaSolarPage } from './sistema-solar.page';
+import { MenuSistemaSolarComponent } from '../menu-sistema-solar/menu-sistema-solar.component';
+import { DatosPlanetaComponent } from '../datos-planeta/datos-planeta.component';
+import { PlanetaComponent } from '../planeta/planeta.component';
 
 
 @NgModule({
@@ -16,6 +19,9 @@ import { SistemaSolarPage } from './sistema-solar.page';
     IonicModule,
     SistemaSolarPageRoutingModule,
   ],
-  declarations: [SistemaSolarPage]
+  declarations: [SistemaSolarPage,
+  MenuSistemaSolarComponent,
+  DatosPlanetaComponent,
+  PlanetaComponent]
 })
 export class SistemaSolarPageModule {}

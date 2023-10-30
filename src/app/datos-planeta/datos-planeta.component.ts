@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlanetaComponent } from '../planeta/planeta.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-datos-planeta-component',
@@ -8,7 +9,9 @@ import { PlanetaComponent } from '../planeta/planeta.component';
 })
 export class DatosPlanetaComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private ruta: ActivatedRoute) { }
+
+  planeta = this.ruta.snapshot.params['id'];
 
   ngOnInit() {}
 
