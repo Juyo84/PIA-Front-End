@@ -1,0 +1,43 @@
+<ion-toolbar class="header">
+  <ion-avatar slot="start" (click)="regresarInicio()">
+    <img alt="Flovers Planet" src="../../../assets/icon/Logo.png">
+  </ion-avatar>
+  <p>FLOVERS PLANET</p>
+  <ion-avatar slot="end" id="perfilSistema">
+    <img alt="Usuario" src="https://ionicframework.com/docs/img/demos/avatar.svg">
+  </ion-avatar>
+  <ion-popover trigger="perfilSistema" size="auto">
+    <ng-template>
+      <ion-content>
+        <ion-list>
+          <ion-item [button]="true" [detail]="false">Perfil</ion-item>
+          <ion-item [button]="true" [detail]="false" id="cerrarSesion" (click)="alertCerrarSesion()">Cerrar Sesion</ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+</ion-toolbar>
+
+<ion-header class="menu">
+  <ion-toolbar>
+    <div id="listaMenu">
+      <p id="temarioSistema">Temario</p>
+      <ion-popover trigger="temarioSistema" size="auto">
+        <ng-template>
+          <ion-content>
+            <ion-list>
+              <ion-item id="temaSeleccionado">Sistema Solar</ion-item>
+              <ion-item [button]="true" [detail]="false">Constelaciones</ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+      <p>Articulos</p>
+      <p>Foro</p>
+      <p>Galeria</p>
+      <p>Guias</p>
+      <p>Noticias</p>
+      <p>Calendario</p>
+    </div>
+  </ion-toolbar>
+</ion-header>

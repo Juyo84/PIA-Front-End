@@ -1,0 +1,30 @@
+<ion-content>
+
+  <div class="fondoLogIn">
+
+    <ion-icon name="chevron-back-circle" (click)="regresarHome()" id="iconoAtras"></ion-icon>
+    
+    <p id="titulo">
+      Sign Up
+    </p>
+    
+    <ion-input type="email" label="Email" color="primary" label-placement="floating" fill="solid" id="email"></ion-input>
+
+    <ion-input label="Usuario" color="primary" label-placement="floating" fill="solid" id="usuario"></ion-input>
+
+    <ion-input type="password" label="Contraseña" color="primary" label-placement="floating" fill="solid" id="contra"></ion-input>
+    
+    <div id="ingresar">
+      <ion-button (click)="SignUp()">Sign Up</ion-button>
+    </div>
+    
+    <p id="noCuenta" (click)="irLogIn()">
+      ¿Ya tienes una cuenta?
+    </p>
+  </div>
+
+  <div class="logo">
+    <img alt="a" src="../../../assets/icon/Logo.png">
+  </div>
+
+</ion-content>
