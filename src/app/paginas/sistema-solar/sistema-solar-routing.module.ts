@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SistemaSolarPage } from './sistema-solar.page';
 import { InicioPage } from '../inicio/inicio.page';
+import { PlanetaComponent } from 'src/app/componentes/planeta/planeta.component';
+import { DatosPlanetaComponent } from 'src/app/componentes/datos-planeta/datos-planeta.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,12 @@ const routes: Routes = [
     path: 'Inicio',
     component: InicioPage
   },
+  {
+
+    path: ':id',
+    component: DatosPlanetaComponent
+
+  }
 ];
 
 @NgModule({

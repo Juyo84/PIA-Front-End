@@ -3,3 +3,94 @@
     transform: scaleX(-1) scaleY(-1.12);
 
 }
+
+div {
+
+    position: absolute;
+
+}
+
+#Sol {
+
+    bottom: 70px;
+    width: 265px;
+    height: 340px;
+}
+
+#Mercurio {
+
+    bottom: 215px;
+    left: 300px;
+    width: 50px;
+    height: 55px;
+
+}
+
+#Venus {
+
+    bottom: 200px;
+    left: 390px;
+    width: 75px;
+    height: 90px;
+}
+
+#Tierra {
+
+    bottom: 220px;
+    left: 485px;
+    width: 25px;
+    height: 40px;
+
+}
+
+#Tierra {
+
+    bottom: 190px;
+    left: 525px;
+    width: 90px;
+    height: 105px;
+
+}
+
+#Marte {
+
+    bottom: 200px;
+    left: 650px;
+    width: 65px;
+    height: 80px;
+}
+
+#Jupiter {
+
+    bottom: 155px;
+    left: 745px;
+    width: 150px;
+    height: 170px;
+}
+
+#Saturno {
+
+    bottom: 170px;
+    left: 915px;
+    width: 235px;
+    height: 150px;
+
+}
+
+#Urano {
+
+    bottom: 215px;
+    left: 1160px;
+    width: 60px;
+    height: 55px;
+
+}
+
+#Neptuno {
+
+    bottom: 225px;
+    left: 1245px;
+    width: 35px;
+    height: 35px;
+    
+}

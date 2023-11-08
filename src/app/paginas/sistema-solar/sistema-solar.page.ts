@@ -15,7 +15,7 @@ export class SistemaSolarPage implements OnInit {
 
   irPlaneta(planetaSeleccionado: any){
 
-    this.router.navigate(['Sistema-Solar', planetaSeleccionado]);
+    this.router.navigate(['/Sistema-Solar', planetaSeleccionado]);
     
   }
 

@@ -1,4 +1,5 @@
 import { Component, ElementRef, NgZone, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
@@ -12,9 +13,12 @@ export class PlanetaComponent implements OnInit {
   private renderer!: THREE.WebGLRenderer;
   private controls!: OrbitControls;
   private earthMesh!: THREE.Mesh;
+  private ringMesh!: THREE.Mesh;
   private isInteracting: boolean = false;
 
-  constructor(private el: ElementRef, private ngZone: NgZone) { }
+  constructor(private el: ElementRef, private ngZone: NgZone, private ruta: ActivatedRoute) { }
+
+  texturaPlaneta = this.ruta.snapshot.params['id'];
 
   ngOnInit() {
     this.init();
@@ -33,6 +37,12 @@ export class PlanetaComponent implements OnInit {
     this.el.nativeElement.appendChild(this.renderer.domElement);
 
     this.createSpheres();
+
+    if(this.texturaPlaneta == "Saturno"){
+      
+      this.crearAnillos();
+
+    }
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = false;
@@ -54,10 +64,20 @@ export class PlanetaComponent implements OnInit {
 
   private createSpheres() {
     const geometry = new THREE.SphereGeometry(1, 35, 35);
-    const texture = new THREE.TextureLoader().load('assets/Texturas/Tierra.png');
+    const texture = new THREE.TextureLoader().load('assets/Texturas/' + this.texturaPlaneta + '.jpg');
     const material = new THREE.MeshBasicMaterial({ map: texture });
     this.earthMesh = new THREE.Mesh(geometry, material);
     this.scene.add(this.earthMesh);
+  }
+
+  private crearAnillos(){
+    const ringGeometry = new THREE.TorusGeometry(1.5, 0.1, 2, 100);
+    const texture = new THREE.TextureLoader().load('assets/Texturas/Saturno-Anillos.jpg');
+    const ringMaterial = new THREE.MeshBasicMaterial({ map: texture });
+    this.ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
+    this.ringMesh.position.set(0, 0, 0);
+    this.ringMesh.rotation.x = Math.PI / 2;
+    this.scene.add(this.ringMesh);
   }
 
   private animate() {
