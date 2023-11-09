@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'Sistema-Solar',
     loadChildren: () => import('./paginas/sistema-solar/sistema-solar.module').then( m => m.SistemaSolarPageModule)
   },
+  {
+    path: 'Constelaciones',
+    loadChildren: () => import('./paginas/constelaciones/constelaciones.module').then( m => m.ConstelacionesPageModule)
+  },
 
 ];
 

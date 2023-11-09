@@ -8,15 +8,9 @@ import { Router } from '@angular/router';
 })
 export class InicioPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  irSistemaSolar(){
-
-    this.router.navigate(['Inicio', 'Sistema-Solar']);
-  
   }
 
 }

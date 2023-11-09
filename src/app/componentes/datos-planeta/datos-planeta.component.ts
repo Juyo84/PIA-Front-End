@@ -12,6 +12,7 @@ export class DatosPlanetaComponent  implements OnInit {
   constructor(private ruta: ActivatedRoute) { }
 
   planeta = this.ruta.snapshot.params['id'];
+  planetaTitulo = this.planeta.toString().toUpperCase();
 
   ngOnInit() {}
 

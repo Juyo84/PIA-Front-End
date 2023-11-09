@@ -47,13 +47,7 @@ ion-header > ion-toolbar {
   
 }
 
-#temario {
-
-  font-weight: bold;
-
-}
-
-#temaSeleccionado {
+#temaSeleccionado, #temarioSistema {
 
   font-weight: bold;
 

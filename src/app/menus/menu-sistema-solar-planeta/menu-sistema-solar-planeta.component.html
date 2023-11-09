@@ -1,12 +1,12 @@
 <ion-toolbar class="header">
-  <ion-avatar slot="start">
+  <ion-avatar slot="start" (click)="regresarInicio()">
     <img alt="Flovers Planet" src="../../../assets/icon/Logo.png">
   </ion-avatar>
   <p>FLOVERS PLANET</p>
-  <ion-avatar slot="end" id="perfilInicio">
+  <ion-avatar slot="end" id="perfilSistemaPlaneta">
     <img alt="Usuario" src="https://ionicframework.com/docs/img/demos/avatar.svg">
   </ion-avatar>
-  <ion-popover trigger="perfilInicio" size="auto">
+  <ion-popover trigger="perfilSistemaPlaneta" size="auto">
     <ng-template>
       <ion-content>
         <ion-list>
@@ -21,12 +21,12 @@
 <ion-header class="menu">
   <ion-toolbar>
     <div id="listaMenu">
-      <p id="temarioInicio">Temario</p>
-      <ion-popover trigger="temarioInicio" size="auto">
+      <p id="temarioSistemaPlaneta">Temario</p>
+      <ion-popover trigger="temarioSistemaPlaneta" size="auto">
         <ng-template>
           <ion-content>
             <ion-list>
-              <ion-item [button]="true" [detail]="false" (click)="navegar('Sistema-Solar')">Sistema Solar</ion-item>
+              <ion-item id="temaSeleccionado">Sistema Solar</ion-item>
               <ion-item [button]="true" [detail]="false" (click)="navegar('Constelaciones')">Constelaciones</ion-item>
             </ion-list>
           </ion-content>

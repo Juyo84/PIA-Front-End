@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SistemaSolarPage } from './sistema-solar.page';
+import { ConstelacionesPage } from './constelaciones.page';
+import { ConstelacionComponent } from 'src/app/componentes/constelacion/constelacion.component';
 import { InicioPage } from '../inicio/inicio.page';
-import { PlanetaComponent } from 'src/app/componentes/planeta/planeta.component';
-import { DatosPlanetaComponent } from 'src/app/componentes/datos-planeta/datos-planeta.component';
+import { SistemaSolarPage } from '../sistema-solar/sistema-solar.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: SistemaSolarPage
+    component: ConstelacionesPage
+  },
+  {
+    path: 'Constelaciones',
+    component: ConstelacionesPage
   },
   {
     path: 'Sistema-Solar',
@@ -21,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: DatosPlanetaComponent
+    component: ConstelacionComponent
   }
 ];
 
@@ -29,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class SistemaSolarPageRoutingModule {}
+export class ConstelacionesPageRoutingModule {}

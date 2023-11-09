@@ -1,0 +1,49 @@
+<ion-content>
+
+    <app-menu-constelaciones></app-menu-constelaciones>
+
+    <p id="titulo">Constelaciones</p>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-row>
+                <ion-col size="4">
+                    <ion-input placeholder="Busqueda" color="primary" fill="solid" id="busqueda"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-list>
+                <ion-item>
+                    <ion-grid>
+                        <ion-row (click)="irConstelacion('uno')">
+                            <ion-col size="2">
+                                <ion-avatar>
+                                    <img alt="Constelacion" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+                                </ion-avatar>
+                            </ion-col>
+                            <ion-col size="10">
+                                <p id="nombreConstelacion">Nombre</p><br>
+                                <p id="resumenConstelacion">Resumen</p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-item>
+                <ion-item>
+                    <ion-grid>
+                        <ion-row (click)="irConstelacion('dos')">
+                            <ion-col size="10">
+                                <p id="nombreConstelacion">Nombre</p><br>
+                                <p id="resumenConstelacion">Resumen</p>
+                            </ion-col>
+                            <ion-col size="2">
+                                <ion-avatar>
+                                    <img alt="Constelacion" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+                                </ion-avatar>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

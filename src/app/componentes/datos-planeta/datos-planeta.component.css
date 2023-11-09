@@ -2,11 +2,12 @@
 
   color: white;
   font-size: 50px;
-  position: absolute;
+  position: sticky;
   left: 0;
   right: 0;
-  top: 10px;
+  bottom: 425px;
   text-align: center;
+  margin: 0;
 
 }
 
@@ -14,19 +15,18 @@
 
   background: white;
   opacity: 40%;
-  bottom: 0;
   right: 0;
   left: 0;
   display: block;
   overflow: auto;
-  position: absolute;
-
+  position: sticky;
   color: black;
 
 }
 
 #planeta {
 
-  position: static;
+  position: sticky;
+  top: 0;
 
 }

@@ -10,6 +10,7 @@ import { SistemaSolarPage } from './sistema-solar.page';
 import { MenuSistemaSolarComponent } from '../../menus/menu-sistema-solar/menu-sistema-solar.component';
 import { DatosPlanetaComponent } from '../../componentes/datos-planeta/datos-planeta.component';
 import { PlanetaComponent } from '../../componentes/planeta/planeta.component';
+import { MenuSistemaSolarPlanetaComponent } from 'src/app/menus/menu-sistema-solar-planeta/menu-sistema-solar-planeta.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { PlanetaComponent } from '../../componentes/planeta/planeta.component';
   declarations: [SistemaSolarPage,
   MenuSistemaSolarComponent,
   DatosPlanetaComponent,
-  PlanetaComponent]
+  PlanetaComponent,
+  MenuSistemaSolarPlanetaComponent]
 })
 export class SistemaSolarPageModule {}

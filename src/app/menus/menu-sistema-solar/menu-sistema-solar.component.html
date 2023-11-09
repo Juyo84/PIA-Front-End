@@ -27,17 +27,17 @@
           <ion-content>
             <ion-list>
               <ion-item id="temaSeleccionado">Sistema Solar</ion-item>
-              <ion-item [button]="true" [detail]="false">Constelaciones</ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="navegar('Constelaciones')">Constelaciones</ion-item>
             </ion-list>
           </ion-content>
         </ng-template>
       </ion-popover>
-      <p>Articulos</p>
-      <p>Foro</p>
-      <p>Galeria</p>
-      <p>Guias</p>
-      <p>Noticias</p>
-      <p>Calendario</p>
+      <p (click)="navegar('Articulos')">Articulos</p>
+      <p (click)="navegar('Foro')">Foro</p>
+      <p (click)="navegar('Galeria')">Galeria</p>
+      <p (click)="navegar('Guias')">Guias</p>
+      <p (click)="navegar('Noticias')">Noticias</p>
+      <p (click)="navegar('Calendario')">Calendario</p>
     </div>
   </ion-toolbar>
 </ion-header>

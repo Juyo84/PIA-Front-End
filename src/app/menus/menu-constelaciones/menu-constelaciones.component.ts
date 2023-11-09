@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { AlertController, PopoverController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-menu-inicio',
-  templateUrl: './menu-inicio.component.html',
-  styleUrls: ['./menu-inicio.component.css'],
+  selector: 'app-menu-constelaciones',
+  templateUrl: './menu-constelaciones.component.html',
+  styleUrls: ['./menu-constelaciones.component.css'],
 })
-export class MenuInicioComponent  implements OnInit {
+export class MenuConstelacionesComponent  implements OnInit {
 
   constructor(private alertController: AlertController, private router: Router, private popoverController: PopoverController) { }
 

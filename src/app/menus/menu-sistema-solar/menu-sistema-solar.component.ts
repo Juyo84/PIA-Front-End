@@ -40,5 +40,12 @@ export class MenuSistemaSolarComponent  implements OnInit {
     this.popoverController.dismiss();
 
   }
+  
+  navegar(tema: any){
+
+    this.router.navigate(['Inicio', tema]);
+    this.popoverController.dismiss();
+
+  }
 
 }

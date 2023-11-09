@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { InicioPage } from './inicio.page';
 import { SistemaSolarPage } from '../sistema-solar/sistema-solar.page';
+import { ConstelacionesPage } from '../constelaciones/constelaciones.page';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'Sistema-Solar',
     component: SistemaSolarPage
+  },
+  {
+    path: 'Constelaciones',
+    component: ConstelacionesPage
   }
 ];
 
