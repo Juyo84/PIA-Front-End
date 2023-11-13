@@ -9,20 +9,38 @@ const routes: Routes = [
   },
   {
     path: 'Home',
-    loadChildren: () => import('./paginas/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./Home/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'Inicio',
-    loadChildren: () => import('./paginas/inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () => import('./Inicio/inicio/inicio.module').then( m => m.InicioPageModule)
   },
   {
     path: 'Sistema-Solar',
-    loadChildren: () => import('./paginas/sistema-solar/sistema-solar.module').then( m => m.SistemaSolarPageModule)
+    loadChildren: () => import('./Sistema-Solar/sistema-solar/sistema-solar.module').then( m => m.SistemaSolarPageModule)
   },
   {
     path: 'Constelaciones',
-    loadChildren: () => import('./paginas/constelaciones/constelaciones.module').then( m => m.ConstelacionesPageModule)
+    loadChildren: () => import('./Constelacion/constelaciones/constelaciones.module').then( m => m.ConstelacionesPageModule)
   },
+  {
+    path: 'articulos',
+    loadChildren: () => import('./Articulos/articulos/articulos.module').then( m => m.ArticulosPageModule)
+  },  {
+    path: 'perfil',
+    loadChildren: () => import('./Perfil/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'galeria',
+    loadChildren: () => import('./Galeria/galeria/galeria.module').then( m => m.GaleriaPageModule)
+  },
+  {
+    path: 'foro',
+    loadChildren: () => import('./Foro/foro/foro.module').then( m => m.ForoPageModule)
+  },
+
+
+
 
 ];
 

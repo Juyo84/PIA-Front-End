@@ -1,0 +1,31 @@
+#informacion {
+
+  position: sticky;
+  left: 570px;
+  bottom: 0px;
+  width: 512px;
+  height: 550px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: overlay;
+
+}
+
+img {
+
+  position: sticky;
+  top: 80px;
+  left: 20px;
+
+}
+
+#nombreConstelacion {
+
+  position: relative;
+  font-weight: bold;
+  font-size: xx-large;
+  text-align: center;
+  bottom: 0px;
+
+}
