@@ -8,6 +8,8 @@ import { ArticulosPageRoutingModule } from './articulos-routing.module';
 
 import { ArticulosPage } from './articulos.page';
 import { MenuArticulosComponent } from '../menu-articulos/menu-articulos.component';
+import { ArticuloComponent } from '../articulo/articulo.component';
+import { MenuArticulosArticuloComponent } from '../menu-articulos-articulo/menu-articulos-articulo.component';
 
 @NgModule({
   imports: [
@@ -17,6 +19,8 @@ import { MenuArticulosComponent } from '../menu-articulos/menu-articulos.compone
     ArticulosPageRoutingModule
   ],
   declarations: [ArticulosPage,
-  MenuArticulosComponent]
+  MenuArticulosComponent,
+  ArticuloComponent,
+  MenuArticulosArticuloComponent]
 })
 export class ArticulosPageModule {}

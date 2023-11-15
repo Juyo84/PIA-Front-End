@@ -1,0 +1,65 @@
+<ion-content>
+
+  <app-menu-calendario></app-menu-calendario>
+
+  <p id="titulo">Calendario de Eventos</p>
+
+  <ion-card>
+      <ion-card-content>
+          <ion-row>
+              <ion-col size="3">
+                <ion-button>Esta Semana</ion-button>
+              </ion-col>
+              <ion-col size="3">
+                <ion-button>Este Mes</ion-button>
+              </ion-col>
+              <ion-col offset="3">
+                <p>Fecha de hoy</p>
+              </ion-col>
+          </ion-row>
+          <ion-list>
+            <div>
+                <p>Hoy</p>
+                <hr id="lineaHorizontal">
+            </div>
+              <ion-item>
+                  <ion-grid>
+                      <ion-row (click)="irEvento('uno')">
+                          <ion-col size="2">
+                              <ion-avatar>
+                                  <img alt="Evento" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+                              </ion-avatar>
+                          </ion-col>
+                          <ion-col size="10">
+                              <p id="nombreEvento">Titulo</p><br>
+                              <p id="datosEvento">Datos</p><br>
+                              <p id="descripcionEvento">Descripcion</p>
+                          </ion-col>
+                      </ion-row>
+                  </ion-grid>
+              </ion-item>
+              <div>
+                <p>00/00/0000</p>
+                <hr id="lineaHorizontal">
+            </div>
+              <ion-item>
+                  <ion-grid>
+                      <ion-row (click)="irEvento('uno')">
+                          <ion-col size="2">
+                              <ion-avatar>
+                                  <img alt="Evento" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+                              </ion-avatar>
+                          </ion-col>
+                          <ion-col size="10">
+                              <p id="nombreEvento">Titulo</p><br>
+                              <p id="datosEvento">Datos</p><br>
+                              <p id="descripcionEvento">Descripcion</p>
+                          </ion-col>
+                      </ion-row>
+                  </ion-grid>
+              </ion-item>
+          </ion-list>
+      </ion-card-content>
+  </ion-card>
+
+</ion-content>

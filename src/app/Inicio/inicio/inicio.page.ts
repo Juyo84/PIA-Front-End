@@ -8,9 +8,15 @@ import { Router } from '@angular/router';
 })
 export class InicioPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  irPagina(idPagina: any){
+
+    this.router.navigate(['/Inicio', idPagina]);
+
   }
 
 }

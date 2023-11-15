@@ -1,13 +1,42 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Foro</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Foro</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <app-menu-foro></app-menu-foro>
+
+  <p id="titulo">Foro</p>
+
+  <ion-card>
+      <ion-card-content>
+          <ion-row>
+              <ion-col size="4">
+                <ion-input placeholder="Busqueda" color="primary" fill="solid" id="busqueda"></ion-input>
+              </ion-col>
+              <ion-col size="4">
+                  <ion-select label="Tema" label-placement="floating" fill="solid">
+                    <ion-select-option value="Uno">Uno</ion-select-option>
+                    <ion-select-option value="Dos">Dos</ion-select-option>
+                    <ion-select-option value="Tres">Tres</ion-select-option>
+                  </ion-select>
+              </ion-col>
+              <ion-col offset="3">
+                    <ion-button>
+                        <ion-icon name="add-outline"></ion-icon>
+                    </ion-button>
+              </ion-col>
+          </ion-row>
+          <ion-list>
+              <ion-item>
+                  <ion-grid>
+                      <ion-row (click)="irForo('uno')">
+                          <ion-col size="10">
+                              <p id="nombreForo">Titulo</p><br>
+                              <p id="datosForo">Datos</p><br>
+                              <p id="detallesForo">Detalles</p>
+                          </ion-col>
+                      </ion-row>
+                  </ion-grid>
+              </ion-item>
+          </ion-list>
+      </ion-card-content>
+  </ion-card>
+
 </ion-content>

@@ -1,0 +1,38 @@
+<ion-content>
+
+  <app-menu-noticias></app-menu-noticias>
+
+  <p id="titulo">Noticias</p>
+
+  <ion-card>
+      <ion-card-content>
+          <ion-row>
+              <ion-col size="3">
+                <ion-button>Esta Semana</ion-button>
+              </ion-col>
+              <ion-col size="3">
+                <ion-button>Este Mes</ion-button>
+              </ion-col>
+          </ion-row>
+          <ion-list>
+              <ion-item>
+                  <ion-grid>
+                      <ion-row (click)="irNoticia('uno')">
+                          <ion-col size="2">
+                              <ion-avatar>
+                                  <img alt="Noticia" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+                              </ion-avatar>
+                          </ion-col>
+                          <ion-col size="10">
+                              <p id="nombreNoticia">Titulo</p><br>
+                              <p id="datosNoticia">Datos</p><br>
+                              <p id="descripcionNoticia">Descripcion</p>
+                          </ion-col>
+                      </ion-row>
+                  </ion-grid>
+              </ion-item>
+          </ion-list>
+      </ion-card-content>
+  </ion-card>
+
+</ion-content>

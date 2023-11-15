@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { GaleriaPageRoutingModule } from './galeria-routing.module';
 
 import { GaleriaPage } from './galeria.page';
+import { MenuGaleriaComponent } from '../menu-galeria/menu-galeria.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { GaleriaPage } from './galeria.page';
     IonicModule,
     GaleriaPageRoutingModule
   ],
-  declarations: [GaleriaPage]
+  declarations: [GaleriaPage,
+  MenuGaleriaComponent]
 })
 export class GaleriaPageModule {}

@@ -1,0 +1,71 @@
+.articulo, .articuloRespuesta {
+
+    position: relative;
+    width: 1030px;
+    left: 20px;
+    background-color: white;
+    color: black;
+
+}
+
+.articuloRespuesta {
+
+    position: relative;
+    bottom: 110px;
+    left: 50px;
+
+}
+
+#titulo {
+
+    position: relative;
+    top: 20px;
+    text-align: justify;
+    left: 20px;
+    font-size: xx-large;
+    font-weight: bold;
+
+}
+
+.datos {
+
+    position: relative;
+    left: 10px;
+    font-weight: 700;
+    font-size: medium;
+    text-align: left;
+
+}
+
+.informacion {
+
+    position: relative;
+    left: 10px;
+    font-size: large;
+    text-align: justify;
+    width: 990px;
+
+}
+
+#lineaHorizontal {
+
+    position: relative;
+    top: 80px;
+    width: 50px;
+    left: 30px;
+    display:inline-block;
+    background-color: white;
+
+}
+
+#lineaVertical {
+
+    position: relative;
+    background-color: white;
+    transform: rotate(50%);
+    width: 1px;
+    bottom: 40px;
+    height: 108px;
+    left: 30px;
+
+}

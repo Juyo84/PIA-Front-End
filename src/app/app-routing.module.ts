@@ -24,22 +24,33 @@ const routes: Routes = [
     loadChildren: () => import('./Constelacion/constelaciones/constelaciones.module').then( m => m.ConstelacionesPageModule)
   },
   {
-    path: 'articulos',
+    path: 'Articulos',
     loadChildren: () => import('./Articulos/articulos/articulos.module').then( m => m.ArticulosPageModule)
-  },  {
-    path: 'perfil',
+  },
+  {
+    path: 'Perfil',
     loadChildren: () => import('./Perfil/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
   {
-    path: 'galeria',
+    path: 'Galeria',
     loadChildren: () => import('./Galeria/galeria/galeria.module').then( m => m.GaleriaPageModule)
   },
   {
-    path: 'foro',
+    path: 'Foro',
     loadChildren: () => import('./Foro/foro/foro.module').then( m => m.ForoPageModule)
   },
-
-
+  {
+    path: 'Calendario',
+    loadChildren: () => import('./Calendario/calendario/calendario.module').then( m => m.CalendarioPageModule)
+  },
+  {
+    path: 'Guias',
+    loadChildren: () => import('./Guias/guias/guias.module').then( m => m.GuiasPageModule)
+  },
+  {
+    path: 'Noticias',
+    loadChildren: () => import('./Noticias/noticias/noticias.module').then( m => m.NoticiasPageModule)
+  },
 
 
 ];

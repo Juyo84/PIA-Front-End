@@ -1,0 +1,10 @@
+#lineaHorizontal {
+
+    position: relative;
+    bottom: 20px;
+    left: 80px;
+    width: 1250px;
+    display: inline-block;
+    background-color: rgb(182, 182, 182);
+
+}

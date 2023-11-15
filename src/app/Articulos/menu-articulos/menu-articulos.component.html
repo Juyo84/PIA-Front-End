@@ -1,16 +1,16 @@
 <ion-toolbar class="header">
-  <ion-avatar slot="start">
+  <ion-avatar slot="start" (click)="regresarInicio()">
     <img alt="Flovers Planet" src="../../../assets/icon/Logo.png">
   </ion-avatar>
   <p>FLOVERS PLANET</p>
-  <ion-avatar slot="end" id="perfilInicio">
+  <ion-avatar slot="end" id="perfilArticulos">
     <img alt="Usuario" src="https://ionicframework.com/docs/img/demos/avatar.svg">
   </ion-avatar>
-  <ion-popover trigger="perfilInicio" size="auto">
+  <ion-popover trigger="perfilArticulos" size="auto">
     <ng-template>
       <ion-content>
         <ion-list>
-          <ion-item [button]="true" [detail]="false">Perfil</ion-item>
+          <ion-item [button]="true" [detail]="false" (click)="irPerfil()">Perfil</ion-item>
           <ion-item [button]="true" [detail]="false" id="cerrarSesion" (click)="alertCerrarSesion()">Cerrar Sesion</ion-item>
         </ion-list>
       </ion-content>
@@ -21,8 +21,8 @@
 <ion-header class="menu">
   <ion-toolbar>
     <div id="listaMenu">
-      <p id="temarioInicio">Temario</p>
-      <ion-popover trigger="temarioInicio" size="auto">
+      <p id="temarioArticulos">Temario</p>
+      <ion-popover trigger="temarioArticulos" size="auto">
         <ng-template>
           <ion-content>
             <ion-list>

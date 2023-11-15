@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { ForoPageRoutingModule } from './foro-routing.module';
 
 import { ForoPage } from './foro.page';
+import { MenuForoComponent } from '../menu-foro/menu-foro.component';
+import { MenuForoPublicacionForoComponent } from '../menu-foro-publicacion-foro/menu-foro-publicacion-foro.component';
+import { PublicacionForoComponent } from '../publicacion-foro/publicacion-foro.component';
 
 @NgModule({
   imports: [
@@ -15,6 +18,9 @@ import { ForoPage } from './foro.page';
     IonicModule,
     ForoPageRoutingModule
   ],
-  declarations: [ForoPage]
+  declarations: [ForoPage,
+  MenuForoComponent,
+MenuForoPublicacionForoComponent,
+PublicacionForoComponent]
 })
 export class ForoPageModule {}

@@ -1,0 +1,49 @@
+.articulo {
+
+    position: relative;
+    width: 1030px;
+    left: 20px;
+    background-color: white;
+    color: black;
+
+}
+
+img {
+
+    position: relative;
+    left: 20px;
+    width: 990px;
+    height: 340px;
+
+}
+
+#titulo {
+
+    position: relative;
+    top: 20px;
+    text-align: justify;
+    left: 20px;
+    font-size: xx-large;
+    font-weight: bold;
+
+}
+
+.datos {
+
+    position: relative;
+    left: 10px;
+    font-weight: 700;
+    font-size: medium;
+    text-align: left;
+
+}
+
+.informacion {
+
+    position: relative;
+    left: 10px;
+    font-size: large;
+    text-align: justify;
+    width: 990px;
+
+}
