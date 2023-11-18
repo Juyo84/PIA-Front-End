@@ -2,24 +2,24 @@
 
   color: white;
   font-size: 50px;
-  position: sticky;
+  position: absolute;
   left: 0;
   right: 0;
-  bottom: 425px;
+  bottom: 420px;
   text-align: center;
   margin: 0;
 
 }
 
 #informacionPlaneta {
-
-  background: white;
-  opacity: 40%;
+  
+  position: relative;
   right: 0;
-  left: 0;
-  display: block;
-  overflow: auto;
-  position: sticky;
+  bottom: 30px;
+  left: 20px;
+  width: 1300px;
+  height: 480px;
+  background: rgba(255, 255, 255, 0.4);
   color: black;
 
 }

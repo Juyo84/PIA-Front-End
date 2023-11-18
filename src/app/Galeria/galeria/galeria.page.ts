@@ -13,9 +13,9 @@ export class GaleriaPage implements OnInit {
   ngOnInit() {
   }
 
-  irGaleria(idGaleria: any){
+  irImagen(idImagen: any){
 
-    console.log("Multimedia mostrada")
+    this.router.navigate(['/Galeria', idImagen]);
 
   }
 

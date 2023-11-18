@@ -56,7 +56,7 @@ const routes: Routes = [
   {
     path: 'Calendario',
     component: CalendarioPage
-  }
+  },
 ];
 
 @NgModule({

@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { AlertController, PopoverController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-menu-sistema-solar',
-  templateUrl: './menu-sistema-solar.component.html',
-  styleUrls: ['./menu-sistema-solar.component.css'],
+  selector: 'app-menu-galeria-imagen-proyectada',
+  templateUrl: './menu-galeria-imagen-proyectada.component.html',
+  styleUrls: ['./menu-galeria-imagen-proyectada.component.css'],
 })
-export class MenuSistemaSolarComponent  implements OnInit {
+export class MenuGaleriaImagenProyectadaComponent  implements OnInit {
 
   constructor(private alertController: AlertController, private router: Router, private popoverController: PopoverController) { }
 
@@ -27,13 +27,14 @@ export class MenuSistemaSolarComponent  implements OnInit {
         },
         {
           text: 'No',
-        }
+        },
       ]
     });
-  
+
     await alert.present();
+
   }
-  
+
   regresarInicio(){
 
     this.router.navigateByUrl('Inicio');

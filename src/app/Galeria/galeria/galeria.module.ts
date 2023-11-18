@@ -8,6 +8,8 @@ import { GaleriaPageRoutingModule } from './galeria-routing.module';
 
 import { GaleriaPage } from './galeria.page';
 import { MenuGaleriaComponent } from '../menu-galeria/menu-galeria.component';
+import { MenuGaleriaImagenProyectadaComponent } from '../menu-galeria-imagen-proyectada/menu-galeria-imagen-proyectada.component';
+import { ImagenProyectadaComponent } from '../imagen-proyectada/imagen-proyectada.component';
 
 @NgModule({
   imports: [
@@ -17,6 +19,8 @@ import { MenuGaleriaComponent } from '../menu-galeria/menu-galeria.component';
     GaleriaPageRoutingModule
   ],
   declarations: [GaleriaPage,
-  MenuGaleriaComponent]
+  MenuGaleriaComponent,
+MenuGaleriaImagenProyectadaComponent,
+ImagenProyectadaComponent]
 })
 export class GaleriaPageModule {}

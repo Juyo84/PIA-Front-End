@@ -28,12 +28,12 @@ export class PlanetaComponent implements OnInit {
   private init() {
     this.scene = new THREE.Scene();
 
-    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight - 56), 0.1, 1000);
+    this.camera = new THREE.PerspectiveCamera(84, window.innerWidth / (window.innerHeight - 56), 0.1, 1000);
     this.camera.position.z = 2;
 
     this.scene.background = new THREE.Color(0x0F1116);
     this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(window.innerWidth, window.innerHeight - 56);
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.el.nativeElement.appendChild(this.renderer.domElement);
 
     this.createSpheres();
@@ -67,6 +67,7 @@ export class PlanetaComponent implements OnInit {
     const texture = new THREE.TextureLoader().load('assets/Texturas/' + this.texturaPlaneta + '.jpg');
     const material = new THREE.MeshBasicMaterial({ map: texture });
     this.earthMesh = new THREE.Mesh(geometry, material);
+    this.earthMesh.position.y = 0.2;
     this.scene.add(this.earthMesh);
   }
 

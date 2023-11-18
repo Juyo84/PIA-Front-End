@@ -8,3 +8,12 @@
     left: 20px;
 
 }
+
+#titulo {
+
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
+
+}

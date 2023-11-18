@@ -41,6 +41,13 @@ export class MenuConstelacionesConstelacionComponent  implements OnInit {
     this.popoverController.dismiss();
 
   }
+
+  irPerfil(){
+
+    this.router.navigateByUrl('Perfil');
+    this.popoverController.dismiss();
+
+  }
   
   navegar(tema: any){
 

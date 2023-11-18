@@ -1,0 +1,48 @@
+ion-toolbar {
+
+    --background: rgba(12, 12, 31, 100);
+  
+  }
+  
+  ion-header > ion-toolbar {
+  
+    --background: rgba(28, 28, 71, 100);
+  
+  }
+  
+  .menu {
+  
+      position: sticky;
+      top: 0;
+    
+    }
+    
+    .header > p {
+    
+      margin-left: 20px;
+      font-weight: bold;
+      font-size: 25px;
+    
+    }
+    
+    #listaMenu {
+    
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10px;
+    
+    }
+    
+    #listaMenu > p {
+    
+      margin: 30px;
+      font-size: x-large;
+    
+    }
+  
+  #cerrarSesion {
+  
+    color: red;
+    
+  }

@@ -24,8 +24,9 @@ img {
 
   position: relative;
   font-weight: bold;
-  font-size: xx-large;
+  font-size: 40px;
   text-align: center;
   bottom: 0px;
+  margin: 20px;
 
 }
