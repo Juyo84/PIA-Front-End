@@ -23,3 +23,63 @@ ion-card {
     margin: 0px;
 
 }
+
+.informacionEvento {
+
+    position: relative;
+    left: 570px;
+    bottom: 0px;
+    width: 512px;
+    height: 550px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: overlay;
+  
+  }
+  
+.evento > img {
+  
+    position: relative;
+    bottom: 30px;
+    left: 20px;
+    width: 460px;
+  
+}
+
+.evento > .informacionEvento {
+
+    position: relative;
+    bottom: 510px;
+    height: 470px;
+    overflow-y: auto;
+
+}
+
+.evento {
+
+    position: sticky;
+    bottom: -110px;
+    left: 20px;
+    width: 1310px;
+    height: 545px;
+    background: white;
+    color: black;
+
+}
+
+.evento > #tituloEvento{
+
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    font-size: 40px;
+
+}
+
+.evento > ion-button {
+
+    position: relative;
+    bottom: 525px;
+
+}

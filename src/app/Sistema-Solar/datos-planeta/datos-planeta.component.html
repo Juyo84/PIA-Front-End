@@ -13,7 +13,7 @@
             <p>Diametro</p>
           </ion-col>
           <ion-col>
-            <p>Km</p>
+            <p>{{diametro}}</p>
           </ion-col>
         </ion-row>
         
@@ -22,7 +22,7 @@
             <p>Masa</p>
           </ion-col>
           <ion-col>
-            <p>Kg</p>
+            <p>{{masa}}</p>
           </ion-col>
         </ion-row>
 
@@ -31,7 +31,7 @@
             <p>Distancia al Sol</p>
           </ion-col>
           <ion-col>
-            <p>Km</p>
+            <p>{{distancia}}</p>
           </ion-col>
         </ion-row>
         
@@ -40,7 +40,7 @@
             <p>Atmosfera</p>
           </ion-col>
           <ion-col>
-            <p>Compuestos</p>
+            <p>{{atmosfera}}</p>
           </ion-col>
         </ion-row>
         
@@ -49,24 +49,15 @@
             <p>Lunas</p>
           </ion-col>
           <ion-col>
-            <p>Nombre luna 1</p>
-          </ion-col>
-          <ion-col>
-            <p>Nombre luna 2</p>
-          </ion-col>
-          <ion-col>
-            <p>Nombre luna 3</p>
+            <p>{{lunas}}</p>
           </ion-col>
         </ion-row>
         
         <ion-row>
           <p>Exploraciones</p>
         </ion-row>
-        <ion-row>
-          <p>Dato Exploracion 1</p>
-        </ion-row>
-        <ion-row>
-          <p>Dato Exploracion 2</p>
+        <ion-row *ngFor="let exploracion of exploraciones">
+          <p>{{exploracion}}</p>
         </ion-row>
       </ion-grid>
   </div>

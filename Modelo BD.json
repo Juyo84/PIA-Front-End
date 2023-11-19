@@ -1,0 +1,209 @@
+{
+
+    "Usuarios": {
+
+        "0":{
+
+            "usuario": "Juyo84",
+            "contrasena": "contra",
+            "nombre": "Julio",
+            "apellido": "Luevano",
+            "profesion": "Estudiante",
+            "pais": "Mexico",
+            "intereses": ["Estrellas", "Planetas"],
+            "correo": "juliol@outlook.com",
+            "foto": ""
+
+        }
+
+    },
+    "Planetas": {
+
+        "1": {
+
+            "nombre": "Sol",
+            "diametro": "1.391 millones de Km",
+            "masa": "1.989 x 10^30 Km",
+            "atomsfera": "Está compuesta principalmente de hidrógeno y helio con trazas de otros elementos.",
+            "exploraciones": ["Sonda Parker Solar Probe de la NASA", "Misión Solar Orbiter de la ESA", "Sonda Solar and Heliospheric Observatory"]
+
+        },
+        "1": {
+
+            "nombre": "Mercurio",
+            "diametro": "4880 Km",
+            "masa": "3.30 x 10^23 Kg",
+            "distancia": "Entre 46 y 70 millones de Km aproximadamente.",
+            "atomsfera": "Muy delgada, compuesta principalmente de gases como oxígeno, sodio, hidrógeno, helio y potasio.",
+            "lunas": 0,
+            "exploraciones": ["MESSENGER de la NASA"]
+
+        },
+        "2": {
+
+            "nombre": "Venus",
+            "diametro": "12104 Km",
+            "masa": "4.87 x 10^24 Kg",
+            "distancia": "Aproximadamente 108 millones de Km.",
+            "atomsfera": "Principalmente dióxido de carbono con nubes de ácido sulfúrico.",
+            "lunas": 0,
+            "exploraciones": ["Sonda Venera de la Union Sovietica", "Mision Megallanes de la NASA"]
+
+        },
+        "3": {
+
+            "nombre": "Tierra",
+            "diametro": "12,742 Km",
+            "masa": "5.97 x 10^24 Kg",
+            "distancia": "Aproximadamente 150 millones de Km.",
+            "atomsfera": "Composición diversa con nitrógeno, oxígeno, argón, dióxido de carbono y otros gases.",
+            "lunas": 1,
+            "exploraciones": ["Apolo de la Nasa", "Misiones satelitales"]
+
+        },
+        "4": {
+
+            "nombre": "Marte",
+            "diametro": "6,779 Km",
+            "masa": "6.39 x 10^23 Kg",
+            "distancia": "Entre aproximadamente 207 y 249 millones de Km.",
+            "atomsfera": "Principalmente dióxido de carbono con trazas de nitrógeno y argón.",
+            "lunas": 2,
+            "exploraciones": ["Mision Mars Rovers de la NASA", "Misiones de otras agencias espaciales"]
+
+        },
+        "5": {
+
+            "nombre": "Jupiter",
+            "diametro": "139,822 Km",
+            "masa": "1.90 x 10^27 Kg",
+            "distancia": "Aproximadamente 778 millones de Km",
+            "atomsfera": "Principalmente hidrógeno y helio, con trazas de otros elementos.",
+            "lunas": 70,
+            "exploraciones": ["Sonda Galileo de la NASA, Sonda Juno de la NASA"]
+
+        },
+        "6": {
+
+            "nombre": "Saturno",
+            "diametro": "116,464 km",
+            "masa": "5.68 x 10^26 kg",
+            "distancia": "Aproximadamente 1,429 millones de km.",
+            "atomsfera": "Compuesta principalmente por hidrógeno y helio.",
+            "lunas": 80,
+            "exploraciones": ["Sonda Cassini-Huygens de la NASA/ESA"]
+
+        },
+        "7": {
+
+            "nombre": "Urano",
+            "diametro": "50,724 Km",
+            "masa": "8.68 x 10^25 Kg",
+            "distancia": "Aproximadamente 2,871 millones de km.",
+            "atomsfera": "Principalmente hidrógeno y helio, con metano.",
+            "lunas": 27,
+            "exploraciones": ["Sonda Voyager 2 de la NASA"]
+
+        },
+        "8": {
+
+            "nombre": "Neptuno",
+            "diametro": "49,244 km",
+            "masa": "1.02 x 10^26 Kg",
+            "distancia": "Aproximadamente 4,498 millones de Km.",
+            "atomsfera": "Compuesta principalmente por hidrógeno, helio y metano.",
+            "lunas": 14,
+            "exploraciones": ["Sonda Voyager 2 de la NASA"]
+
+        }
+
+    },
+    "Constelaciones": {
+
+        "0": {
+
+            "nombre": "",
+            "resumen": ""
+
+        }
+
+    },
+    "Articulos": {
+
+        "0": {
+
+            "titulo": "",
+            "autor": "",
+            "fecha": "",
+            "informacion": "",
+            "foto": ""
+
+        }
+
+    },
+    "Foro" :{
+
+        "0": {
+
+            "titulo": "",
+            "autor": "",
+            "fecha": "",
+            "informacion": "",
+            "publicaciones": []
+
+        }
+
+    },
+    "Galeria": {
+
+        "0": {
+
+            "foto": "",
+            "autor": "",
+            "fecha": ""
+
+        }
+
+    },
+    "Guias": {
+
+        "0": {
+
+            "foto": "",
+            "titulo": "",
+            "descripcion": "",
+            "informacion": ""
+
+        }
+
+    },
+    "Noticias": {
+
+        "0": {
+
+            "foto": "",
+            "titulo": "",
+            "fecha": "",
+            "tema": "",
+            "descripcion": "",
+            "informacion": ""
+
+        }
+
+    },
+    "Eventos": {
+
+        "0": {
+
+            "foto": "",
+            "titulo": "",
+            "fecha": "",
+            "tema": "",
+            "descripcion": "",
+            "informacion": ""
+
+        }
+
+    }
+
+}

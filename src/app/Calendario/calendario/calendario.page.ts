@@ -13,9 +13,17 @@ export class CalendarioPage implements OnInit {
   ngOnInit() {
   }
 
-  irEvento(idPublicacionEvento: any){
+  evento = false;
 
-    console.log("Click del evento");
+  mostrarEvento(idEvento: any){
+
+    this.evento = true;
+
+  }
+
+  cerrarEvento(){
+
+    this.evento = false;
 
   }
 

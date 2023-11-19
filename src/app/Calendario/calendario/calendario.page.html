@@ -1,30 +1,47 @@
 <ion-content>
-
-  <app-menu-calendario></app-menu-calendario>
-
-  <p id="titulo">Calendario de Eventos</p>
-
-  <ion-card>
-      <ion-card-content>
-          <ion-row>
-              <ion-col size="3">
-                <ion-button>Esta Semana</ion-button>
-              </ion-col>
-              <ion-col size="3">
-                <ion-button>Este Mes</ion-button>
-              </ion-col>
+    
+    <app-menu-calendario></app-menu-calendario>
+    
+    <p id="titulo">Calendario de Eventos</p>
+    
+    <div class="evento" *ngIf="evento">
+        
+        <p id="tituloEvento">Titulo</p>
+        
+        <ion-button (click)="cerrarEvento()"><ion-icon name="close-outline"></ion-icon></ion-button>
+      
+      <img alt="Imagen del Evento" src="../../../assets/icon/Logo.png">
+      
+      <div class="informacionEvento">
+    
+          <p id="informacion">Informacion</p>
+      
+      </div>
+      
+    </div>
+    
+    <div class="listaEventos" *ngIf="!evento">  
+        <ion-card>
+            <ion-card-content>
+                <ion-row>
+                    <ion-col size="3">
+                        <ion-button>Esta Semana</ion-button>
+                    </ion-col>
+                    <ion-col size="3">
+                  <ion-button>Este Mes</ion-button>
+                </ion-col>
               <ion-col offset="3">
-                <p>Fecha de hoy</p>
+                  <p>Fecha de hoy</p>
               </ion-col>
           </ion-row>
           <ion-list>
-            <div>
-                <p>Hoy</p>
-                <hr id="lineaHorizontal">
-            </div>
+              <div>
+                  <p>Hoy</p>
+                  <hr id="lineaHorizontal">
+                </div>
               <ion-item>
                   <ion-grid>
-                      <ion-row (click)="irEvento('uno')">
+                      <ion-row (click)="mostrarEvento('uno')">
                           <ion-col size="2">
                               <ion-avatar>
                                   <img alt="Evento" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
@@ -44,7 +61,7 @@
             </div>
               <ion-item>
                   <ion-grid>
-                      <ion-row (click)="irEvento('uno')">
+                      <ion-row (click)="mostrarEvento('dos')">
                           <ion-col size="2">
                               <ion-avatar>
                                   <img alt="Evento" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
@@ -54,12 +71,14 @@
                               <p id="nombreEvento">Titulo</p><br>
                               <p id="datosEvento">Datos</p><br>
                               <p id="descripcionEvento">Descripcion</p>
-                          </ion-col>
+                            </ion-col>
                       </ion-row>
                   </ion-grid>
               </ion-item>
-          </ion-list>
+            </ion-list>
       </ion-card-content>
-  </ion-card>
+    </ion-card>
+    </div>
+
 
 </ion-content>

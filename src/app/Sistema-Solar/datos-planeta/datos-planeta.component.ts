@@ -16,11 +16,11 @@ export class DatosPlanetaComponent  implements OnInit {
 
   ngOnInit() {}
 
-  diametro = "";
-  masa = "";
-  distancia = "";
-  atmosfera = [];
-  lunas = 0;
-  Exploraciones = [];
+  diametro = "diametro1";
+  masa = "masa1";
+  distancia = "distancia1";
+  atmosfera = "atomsfera1";
+  lunas = 1;
+  exploraciones = ["exploracion1", "exploracion2"];
 
 }
