@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PlanetaComponent } from '../planeta/planeta.component';
 import { ActivatedRoute } from '@angular/router';
+import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
+import { Planetas } from 'src/app/Modelos/interfaces';
 
 @Component({
   selector: 'app-datos-planeta',
@@ -9,18 +11,39 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DatosPlanetaComponent  implements OnInit {
 
-  constructor(private ruta: ActivatedRoute) { }
+  constructor(private ruta: ActivatedRoute, private bd: BaseDatosService) { }
 
-  planeta = this.ruta.snapshot.params['id'];
-  planetaTitulo = this.planeta.toString().toUpperCase();
+  nombrePlaneta = this.ruta.snapshot.params['id'];
+  planetaTitulo = this.nombrePlaneta.toString().toUpperCase();
 
-  ngOnInit() {}
+  planeta: Planetas = {
 
-  diametro = "diametro1";
-  masa = "masa1";
-  distancia = "distancia1";
-  atmosfera = "atomsfera1";
-  lunas = 1;
-  exploraciones = ["exploracion1", "exploracion2"];
+    atmosfera: '',
+    diametro: '',
+    distancia: '',
+    exploraciones: [],
+    lunas: 0,
+    masa: '',
+    nombre: '',
+
+  }
+
+  ngOnInit() {
+  
+    this.bd.getDocumentChanges<Planetas>('Planetas/' + this.nombrePlaneta).subscribe(res =>{
+
+      if(res != undefined){
+
+        this.planeta = res;
+
+      }else{
+
+        console.log("ERROR EN QUERY, CHECAR CODIGO");
+
+      }
+
+    });
+
+  }
 
 }

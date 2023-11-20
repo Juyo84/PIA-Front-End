@@ -13,7 +13,7 @@
             <p>Diametro</p>
           </ion-col>
           <ion-col>
-            <p>{{diametro}}</p>
+            <p>{{planeta.diametro}}</p>
           </ion-col>
         </ion-row>
         
@@ -22,16 +22,16 @@
             <p>Masa</p>
           </ion-col>
           <ion-col>
-            <p>{{masa}}</p>
+            <p>{{planeta.masa}}</p>
           </ion-col>
         </ion-row>
 
-        <ion-row>
+        <ion-row *ngIf="planeta.distancia != ''">
           <ion-col>
             <p>Distancia al Sol</p>
           </ion-col>
           <ion-col>
-            <p>{{distancia}}</p>
+            <p>{{planeta.distancia}}</p>
           </ion-col>
         </ion-row>
         
@@ -40,23 +40,23 @@
             <p>Atmosfera</p>
           </ion-col>
           <ion-col>
-            <p>{{atmosfera}}</p>
+            <p>{{planeta.atmosfera}}</p>
           </ion-col>
         </ion-row>
         
-        <ion-row>
+        <ion-row *ngIf="planeta.lunas > 0">
           <ion-col>
             <p>Lunas</p>
           </ion-col>
           <ion-col>
-            <p>{{lunas}}</p>
+            <p>{{planeta.lunas}}</p>
           </ion-col>
         </ion-row>
         
         <ion-row>
           <p>Exploraciones</p>
         </ion-row>
-        <ion-row *ngFor="let exploracion of exploraciones">
+        <ion-row *ngFor="let exploracion of planeta.exploraciones">
           <p>{{exploracion}}</p>
         </ion-row>
       </ion-grid>
