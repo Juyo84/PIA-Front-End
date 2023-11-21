@@ -21,6 +21,7 @@
   height: 480px;
   background: rgba(255, 255, 255, 0.4);
   color: black;
+  overflow-x: auto;
 
 }
 
@@ -28,5 +29,17 @@
 
   position: sticky;
   top: 0;
+
+}
+
+#exploraciones, #masa, #diametro, #distancia, #lunas, #atmosfera {
+
+  font-weight: bold;
+
+}
+
+p {
+
+  font-size: 18px;
 
 }

@@ -121,10 +121,124 @@
     "Constelaciones": {
 
         "0": {
-
-            "nombre": "",
-            "resumen": ""
-
+            "nombre": "Aries",
+            "resumen": "",
+            "estrellas": 66,
+            "estrellaPrincipal": "Hamal",
+            "simbolismo": "Carnero",
+            "ascension": "2 Horas",
+            "visibilidad": "Mejor visible en otoño en el hemisferio norte.",
+            "descripcion": "Aries es una constelación bastante pequeña pero reconocible por su forma que representa la cabeza de un carnero."
+        },
+        "1": {
+            "nombre": "Tauro",
+            "resumen": "",
+            "estrellas": 87,
+            "estrellaPrincipal": "Aldebarán",
+            "simbolismo": "Toro",
+            "ascension": "4 Horas",
+            "visibilidad": "Visible en invierno en el hemisferio norte.",
+            "descripcion": "Tauro es una constelación grande y reconocible por la forma de V que representa las astas del toro."
+        },
+        "2": {
+            "nombre": "Geminis",
+            "resumen": "",
+            "estrellas": 85,
+            "estrellaPrincipal": "Pollux",
+            "simbolismo": "A los gemelos Cástor y Pólux",
+            "ascension": "7 Horas",
+            "visibilidad": "Mejor visible en invierno y primavera en el hemisferio norte.",
+            "descripcion": "Géminis se representa como dos figuras gemelas, a menudo asociadas con los mitológicos Cástor y Pólux."
+        },
+        "3": {
+            "nombre": "Cancer",
+            "resumen": "",
+            "estrellas": 152,
+            "estrellaPrincipal": "Altarf",
+            "simbolismo": "Cangrejo",
+            "ascension": "9 Horas",
+            "visibilidad": "Mejor visible en primavera en el hemisferio norte.",
+            "descripcion": "La constelación de Cáncer se asocia con un cangrejo debido a su forma."
+        },
+        "4": {
+            "nombre": "Leo",
+            "resumen": "",
+            "estrellas": 291,
+            "estrellaPrincipal": "Regulus",
+            "simbolismo": "Leon",
+            "ascension": "11 horas",
+            "visibilidad": "Mejor visible en primavera y verano en el hemisferio norte.",
+            "descripcion": "Leo es una constelación que se asemeja a la forma de un león recostado."
+        },
+        "5": {
+            "nombre": "Virgo",
+            "resumen": "",
+            "estrellas": 259,
+            "estrellaPrincipal": "Spica",
+            "simbolismo": "Doncella",
+            "ascension": "14 Horas",
+            "visibilidad": "Mejor visible en primavera y verano en el hemisferio norte.",
+            "descripcion": "Virgo se representa como una mujer con una espiga de trigo en la mano, símbolo de fertilidad."
+        },
+        "6": {
+            "nombre": "Libra",
+            "resumen": "",
+            "estrellas": 83,
+            "estrellaPrincipal": "Zubeneschamali",
+            "simbolismo": "Balanza",
+            "ascension": "15 Horas",
+            "visibilidad": "Mejor visible en primavera y verano en el hemisferio norte.",
+            "descripcion": "Libra es representada como una balanza sostenida por una figura mitológica."
+        },
+        "7": {
+            "nombre": "Escorpio",
+            "resumen": "",
+            "estrellas": 62,
+            "estrellaPrincipal": "Antares",
+            "simbolismo": "Escorpion",
+            "ascension": "17 Horas",
+            "visibilidad": "Mejor visible en verano en el hemisferio norte.",
+            "descripcion": "Escorpio se asemeja a la forma de un escorpión en el cielo."
+        },
+        "8": {
+            "nombre": "Sagitario",
+            "resumen": "",
+            "estrellas": 263,
+            "estrellaPrincipal": "Nunki",
+            "simbolismo": "Centauro Arquero",
+            "ascension": "19 Horas",
+            "visibilidad": "Mejor visible en verano en el hemisferio norte.",
+            "descripcion": "Sagitario se representa como un centauro apuntando con un arco y una flecha."
+        },
+        "9": {
+            "nombre": "Capricornio",
+            "resumen": "",
+            "estrellas": 190,
+            "estrellaPrincipal": "Deneb Algedi",
+            "simbolismo": "Cabra marina",
+            "ascension": "21 Horas",
+            "visibilidad": "Mejor visible en verano en el hemisferio norte.",
+            "descripcion": "Capricornio se representa como una figura mitad cabra y mitad pez, generalmente con el torso y cabeza de una cabra y la cola de un pez."
+        },
+        "10": {
+            "nombre": "Acuario",
+            "resumen": "",
+            "estrellas": 122,
+            "estrellaPrincipal": "Sadalsuud",
+            "simbolismo": "Portador del agua",
+            "ascension": "23 Horas",
+            "visibilidad": "Mejor visible en otoño en el hemisferio norte.",
+            "descripcion": "Acuario se representa como una figura que vierte agua desde una jarra."
+        },
+        "11": {
+            "nombre": "Piscis",
+            "resumen": "",
+            "estrellas": 171,
+            "estrellaPrincipal": "Eta Piscium",
+            "simbolismo": "Peces",
+            "ascension": "0 Horas",
+            "visibilidad": "Mejor visible en otoño en el hemisferio norte.",
+            "descripcion": "Piscis se representa como dos peces unidos por una cuerda."
         }
 
     },

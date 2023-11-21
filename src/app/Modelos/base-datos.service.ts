@@ -10,10 +10,10 @@ export class BaseDatosService {
   constructor(public firestore: AngularFirestore) { }
 
   //Nuevo Registro
-  createDocument<tipo>(datos: tipo, enlace: string){
+  createDocument<tipo>(datos: tipo, enlace: string, id: string){
 
     const ref = this.firestore.collection<tipo>(enlace);
-    return ref.add(datos);
+    return ref.doc(id).set(datos);
 
   }
 

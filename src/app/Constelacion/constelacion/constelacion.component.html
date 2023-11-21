@@ -2,18 +2,57 @@
 
     <app-menu-constelaciones-constelacion></app-menu-constelaciones-constelacion>
     
-    <p id="nombreConstelacion">{{constelacion}}</p>
+    <p id="nombreConstelacion">{{nombreConstelacion}}</p>
 
-    <div class="constelacion">
-
-      <img alt="Constelacion" src="https://ionicframework.com/docs/img/demos/avatar.svg">
+    <img alt="{{constelacion.nombre}}" [src]="'../../../assets/Texturas/' + constelacion.nombre + '.jpg'">
   
       <div id="informacion">
-  
-        <p>Informacion</p>
-      
+        
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <p id="descripcion">{{constelacion.descripcion}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4">
+              <p id="estrellas">Cantidad de estrellas:</p>
+            </ion-col>
+            <ion-col size="2">
+              <p>{{constelacion.estrellas}}</p>
+            </ion-col>
+            <ion-col size="4">
+              <p id="estrellaPrincipal">Estrella Principal:</p>
+            </ion-col>
+            <ion-col size="2">
+              <p>{{constelacion.estrellaPrincipal}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2">
+              <p id="simbolismo">Simbolismo:</p>
+            </ion-col>
+            <ion-col>
+              <p>{{constelacion.simbolismo}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2">
+              <p id="visibilidad">Visibilidad:</p>
+            </ion-col>
+            <ion-col>
+              <p>{{constelacion.visibilidad}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2">
+              <p id="ascension">Ascension:</p>
+            </ion-col>
+            <ion-col>
+              <p>{{constelacion.ascension}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
       </div>
-
-    </div>
-
 </ion-content>

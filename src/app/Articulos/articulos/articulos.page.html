@@ -7,13 +7,11 @@
       <ion-card-content>
           <ion-row>
               <ion-col size="4">
-                <ion-input placeholder="Busqueda" color="primary" fill="solid" id="busqueda"></ion-input>
+                <ion-searchbar placeholder="Busqueda" (ionInput)="handleInput($event)"></ion-searchbar>
               </ion-col>
               <ion-col size="4">
                   <ion-select label="Tema" label-placement="floating" fill="solid">
-                    <ion-select-option value="Uno">Uno</ion-select-option>
-                    <ion-select-option value="Dos">Dos</ion-select-option>
-                    <ion-select-option value="Tres">Tres</ion-select-option>
+                    <ion-select-option [value]="tema" *ngFor="let tema of temas">{{tema}}</ion-select-option>
                   </ion-select>
               </ion-col>
               <ion-col offset="3">
@@ -25,16 +23,26 @@
           <ion-list>
               <ion-item>
                   <ion-grid>
-                      <ion-row (click)="irArticulo('uno')">
+                      <ion-row *ngFor="let resultado of resultados" (click)="irArticulo(resultado.titulo)">
                           <ion-col size="2">
                               <ion-avatar>
                                   <img alt="Articulo" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
                               </ion-avatar>
                           </ion-col>
                           <ion-col size="10">
-                              <p id="nombreArticulo">Titulo</p><br>
-                              <p id="datosArticulo">Datos</p><br>
-                              <p id="descripcionArticulo">Descripcion</p>
+                              <p id="nombre">{{resultado.titulo}}</p><br>
+                              <ion-row>
+                                  <ion-col size="6">
+                                      <p id="autor">{{resultado.autor}}</p>
+                                  </ion-col>
+                                  <ion-col size="4">
+                                      <p id="tema">{{resultado.tema}}</p>
+                                  </ion-col>
+                                  <ion-col size="2">
+                                      <p id="fecha">{{resultado.fecha}}</p>
+                                  </ion-col>
+                              </ion-row><br>
+                              <p id="descripcion">{{resultado.informacion}}</p>
                           </ion-col>
                       </ion-row>
                   </ion-grid>

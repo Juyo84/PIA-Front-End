@@ -9,8 +9,8 @@
   <div id="informacionPlaneta">
       <ion-grid class="datos">
         <ion-row>
-          <ion-col>
-            <p>Diametro</p>
+          <ion-col size="2">
+            <p id="diametro">Diametro</p>
           </ion-col>
           <ion-col>
             <p>{{planeta.diametro}}</p>
@@ -18,8 +18,8 @@
         </ion-row>
         
         <ion-row>
-          <ion-col>
-            <p>Masa</p>
+          <ion-col size="2">
+            <p id="masa">Masa</p>
           </ion-col>
           <ion-col>
             <p>{{planeta.masa}}</p>
@@ -27,8 +27,8 @@
         </ion-row>
 
         <ion-row *ngIf="planeta.distancia != ''">
-          <ion-col>
-            <p>Distancia al Sol</p>
+          <ion-col size="2">
+            <p id="distancia">Distancia al Sol</p>
           </ion-col>
           <ion-col>
             <p>{{planeta.distancia}}</p>
@@ -36,8 +36,8 @@
         </ion-row>
         
         <ion-row>
-          <ion-col>
-            <p>Atmosfera</p>
+          <ion-col size="2">
+            <p id="atmosfera">Atmosfera</p>
           </ion-col>
           <ion-col>
             <p>{{planeta.atmosfera}}</p>
@@ -45,8 +45,8 @@
         </ion-row>
         
         <ion-row *ngIf="planeta.lunas > 0">
-          <ion-col>
-            <p>Lunas</p>
+          <ion-col size="2">
+            <p id="lunas">Lunas</p>
           </ion-col>
           <ion-col>
             <p>{{planeta.lunas}}</p>
@@ -54,10 +54,14 @@
         </ion-row>
         
         <ion-row>
-          <p>Exploraciones</p>
+          <ion-col id="exploraciones">
+            <p id="exploraciones">Exploraciones</p>
+          </ion-col>
         </ion-row>
         <ion-row *ngFor="let exploracion of planeta.exploraciones">
-          <p>{{exploracion}}</p>
+          <ion-col>
+            <p>{{exploracion}}</p>
+          </ion-col>
         </ion-row>
       </ion-grid>
   </div>

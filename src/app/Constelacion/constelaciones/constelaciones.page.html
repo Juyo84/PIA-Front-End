@@ -8,37 +8,23 @@
         <ion-card-content>
             <ion-row>
                 <ion-col size="4">
-                    <ion-input placeholder="Busqueda" color="primary" fill="solid" id="busqueda"></ion-input>
+                    <ion-searchbar placeholder="Busqueda" (ionInput)="handleInput($event)"></ion-searchbar>
                 </ion-col>
             </ion-row>
             <ion-list>
                 <ion-item>
                     <ion-grid>
-                        <ion-row (click)="irConstelacion('uno')">
-                            <ion-col size="2">
+                        <ion-row *ngFor="let resultado of resultados" (click)="irConstelacion(resultado.nombre)">
+                            <ion-col size="1">
                                 <ion-avatar>
-                                    <img alt="Constelacion" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+                                    <img alt={{resultado.nombre}} [src]="'../../../assets/Texturas/' + resultado.nombre + '.jpg'"/>
                                 </ion-avatar>
                             </ion-col>
-                            <ion-col size="10">
-                                <p id="nombreConstelacion">Nombre</p><br>
-                                <p id="resumenConstelacion">Resumen</p>
+                            <ion-col>
+                                <p id="nombreConstelacion">{{resultado.nombre}}</p><br>
+                                <p id="resumenConstelacion">{{resultado.resumen}}</p>
                             </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-item>
-                <ion-item>
-                    <ion-grid>
-                        <ion-row (click)="irConstelacion('dos')">
-                            <ion-col size="10">
-                                <p id="nombreConstelacion">Nombre</p><br>
-                                <p id="resumenConstelacion">Resumen</p>
-                            </ion-col>
-                            <ion-col size="2">
-                                <ion-avatar>
-                                    <img alt="Constelacion" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-                                </ion-avatar>
-                            </ion-col>
+                            <hr id="lineaHorizontal">
                         </ion-row>
                     </ion-grid>
                 </ion-item>

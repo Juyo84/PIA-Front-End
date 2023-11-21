@@ -5,13 +5,20 @@ export interface Articulos {
     foto: string;
     informacion: string;
     titulo: string;
+    tema: string;
 
 }
 
 export interface Constelaciones {
-
+    
     nombre: string;
     resumen: string;
+    estrellas: number;
+    estrellaPrincipal: string;
+    simbolismo: string;
+    ascension: string;
+    visibilidad: string;
+    descripcion: string;
 
 }
 
@@ -33,6 +40,7 @@ export interface Foro {
     informacion: string;
     publicaciones: Array<Foro>;
     titulo: string;
+    tema: string;
 
 }
 
@@ -41,6 +49,7 @@ export interface Galeria {
     autor: string;
     fecha: string;
     foto: string;
+    titulo: string;
 
 }
 

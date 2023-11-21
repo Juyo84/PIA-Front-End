@@ -8,20 +8,16 @@
       <ion-card-content>
           <ion-row>
               <ion-col size="3">
-                <ion-input placeholder="Busqueda" color="primary" fill="solid" id="busqueda"></ion-input>
+                <ion-searchbar placeholder="Busqueda" (ionInput)="handleInput($event)"></ion-searchbar>
               </ion-col>
               <ion-col size="3">
                   <ion-select label="Tema" label-placement="floating" fill="solid">
-                    <ion-select-option value="Uno">Uno</ion-select-option>
-                    <ion-select-option value="Dos">Dos</ion-select-option>
-                    <ion-select-option value="Tres">Tres</ion-select-option>
+                    <ion-select-option *ngFor="let tema of temas" [value]="tema">{{tema}}</ion-select-option>
                   </ion-select>
               </ion-col>
               <ion-col size="3">
                   <ion-select label="Tipo" label-placement="floating" fill="solid">
-                    <ion-select-option value="Imagen">Imagen</ion-select-option>
-                    <ion-select-option value="Video">Video</ion-select-option>
-                    <ion-select-option value="Imagen/Video">Imagen/Video</ion-select-option>
+                    <ion-select-option *ngFor="let tipo of tipos" [value]="tipo">{{tipo}}</ion-select-option>
                   </ion-select>
               </ion-col>
               <ion-col offset="2">

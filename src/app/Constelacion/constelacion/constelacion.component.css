@@ -1,22 +1,22 @@
 #informacion {
 
-  position: sticky;
+  position: absolute;
   left: 570px;
-  bottom: 0px;
-  width: 512px;
-  height: 550px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  overflow: overlay;
+  width: 750px;
+  height: 520px;
+  top: 220px;
+  text-align: justify;
+  overflow-x: auto;
 
 }
 
 img {
 
   position: sticky;
-  top: 80px;
   left: 20px;
+  width: 500px;
+  top: 95px;
+  margin-bottom: 30px;
 
 }
 
@@ -28,5 +28,17 @@ img {
   text-align: center;
   bottom: 0px;
   margin: 20px;
+
+}
+
+#estrellas, #estrellaPrincipal, #simbolismo, #visibilidad, #ascension {
+
+  font-weight: bold;
+
+}
+
+p {
+
+  font-size: 18px;
 
 }

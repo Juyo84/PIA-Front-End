@@ -12,3 +12,25 @@ ion-card {
     margin: 0px;
 
 }
+
+#nombreConstelacion {
+
+    font-weight: bold;
+    font-size: 25px;
+
+}
+
+#resumenConstelacion {
+
+    font-size: 16px;
+
+}
+
+#lineaHorizontal {
+
+    position: relative;
+    width: 1300px;
+    display: inline-block;
+    background-color: rgb(182, 182, 182);
+
+}

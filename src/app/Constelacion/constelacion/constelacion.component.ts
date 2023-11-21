@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
+import { Constelaciones } from 'src/app/Modelos/interfaces';
 
 @Component({
   selector: 'app-constelacion',
@@ -8,10 +11,39 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ConstelacionComponent  implements OnInit {
 
-  constructor(private ruta: ActivatedRoute) { }
+  constructor(private ruta: ActivatedRoute, private bd: BaseDatosService) { }
 
-  constelacion = this.ruta.snapshot.params['id'];
+  nombreConstelacion = this.ruta.snapshot.params['id'];
 
-  ngOnInit() {}
+  constelacion: Constelaciones = {
+
+    ascension: '',
+    descripcion: '',
+    estrellaPrincipal: '',
+    estrellas: 0,
+    nombre: '',
+    resumen: '',
+    simbolismo: '',
+    visibilidad: ''
+
+  }
+
+  ngOnInit() {
+
+    this.bd.getDocumentChanges<Constelaciones>('Constelaciones/' + this.nombreConstelacion).subscribe(res => {
+
+      if(res != undefined){
+
+        this.constelacion = res;
+
+      }else{
+
+        console.log("ERROR EN EL QUERY");
+
+      }
+
+    });
+
+  }
 
 }
