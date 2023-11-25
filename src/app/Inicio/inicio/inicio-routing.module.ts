@@ -11,6 +11,7 @@ import { PerfilPage } from 'src/app/Perfil/perfil/perfil.page';
 import { GuiasPage } from 'src/app/Guias/guias/guias.page';
 import { NoticiasPage } from 'src/app/Noticias/noticias/noticias.page';
 import { CalendarioPage } from 'src/app/Calendario/calendario/calendario.page';
+import { LogInComponent } from 'src/app/Home/log-in/log-in.component';
 
 const routes: Routes = [
   {

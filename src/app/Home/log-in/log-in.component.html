@@ -10,16 +10,21 @@
       Log In
     </p>
     
-    <ion-input label="Usuario o Email" color="primary" label-placement="floating" fill="solid" id="usuario"></ion-input>
+    <ion-button class="google" expand="full" (click)="logInGoogle()">
+      <ion-icon name="logo-google" size="large" slot="start"></ion-icon>
+      <p>Log In con Google</p>
+    </ion-button>
 
-    <ion-input type="password" label="Contraseña" color="primary" label-placement="floating" fill="solid" id="contra"></ion-input>
+    <ion-input [(ngModel)]="usuario.correo" type="email" label="Correo" color="primary" label-placement="floating" fill="solid" id="usuario"></ion-input>
+
+    <ion-input [(ngModel)]="contra" type="password" label="Contraseña" color="primary" label-placement="floating" fill="solid" id="contra"></ion-input>
     
     <p id="olvidoContra">
       ¿Se te olvido la contraseña?
     </p>
     
     <div id="ingresar">
-      <ion-button (click)="logIn()">Log In</ion-button>
+      <ion-button (click)="logInCorreo()">Log In</ion-button>
     </div>
     
     <p id="noCuenta" (click)="irSignUp()">

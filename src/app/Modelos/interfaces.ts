@@ -88,8 +88,8 @@ export interface Planetas {
 export interface Usuarios {
 
     apellido: string;
-    contrasena: string;
     correo: string;
+    uid: string;
     foto: string;
     intereses: Array<string>;
     nombre: string;

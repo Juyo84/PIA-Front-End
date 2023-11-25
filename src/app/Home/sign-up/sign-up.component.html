@@ -7,15 +7,20 @@
     <p id="titulo">
       Sign Up
     </p>
+
+    <ion-button class="google" expand="full" (click)="signUpGoogle()">
+        <ion-icon name="logo-google" size="large" slot="start"></ion-icon>
+        <p>Sign Up con Google</p>
+    </ion-button>
     
-    <ion-input type="email" label="Email" color="primary" label-placement="floating" fill="solid" id="email"></ion-input>
+    <ion-input type="email" [(ngModel)]="usuario.correo" label="Email" color="primary" label-placement="floating" fill="solid" id="email"></ion-input>
 
-    <ion-input label="Usuario" color="primary" label-placement="floating" fill="solid" id="usuario"></ion-input>
+    <ion-input label="Usuario" [(ngModel)]="usuario.usuario" color="primary" label-placement="floating" fill="solid" id="usuario"></ion-input>
 
-    <ion-input type="password" label="Contraseña" color="primary" label-placement="floating" fill="solid" id="contra"></ion-input>
+    <ion-input type="password" [(ngModel)]="contrasena" label="Contraseña" color="primary" label-placement="floating" fill="solid" id="contra"></ion-input>
     
     <div id="ingresar">
-      <ion-button (click)="SignUp()">Sign Up</ion-button>
+      <ion-button (click)="signUpCorreo()">Sign Up</ion-button>
     </div>
     
     <p id="noCuenta" (click)="irLogIn()">

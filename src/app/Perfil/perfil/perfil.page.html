@@ -2,83 +2,107 @@
 
   <app-menu-perfil></app-menu-perfil>
 
-    <div class="constelacion">
+      <div id="imagen">
+        <img alt="usuario.usuario" [src]="usuario.foto">
 
-      <img alt="Constelacion" src="https://ionicframework.com/docs/img/demos/avatar.svg">
+        <ion-button id="cambioImagen">
+          <label for="subirImagen">
+            <ion-icon name="sync-outline" size="large"></ion-icon>
+          </label>
+          <input (change)="cambiarImagen($event)" type="file" accept="image/*" id="subirImagen">
+        </ion-button>
+      </div>
   
       <div id="informacion">
 
         <ion-grid>
           <ion-row>
-            <p>Informacion Personal</p>
+            <ul id="informacionPersonal"><li>INFORMACION PERSONAL</li></ul>
           </ion-row>
           <ion-row>
             <ion-col size="2">
-              <p>Nombre:</p>      
+              <p id="campo">Nombre:</p>      
             </ion-col>
             <ion-col size="10">
-              <ion-input></ion-input>      
+              <ion-input fill="outline" [(ngModel)]="usuario.nombre" (change)="botonGuardar = true"></ion-input>      
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="2">
-              <p>Apellido:</p>    
+              <p id="campo">Apellido:</p>    
             </ion-col>
             <ion-col size="10">
-              <ion-input></ion-input>      
+              <ion-input fill="outline" [(ngModel)]="usuario.apellido" (change)="botonGuardar = true"></ion-input>      
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="2">
-              <p>Profesion:</p>    
+              <p id="campo">Profesion:</p>    
             </ion-col>
             <ion-col size="10">
-              <ion-input></ion-input>      
+              <ion-select label-placement="floating" fill="outline" [(ngModel)]="usuario.profesion" (ionChange)="botonGuardar = true">
+                <ion-select-option [value]="profesion" *ngFor="let profesion of profesiones">{{profesion}}</ion-select-option>
+              </ion-select>    
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="2">
-              <p>Pais:</p>    
+              <p id="campo">Pais:</p>    
             </ion-col>
             <ion-col size="10">
-              <ion-input></ion-input>      
+              <ion-select label-placement="floating" fill="outline" [(ngModel)]="usuario.pais" (ionChange)="botonGuardar = true">
+                <ion-select-option [value]="pais" *ngFor="let pais of paises">{{pais}}</ion-select-option>
+              </ion-select>   
             </ion-col>
           </ion-row>
+          <hr id="lineaHorizontal">
           <ion-row>
-            <p>Intereses</p>
-          </ion-row>
-          <ion-row>
-            <ion-col size="2">
-              <ion-button><ion-icon name="add-outline"></ion-icon></ion-button>
-            </ion-col>
-            <ion-col size="2.5">
-              <ion-icon name="star-outline"></ion-icon><p>Estrellas</p>
-            </ion-col>
-            <ion-col size="2.5">
-              <ion-icon name="planet-outline"></ion-icon><p>Planetas</p>
-            </ion-col>
-            <ion-col size="2.5">
-              <ion-icon name="sparkles-outline"></ion-icon><p>Constelaciones</p>
-            </ion-col>
-            <ion-col size="2.5">
-              <ion-icon name="telescope-outline"></ion-icon><p>Telescopio</p>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <p>Cuenta</p>
+            <ul id="intereses"><li>INTERESES</li></ul>
           </ion-row>
           <ion-row>
             <ion-col size="2">
-              <p>Correo Electronico</p>
+              <ion-button (click)="mostrarIntereses()"><ion-icon name="add-outline"></ion-icon></ion-button>
+                  <ion-select [(ngModel)]="usuario.intereses" [multiple]="true" #listaIntereses id="listaIntereses" (ionChange)="botonGuardar = true">
+                    <ion-select-option [value]="interes" *ngFor="let interes of intereses">{{interes}}</ion-select-option>
+                  </ion-select>
+            </ion-col>
+            <ion-col size="2" *ngFor="let interes of usuario.intereses">
+              <ion-icon name="star-outline" *ngIf="interes == 'Estrellas'"></ion-icon>
+              <ion-icon name="sparkles-outline" *ngIf="interes == 'Constelaciones'"></ion-icon>
+              <ion-icon name="planet-outline" *ngIf="interes == 'Planetas'"></ion-icon>
+              <ion-icon name="telescope-outline" *ngIf="interes == 'Telescopio'"></ion-icon>
+              <ion-icon name="rocket-outline" *ngIf="interes == 'Exploraciones'"></ion-icon>
+              <p>{{interes}}</p>
+            </ion-col>
+          </ion-row>
+          <hr id="lineaHorizontal">
+          <ion-row>
+            <ul id="Cuenta"><li>CUENTA</li></ul>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2">
+              <p id="campo">Correo Electronico:</p>
             </ion-col>
             <ion-col size="10">
-              <ion-input></ion-input>
+              <ion-input fill="outline" [(ngModel)]="usuario.correo" (change)="botonGuardar = true" readonly></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6" class="ion-text-center">
+              <ion-button color="warning" (click)="enviarCorreo()">
+                Cambiar Contraseña
+              </ion-button>
+            </ion-col>
+            <ion-col size="6" class="ion-text-center">
+              <ion-button color="danger">
+                Eliminar Cuenta
+              </ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
-
+        
       </div>
 
-    </div>
+      <ion-button (click)="guardarCambios()" id="guardar" *ngIf="botonGuardar">Guardar Cambios</ion-button>
 
 </ion-content>

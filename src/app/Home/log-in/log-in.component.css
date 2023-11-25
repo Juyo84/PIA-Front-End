@@ -47,7 +47,7 @@ ion-content {
   .fondoLogIn > :is(#ingresar, #noCuenta) {
   
     position: relative;
-    top: 186px;
+    top: 136px;
     font-size: medium;
     text-align: center;
   
@@ -67,7 +67,7 @@ ion-content {
   .fondoLogIn > :is(ion-input, #olvidoContra) {
   
     position: relative;
-    top: 150px;
+    top: 130px;
     font-size: medium;
     left: 5%;
     width: 90%;
@@ -98,4 +98,17 @@ ion-content {
     top: 20px;
     z-index: 1;
 
+  }
+
+  .google{
+
+    position: relative;
+    top: 125px;
+    left: 25px;
+    width: 490px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
   }

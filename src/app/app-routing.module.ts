@@ -50,8 +50,7 @@ const routes: Routes = [
   {
     path: 'Noticias',
     loadChildren: () => import('./Noticias/noticias/noticias.module').then( m => m.NoticiasPageModule)
-  },
-
+  }
 
 ];
 

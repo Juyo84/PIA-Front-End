@@ -10,8 +10,7 @@ export class InicioPage implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   irPagina(idPagina: any){
 

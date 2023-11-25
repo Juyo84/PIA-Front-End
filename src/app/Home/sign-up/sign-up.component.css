@@ -4,6 +4,19 @@ ion-content {
 
 }
 
+.google{
+
+  position: relative;
+  top: 100px;
+  left: 25px;
+  width: 490px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
 .logo {
 
     top: 20px;
@@ -37,7 +50,7 @@ ion-content {
   .fondoLogIn > #titulo {
   
     position: relative;
-    top: 100px;
+    top: 80px;
     font-size: x-large;
     font-weight: bold;
     text-align: center;
@@ -47,7 +60,7 @@ ion-content {
   .fondoLogIn > :is(#ingresar, #noCuenta) {
   
     position: relative;
-    top: 170px;
+    top: 120px;
     font-size: medium;
     text-align: center;
   
@@ -67,7 +80,7 @@ ion-content {
   .fondoLogIn > :is(ion-input, #olvidoContra) {
   
     position: relative;
-    top: 150px;
+    top: 100px;
     font-size: medium;
     left: 5%;
     width: 90%;
@@ -79,8 +92,6 @@ ion-content {
     margin-top: 10px;
     color: black;
     --background:white;
-    --border-radius: 0;
-    height: var(--background + 100px);
   
   }
   

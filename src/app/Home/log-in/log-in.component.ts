@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Modelos/auth.service';
+import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
+import { Usuarios } from 'src/app/Modelos/interfaces';
 
 @Component({
   selector: 'app-log-in',
@@ -8,9 +11,47 @@ import { Router } from '@angular/router';
 })
 export class LogInComponent  implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public auth: AuthService, private bd: BaseDatosService) { 
 
-  ngOnInit() {}
+    this.auth.stateAuth().subscribe(res => {
+
+      if(res !== null){
+
+        this.uid = res.uid;
+
+
+      }else{
+
+        this.initUsuario();
+
+      }
+
+    });
+
+  }
+
+  async ngOnInit() {
+
+    const uid = this.auth.getUid();
+
+  }
+
+  usuario: Usuarios = {
+
+    apellido: '',
+    correo: '',
+    uid: '',
+    foto: '',
+    intereses: [],
+    nombre: '',
+    pais: '',
+    profesion: '',
+    usuario: '',
+
+  };
+
+  contra =  '';
+  uid = '';
 
   regresarHome(){
 
@@ -24,10 +65,46 @@ export class LogInComponent  implements OnInit {
 
   }
 
-  logIn(){
+  initUsuario(){
+
+    this.uid = '';
+    this.usuario = {
+
+      apellido: '',
+      correo: '',
+      uid: '',
+      foto: '',
+      intereses: [],
+      nombre: '',
+      pais: '',
+      profesion: '',
+      usuario: '',
+  
+    };
+
+  }
+
+  async logInCorreo(){
+
+    await this.auth.login(this.usuario.correo, this.contra);
+    
+    const uid = await this.auth.getUid();
+    this.usuario.uid = uid!;
 
     this.router.navigate(['Inicio']);
 
   }
+
+  async logInGoogle(){
+
+    await this.auth.logInGoogle();
+    
+    const uid = await this.auth.getUid();
+    this.usuario.uid = uid!;
+
+    this.router.navigate(['Inicio']);
+
+  }
+
 
 }

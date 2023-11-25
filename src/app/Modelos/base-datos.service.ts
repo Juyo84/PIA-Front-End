@@ -40,6 +40,18 @@ export class BaseDatosService {
 
   }
 
-  
+  getDoc<tipo>(path: string, id: string){
+
+    const coleccion = this.firestore.collection<tipo>(path);
+    return coleccion.doc(id).valueChanges();
+
+  }
+
+  updateDoc(datos: any, path: string, id: string){
+
+    const coleccion = this.firestore.collection(path);
+    return coleccion.doc(id).update(datos);
+
+  }
 
 }
