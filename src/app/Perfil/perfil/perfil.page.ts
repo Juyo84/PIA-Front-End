@@ -5,8 +5,8 @@ import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { FireStorageService } from 'src/app/Modelos/fire-storage.service';
 import { Usuarios } from 'src/app/Modelos/interfaces';
 import { countries } from 'countries-list';
-import { IonSelect } from '@ionic/angular';
-import { error } from 'console';
+import { AlertController, IonSelect } from '@ionic/angular';
+import PerfectScrollbar from 'perfect-scrollbar';
 
 @Component({
   selector: 'app-perfil',
@@ -16,7 +16,7 @@ import { error } from 'console';
 export class PerfilPage implements OnInit {
 
   constructor(private fireStorage: FireStorageService, private bd: BaseDatosService,
-    private auth: AuthService, private router: Router) {
+    private auth: AuthService, private router: Router, private alertController: AlertController) {
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -32,13 +32,21 @@ export class PerfilPage implements OnInit {
       }
       
     });
-
-   }
-
+    
+  }
+  
   ngOnInit() {
-
+    
     this.cambiarProfesion();
     this.cambiarPais();
+
+    const container = document.querySelector('#informacion');
+
+    if(container != null){
+      
+      const ps = new PerfectScrollbar(container);
+      
+    }
 
   }
   
@@ -52,7 +60,8 @@ export class PerfilPage implements OnInit {
     nombre: '',
     pais: '',
     profesion: '',
-    usuario: ''
+    usuario: '',
+    veridico: false
     
   };
   
@@ -100,20 +109,46 @@ export class PerfilPage implements OnInit {
   async cambiarImagen(event: any){
 
     this.files = event.target.files[0];
-    const res = await this.fireStorage.subirImagen(this.files, 'Usuarios', this.usuario.usuario);
     
-    this.usuario.foto = res;
+    this.usuario.foto = URL.createObjectURL(this.files); 
     this.botonGuardar = true;
 
   }
 
-  guardarCambios(){
+  async guardarCambios(){
 
-    this.bd.createDocument<Usuarios>(this.usuario, 'Usuarios', this.usuario.uid).then((_) => {
+    const alert = await this.alertController.create({
 
-      console.log("Guardado con exito");
+      header: 'Guardar Cambios',
+      message: '¿Desea guardar los datos?',
+      buttons: [
+        {
+          text: 'Si',
+          role: 'confirm',
+          handler: async() => {
+            
+            if(this.files != undefined || this.files != null){
 
+              const res = await this.fireStorage.subirImagen(this.files, 'Usuarios', this.usuario.usuario); 
+              this.usuario.foto = res;
+
+            }
+
+            this.bd.createDocument<Usuarios>(this.usuario, 'Usuarios', this.usuario.uid);
+
+            this.files = null;            
+            this.botonGuardar = false;
+            
+          },
+        },
+        {
+          text: 'No',
+          role: 'cancel'
+        }
+      ]
     });
+
+    await alert.present();
 
   }
 
@@ -137,15 +172,67 @@ export class PerfilPage implements OnInit {
 
   async enviarCorreo(){
 
-    await this.auth.enviarCorreoRestablecimiento(this.usuario.correo).then(_ => {
+    const alert = await this.alertController.create({
 
-      console.log("Se envio el correo");
-
-    }).catch(error => {
-
-      console.log("Error al enviar el correo");
-
+      header: 'Restablecer contraseña',
+      message: 'Se le enviara un correo electrónico para restablecer la contraseña',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'confirm',
+          handler: async() => {
+            
+            await this.auth.enviarCorreoRestablecimiento(this.usuario.correo).catch(error => {
+        
+              console.log("Error al enviar el correo");
+        
+            });
+            
+          },
+        }
+      ]
     });
+
+    await alert.present();
+
+  }
+
+  async eliminarCuenta(){
+
+    const alert = await this.alertController.create({
+      
+      header: 'Eliminar cuenta',
+      subHeader: 'Se necesita iniciar sesion nuevamente',
+      message: '¿Esta seguro de realizar la operacion?',
+      buttons: [
+        {
+          text: 'Si',
+          role: 'confirm',
+          handler: async() => {
+            
+            await this.auth.enviarCorreoRestablecimiento(this.usuario.correo).catch(error => {
+              
+              console.log("Error al enviar el correo");
+              
+            });
+            
+            this.router.navigateByUrl('ReLogIn');
+
+          },
+        },
+        {
+          text: 'No',
+          role: 'Cancel',
+          handler: () => {
+            
+            return;
+            
+          },
+        }
+      ]
+    });
+    
+    await alert.present();
 
   }
 

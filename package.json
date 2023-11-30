@@ -32,6 +32,7 @@
     "countries-list": "^3.0.6",
     "firebase": "^10.6.0",
     "ionicons": "^7.0.0",
+    "perfect-scrollbar": "^1.5.5",
     "rxjs": "~7.8.0",
     "three": "^0.157.0",
     "tslib": "^2.3.0",

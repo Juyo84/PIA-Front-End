@@ -12,3 +12,155 @@ ion-card {
     margin: 0px;
 
 }
+
+#imagen > img  {
+
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    width: 100%;
+    height: 90%;
+
+}
+
+#video > video  {
+
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    width: 100%;
+    height: 90%;
+
+}
+
+.imagenMostrar {
+
+    --width: 90%;
+    --height: 90%;
+
+}
+
+
+.videoContainer {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#videoSeleccionado {
+    
+    width: 85%;
+
+}
+
+.imagenContainer {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.imagenContainer > #autor {
+
+    position: absolute;
+    left: 140px;
+    bottom: 0px;
+
+}
+
+.imagenContainer > #fecha {
+
+    position: absolute;
+    left: 1000px;
+    bottom: 0px;
+
+}
+
+.imagenContainer > #tituloModal {
+
+    position: absolute;
+    bottom: 513px;
+    left: 144px;
+    
+}
+
+.videoContainer > #tituloModal {
+
+    position: absolute;
+    bottom: 513px;
+    left: 100px;
+    
+}
+
+.videoContainer > #autor {
+
+    position: absolute;
+    left: 140px;
+    bottom: 0px;
+
+}
+
+.videoContainer > #fecha {
+
+    position: absolute;
+    left: 1000px;
+    bottom: 0px;
+
+}
+
+#imagenMostrado {
+
+    width: 78.4%;
+
+}
+
+.iconoContainer {
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    
+}
+
+.imagenContainer, .videoContainer {
+
+    font-weight: bold;
+
+}
+
+.agregarMultimedia {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.botonAgregarMultimedia {
+
+    position: sticky;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+input {
+
+    display: none;
+
+}
+
+#videoGuardar {
+
+    width: 100%;
+
+}
+
+ion-col, ion-grid, ion-card-content {
+
+    padding-bottom: 0px;
+
+}

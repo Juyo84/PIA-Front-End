@@ -3,7 +3,8 @@
   <app-menu-perfil></app-menu-perfil>
 
       <div id="imagen">
-        <img alt="usuario.usuario" [src]="usuario.foto">
+        <img alt="usuario.usuario" [src]="usuario.foto" *ngIf="usuario.foto != ''">
+        <img alt="usuario.usuario" src="https://ionicframework.com/docs/img/demos/avatar.svg" *ngIf="usuario.foto == ''">
 
         <ion-button id="cambioImagen">
           <label for="subirImagen">
@@ -81,10 +82,18 @@
           </ion-row>
           <ion-row>
             <ion-col size="2">
+              <p id="campo">Usuario:</p>
+            </ion-col>
+            <ion-col size="10">
+              <ion-input fill="outline" [(ngModel)]="usuario.usuario" readonly></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2">
               <p id="campo">Correo Electronico:</p>
             </ion-col>
             <ion-col size="10">
-              <ion-input fill="outline" [(ngModel)]="usuario.correo" (change)="botonGuardar = true" readonly></ion-input>
+              <ion-input fill="outline" [(ngModel)]="usuario.correo" readonly></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
@@ -94,7 +103,7 @@
               </ion-button>
             </ion-col>
             <ion-col size="6" class="ion-text-center">
-              <ion-button color="danger">
+              <ion-button color="danger" (click)="eliminarCuenta()">
                 Eliminar Cuenta
               </ion-button>
             </ion-col>

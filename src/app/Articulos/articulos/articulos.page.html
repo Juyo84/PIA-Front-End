@@ -15,7 +15,7 @@
                   </ion-select>
               </ion-col>
               <ion-col offset="3">
-                    <ion-button>
+                    <ion-button *ngIf="nuevoArticulo">
                         <ion-icon name="add-outline"></ion-icon>
                     </ion-button>
               </ion-col>
@@ -23,13 +23,13 @@
           <ion-list>
               <ion-item>
                   <ion-grid>
-                      <ion-row *ngFor="let resultado of resultados" (click)="irArticulo(resultado.titulo)">
-                          <ion-col size="2">
+                      <ion-row *ngFor="let resultado of resultados" (click)="irArticulo(resultado.uid)">
+                          <ion-col size="1.5">
                               <ion-avatar>
-                                  <img alt="Articulo" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+                                  <img alt="Articulo" [src]="resultado.foto"/>
                               </ion-avatar>
                           </ion-col>
-                          <ion-col size="10">
+                          <ion-col>
                               <p id="nombre">{{resultado.titulo}}</p><br>
                               <ion-row>
                                   <ion-col size="6">
@@ -42,8 +42,9 @@
                                       <p id="fecha">{{resultado.fecha}}</p>
                                   </ion-col>
                               </ion-row><br>
-                              <p id="descripcion">{{resultado.informacion}}</p>
+                              <p id="descripcion">{{resumen(resultado.informacion)}}</p>
                           </ion-col>
+                          <hr id="lineaHorizontal">
                       </ion-row>
                   </ion-grid>
               </ion-item>

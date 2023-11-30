@@ -5,14 +5,36 @@
     left: 20px;
     background-color: white;
     color: black;
+    padding-bottom: 5px;
+    border-radius: 2%;
 
 }
 
 .articuloRespuesta {
 
     position: relative;
-    bottom: 110px;
-    left: 50px;
+    bottom: 150px;
+    left: 65px;
+
+}
+
+#lineaVerticalRespuesta {
+
+    position: relative;
+    background-color: white;
+    transform: rotate(50%);
+    width: 1px;
+    height: 59px;
+    bottom: 20px;
+    left: 95px;
+    
+}
+
+#botonResponder {
+
+    position: sticky;
+    bottom: 30px;
+    left: 35px;
 
 }
 
@@ -47,25 +69,40 @@
 
 }
 
-#lineaHorizontal {
-
-    position: relative;
-    top: 80px;
-    width: 50px;
-    left: 30px;
-    display:inline-block;
-    background-color: white;
-
-}
-
 #lineaVertical {
 
     position: relative;
     background-color: white;
     transform: rotate(50%);
     width: 1px;
-    bottom: 40px;
-    height: 108px;
-    left: 30px;
+    height: 170px;
+    bottom: 20px;
+    left: 95px;
+
+}
+
+#nuevaRespuesta {
+
+    position: absolute;
+    bottom: 10px;
+    left: 295px;
+    width: 575px;
+    transform: translateX(-50%);
+    
+}
+
+#lineaHorizontal {
+
+    position: relative;
+    width: 555px;
+    display: inline-block;
+    background-color: rgb(189, 186, 186);
+
+}
+
+.respuestas {
+
+    position: relative;
+    height: 190px;
 
 }

@@ -1,0 +1,36 @@
+<ion-content>
+
+  <div class="fondoLogIn">
+    
+    <div (click)="regresarHome()">
+      <ion-icon name="chevron-back-circle" id="iconoAtras"></ion-icon>
+    </div>
+
+    <p id="titulo">
+      Re Log In
+    </p>
+    
+    <ion-button class="google" expand="full" (click)="logInGoogle()">
+      <ion-icon name="logo-google" size="large" slot="start"></ion-icon>
+      <p>Log In con Google</p>
+    </ion-button>
+
+    <ion-input [(ngModel)]="correo" type="email" label="Correo" color="primary" label-placement="floating" fill="solid" id="usuario"></ion-input>
+
+    <ion-input [(ngModel)]="contra" type="password" label="Contraseña" color="primary" label-placement="floating" fill="solid" id="contra"></ion-input>
+    
+    <p id="olvidoContra">
+      ¿Se te olvido la contraseña?
+    </p>
+    
+    <div id="ingresar">
+      <ion-button (click)="logInCorreo()">Log In</ion-button>
+    </div>
+
+  </div>
+
+  <div class="logo">
+    <img alt="a" src="../../../assets/icon/Logo.png">
+  </div>
+
+</ion-content>

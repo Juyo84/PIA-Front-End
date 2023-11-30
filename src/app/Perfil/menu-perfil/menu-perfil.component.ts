@@ -25,7 +25,7 @@ export class MenuPerfilComponent  implements OnInit {
 
       }else{
         
-        this.router.navigateByUrl('Home/LogIn');
+        this.router.navigate(['Home/LogIn']);
         
       }
       
@@ -46,6 +46,7 @@ export class MenuPerfilComponent  implements OnInit {
     pais: '',
     profesion: '',
     usuario: '',
+    veridico: false
 
   }
 
@@ -59,7 +60,7 @@ export class MenuPerfilComponent  implements OnInit {
         {
           text: 'Si',
           handler: () => {
-            this.router.navigateByUrl('Home');
+            this.auth.logout();
             this.popoverController.dismiss();
           }
         },
@@ -75,7 +76,6 @@ export class MenuPerfilComponent  implements OnInit {
 
   regresarInicio(){
 
-    this.auth.logout();
     this.router.navigateByUrl('Inicio');
     this.popoverController.dismiss();
 

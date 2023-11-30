@@ -21,7 +21,7 @@
   height: 480px;
   background: rgba(255, 255, 255, 0.4);
   color: black;
-  overflow-x: auto;
+  overflow-y: scroll;
 
 }
 
@@ -38,8 +38,14 @@
 
 }
 
-p {
+p, li {
 
   font-size: 18px;
+
+}
+
+li {
+
+  line-height: 2;
 
 }

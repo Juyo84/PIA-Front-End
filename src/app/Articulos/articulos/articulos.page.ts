@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
-import { Articulos } from 'src/app/Modelos/interfaces';
+import { Articulos, Usuarios } from 'src/app/Modelos/interfaces';
 
 @Component({
   selector: 'app-articulos',
@@ -10,18 +11,67 @@ import { Articulos } from 'src/app/Modelos/interfaces';
 })
 export class ArticulosPage implements OnInit {
 
-  constructor(private router: Router, public bd: BaseDatosService) { }
+  constructor(private router: Router, public bd: BaseDatosService, private auth: AuthService) {
+
+    this.auth.stateAuth().subscribe(res => {
+
+      if(res != null){
+
+        this.uid = res.uid;
+        this.getUsuario(this.uid);
+
+      }else{
+        
+        this.router.navigateByUrl('Home/LogIn');
+        
+      }
+      
+    });
+
+   }
 
   ngOnInit() {
 
     this.getArticulos();
+
+    if(this.usuario.veridico == true){
+
+      this.nuevoArticulo = true;
+
+    }
 
   }
 
   articulos: Articulos[] = [];
   resultados: Articulos[] = [];
 
+  usuario: Usuarios = {
+
+    apellido: "",
+    correo: "",
+    uid: "",
+    foto: "",
+    intereses: [],
+    nombre: "",
+    pais: "",
+    profesion: "",
+    usuario: "",
+    veridico: false
+
+  };
+
+  uid = "";
+
+  nuevoArticulo = false;
+
   temas =['Todos', 'Sistema Solar', 'Planetas', 'Astrologia', 'Tecnologia'];
+
+  resumen(texto: string){
+
+    const resumen = texto.substring(0,309) + "...";
+    return resumen;
+
+  }
 
   irArticulo(idArticulo: any){
 
@@ -35,6 +85,24 @@ export class ArticulosPage implements OnInit {
 
       this.articulos = res;
       this.resultados = res;
+
+    });
+
+  }
+
+  getUsuario(uid: string){
+
+    this.bd.getDoc<Usuarios>('Usuarios', uid).subscribe(res => {
+
+      if(res != null){
+
+        this.usuario = res;
+
+      }else{
+
+        console.log("ERROR EN EL QUERY");
+
+      }
 
     });
 

@@ -17,7 +17,7 @@ export class LogInComponent  implements OnInit {
 
       if(res !== null){
 
-        this.uid = res.uid;
+        router.navigate(['Inicio']);
 
 
       }else{
@@ -47,6 +47,7 @@ export class LogInComponent  implements OnInit {
     pais: '',
     profesion: '',
     usuario: '',
+    veridico: false
 
   };
 
@@ -79,6 +80,7 @@ export class LogInComponent  implements OnInit {
       pais: '',
       profesion: '',
       usuario: '',
+      veridico: false
   
     };
 

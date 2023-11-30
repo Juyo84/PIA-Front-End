@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import * as firebase from 'firebase/compat/app';
+import { getAuth } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +69,26 @@ export class AuthService {
 
     return await this.auth.sendPasswordResetEmail(email);
 
+  }
+
+  async eliminarCuenta(){
+
+    
+
+    const user = this.auth.currentUser;
+
+    if(user === null){
+
+      return null;
+
+    }
+    
+    return this.auth.user.subscribe(res => {
+
+      return res!.delete();
+
+    })
+    
   }
 
 }

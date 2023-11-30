@@ -46,6 +46,7 @@ export class MenuForoPublicacionForoComponent  implements OnInit {
     pais: '',
     profesion: '',
     usuario: '',
+    veridico: false
 
   }
 
@@ -59,6 +60,7 @@ export class MenuForoPublicacionForoComponent  implements OnInit {
         {
           text: 'Si',
           handler: () => {
+            this.auth.logout();
             this.router.navigateByUrl('Home');
             this.popoverController.dismiss();
           }
@@ -75,7 +77,6 @@ export class MenuForoPublicacionForoComponent  implements OnInit {
 
   regresarInicio(){
 
-    this.auth.logout();
     this.router.navigateByUrl('Inicio');
     this.popoverController.dismiss();
 

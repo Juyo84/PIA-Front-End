@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RelogInComponent } from './Perfil/relog-in/relog-in.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'Noticias',
     loadChildren: () => import('./Noticias/noticias/noticias.module').then( m => m.NoticiasPageModule)
+  },
+  {
+    path: 'ReLogIn',
+    component: RelogInComponent
   }
 
 ];

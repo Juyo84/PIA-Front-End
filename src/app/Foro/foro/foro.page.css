@@ -19,6 +19,33 @@ ion-card {
     
 }
 
+#crearPublicacion {
+
+    position: absolute;
+    bottom: 10px;
+    left: 295px;
+    width: 575px;
+    transform: translateX(-50%);
+    
+}
+
+#lineaHorizontalCrear {
+
+    position: relative;
+    width: 568px;
+    display: inline-block;
+    background-color: rgb(189, 186, 186);
+
+}
+
+#lineaHorizontal {
+
+    position: relative;
+    width: 1300px;
+    display: inline-block;
+    background-color: rgb(182, 182, 182);
+
+}
 
 #nombre {
 

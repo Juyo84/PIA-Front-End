@@ -19,6 +19,13 @@ ion-card {
     
 }
 
+ion-avatar {
+
+    width: 150px;
+    height: 150px;
+
+}
+
 
 #nombre {
 
@@ -30,4 +37,22 @@ ion-card {
 
     font-size: 16px;
     
+}
+
+#descripcion {
+    
+    height: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+
+}
+
+#lineaHorizontal {
+
+    position: relative;
+    width: 1300px;
+    display: inline-block;
+    background-color: rgb(182, 182, 182);
+
 }

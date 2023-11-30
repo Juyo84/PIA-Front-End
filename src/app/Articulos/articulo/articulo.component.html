@@ -4,21 +4,21 @@
 
   <div class="articulo">
 
-    <p id="titulo">Titulo</p>
+    <p id="titulo">{{articulo.titulo}}</p>
 
-    <img alt="imagen del Articulo" src="https://ionicframework.com/docs/img/demos/avatar.svg">
+    <img alt="imagen del Articulo" [src]="articulo.foto">
 
     <ion-row class="datos">
-      <ion-col id="autor" size="3">
-        Autor
+      <ion-col id="autor" size="5">
+        {{articulo.autor}}
       </ion-col>
-      <ion-col id="fecha" size="3">
-        Fecha
+      <ion-col id="fecha" size="5">
+        {{articulo.fecha}}
       </ion-col>
     </ion-row>
 
     <div class="informacion">
-      <p>Informacion</p>
+      <p>{{articulo.informacion}}</p>
     </div>
 
   </div>

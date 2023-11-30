@@ -8,6 +8,7 @@ import { PerfilPageRoutingModule } from './perfil-routing.module';
 
 import { PerfilPage } from './perfil.page';
 import { MenuPerfilComponent } from '../menu-perfil/menu-perfil.component';
+import { RelogInComponent } from '../relog-in/relog-in.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { MenuPerfilComponent } from '../menu-perfil/menu-perfil.component';
     PerfilPageRoutingModule
   ],
   declarations: [PerfilPage,
-  MenuPerfilComponent]
+  MenuPerfilComponent,
+  RelogInComponent]
 })
 export class PerfilPageModule {}

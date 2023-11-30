@@ -34,3 +34,10 @@ ion-card {
     background-color: rgb(182, 182, 182);
 
 }
+
+ion-avatar {
+
+    width: 90px;
+    height: 90px;
+
+}

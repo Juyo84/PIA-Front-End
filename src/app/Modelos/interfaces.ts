@@ -6,6 +6,7 @@ export interface Articulos {
     informacion: string;
     titulo: string;
     tema: string;
+    uid: string;
 
 }
 
@@ -38,9 +39,21 @@ export interface Foro {
     autor: string;
     fecha: string;
     informacion: string;
-    publicaciones: Array<Foro>;
+    publicaciones: Array<RespuestaForo>;
     titulo: string;
     tema: string;
+    uid: string;
+    hora: string;
+
+}
+
+export interface RespuestaForo {
+
+    autor: string;
+    hora: string;
+    fecha: string;
+    informacion: string;
+    titulo: string;
 
 }
 
@@ -50,6 +63,9 @@ export interface Galeria {
     fecha: string;
     foto: string;
     titulo: string;
+    tema: string;
+    uid: string;
+    tipo: string;
 
 }
 
@@ -96,5 +112,6 @@ export interface Usuarios {
     pais: string;
     profesion: string;
     usuario: string;
+    veridico: boolean;
 
 }

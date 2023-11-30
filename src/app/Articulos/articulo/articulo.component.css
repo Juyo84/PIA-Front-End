@@ -5,6 +5,9 @@
     left: 20px;
     background-color: white;
     color: black;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-radius: 2%;
 
 }
 
@@ -12,8 +15,10 @@ img {
 
     position: relative;
     left: 20px;
-    width: 990px;
-    height: 340px;
+    width: 750px;
+    height: 430px;
+    display: block;
+    margin: auto;
 
 }
 
@@ -21,7 +26,7 @@ img {
 
     position: relative;
     top: 20px;
-    text-align: justify;
+    text-align: center;
     left: 20px;
     font-size: xx-large;
     font-weight: bold;

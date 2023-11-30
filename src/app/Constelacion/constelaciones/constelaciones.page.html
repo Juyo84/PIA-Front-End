@@ -14,19 +14,33 @@
             <ion-list>
                 <ion-item>
                     <ion-grid>
-                        <ion-row *ngFor="let resultado of resultados" (click)="irConstelacion(resultado.nombre)">
-                            <ion-col size="1">
-                                <ion-avatar>
-                                    <img alt={{resultado.nombre}} [src]="'../../../assets/Texturas/' + resultado.nombre + '.jpg'"/>
-                                </ion-avatar>
-                            </ion-col>
-                            <ion-col>
-                                <p id="nombreConstelacion">{{resultado.nombre}}</p><br>
-                                <p id="resumenConstelacion">{{resultado.resumen}}</p>
-                            </ion-col>
-                            <hr id="lineaHorizontal">
-                        </ion-row>
-                    </ion-grid>
+                            <ng-container *ngFor="let resultado of resultados; let i = index">
+                                <ion-row *ngIf="(i % 2 === 0) || resultado.nombre == ''" (click)="irConstelacion(resultado.nombre)">
+                                    <ion-col size="1">
+                                        <ion-avatar>
+                                            <img alt={{resultado.nombre}} [src]="'../../../assets/Texturas/' + resultado.nombre + '.jpg'"/>
+                                        </ion-avatar>
+                                    </ion-col>
+                                    <ion-col>
+                                        <p id="nombreConstelacion">{{resultado.nombre}}</p><br>
+                                        <p id="resumenConstelacion">{{resultado.resumen}}</p>
+                                    </ion-col>
+                                    <hr id="lineaHorizontal">
+                                </ion-row>
+                                <ion-row *ngIf="(i % 2 !== 0) || resultado.nombre == ''" (click)="irConstelacion(resultado.nombre)" >
+                                    <ion-col>
+                                        <p id="nombreConstelacion">{{resultado.nombre}}</p><br>
+                                        <p id="resumenConstelacion">{{resultado.resumen}}</p>
+                                    </ion-col>
+                                    <ion-col size="1.1">
+                                        <ion-avatar>
+                                            <img alt={{resultado.nombre}} [src]="'../../../assets/Texturas/' + resultado.nombre + '.jpg'"/>
+                                        </ion-avatar>
+                                    </ion-col>
+                                    <hr id="lineaHorizontal">
+                                </ion-row>
+                        </ng-container>
+                        </ion-grid>
                 </ion-item>
             </ion-list>
         </ion-card-content>

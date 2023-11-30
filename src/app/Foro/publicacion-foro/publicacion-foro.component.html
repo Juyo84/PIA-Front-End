@@ -4,46 +4,76 @@
 
   <div class="articulo">
 
-    <p id="titulo">Titulo</p>
+    <p id="titulo">{{publicacionForo.titulo}}</p>
 
     <ion-row class="datos">
       <ion-col id="autor" size="3">
-        Autor
+        {{publicacionForo.autor}}
       </ion-col>
       <ion-col id="fecha" size="3">
-        Fecha
+        {{publicacionForo.fecha}}
+      </ion-col>
+      <ion-col id="fecha" size="3">
+        {{publicacionForo.hora}}
       </ion-col>
     </ion-row>
 
     <div class="informacion">
-      <p>Informacion</p>
+      <p>{{publicacionForo.informacion}}</p>
     </div>
 
   </div>
 
-  <div class="respuestas">
-      <hr id="lineaHorizontal">
+  <div class="respuestas" *ngFor="let publicacion of publicacionForo.publicaciones">
 
     <div id="lineaVertical"></div>
     
     <div class="articuloRespuesta">
 
-      <p id="titulo">Titulo</p>
+      <p id="titulo">{{publicacion.titulo}}</p>
       
       <ion-row class="datos">
         <ion-col id="autor" size="3">
-          Autor
+          {{publicacion.autor}}
         </ion-col>
-        <ion-col id="fecha" size="3">
-          Fecha
+        <ion-col id="fecha" size="2">
+          {{publicacion.fecha}}
+        </ion-col>
+        <ion-col id="fecha" size="2">
+          {{publicacion.hora}}
         </ion-col>
       </ion-row>
 
       <div class="informacion">
-        <p>Informacion</p>
+        <p>{{publicacion.informacion}}</p>
       </div>
 
     </div>
   </div>
+
+  <div id="lineaVerticalRespuesta"></div>
+  <ion-button id="botonResponder" (click)="setOpen(true)">Responder</ion-button>
+
+  <ion-modal trigger="botonResponder" [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Respuesta</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-input placeholder="Titulo" [(ngModel)]="publicacion.titulo"></ion-input><br>
+
+        <hr id="lineaHorizontal">
+        
+        <ion-textarea placeholder="Respuesta" [(ngModel)]="publicacion.informacion"></ion-textarea>
+
+        <ion-button expand="full" (click)="nuevaRespuesta()" id="nuevaRespuesta">Enviar</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
 </ion-content>

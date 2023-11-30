@@ -11,7 +11,19 @@ import { Usuarios } from 'src/app/Modelos/interfaces';
 })
 export class SignUpComponent  implements OnInit {
 
-  constructor(private router: Router, public auth: AuthService, private bd: BaseDatosService) { }
+  constructor(private router: Router, public auth: AuthService, private bd: BaseDatosService) { 
+
+    this.auth.stateAuth().subscribe(res => {
+
+      if(res !== null){
+
+        router.navigate(['Inicio']);
+
+      }
+
+    });
+
+  }
 
   async ngOnInit() {
 
@@ -29,7 +41,8 @@ export class SignUpComponent  implements OnInit {
     nombre: '',
     pais: '',
     profesion: 'Desconocido',
-    usuario: ''
+    usuario: '',
+    veridico: false
 
   }
 

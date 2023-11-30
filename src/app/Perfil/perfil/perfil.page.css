@@ -5,14 +5,13 @@
     width: 750px;
     height: 455px;
     top: 150px;
-    overflow-x: auto;
+    overflow-y: scroll;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     background-color: white;
     color: black;
     border-radius: 5%;
-    overflow-y: auto;
   
   }
 
@@ -25,17 +24,18 @@
 }
 
 #listaIntereses {
-
+  
   display: none;
-
+  
 }
 
 img {
   
-    position: relative;
-    left: 20px;
-    width: 440px;
-    border-radius: 50%;
+  position: relative;
+  left: 20px;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
   
 }
 

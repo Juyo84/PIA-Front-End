@@ -46,6 +46,7 @@ export class MenuInicioComponent  implements OnInit {
     pais: '',
     profesion: '',
     usuario: '',
+    veridico: false
 
   }
 
@@ -77,13 +78,14 @@ export class MenuInicioComponent  implements OnInit {
         {
           text: 'Si',
           handler: () => {
+            this.auth.logout();
             this.router.navigateByUrl('Home');
             this.popoverController.dismiss();
           }
         },
         {
-          text: 'No',
-        },
+          text: 'No'
+        }
       ]
     });
 
@@ -93,7 +95,6 @@ export class MenuInicioComponent  implements OnInit {
 
   regresarInicio(){
 
-    this.auth.logout();
     this.router.navigateByUrl('Inicio');
     this.popoverController.dismiss();
 
