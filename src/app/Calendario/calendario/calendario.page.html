@@ -4,81 +4,73 @@
     
     <p id="titulo">Calendario de Eventos</p>
     
-    <div class="evento" *ngIf="evento">
-        
-        <p id="tituloEvento">Titulo</p>
-        
-        <ion-button (click)="cerrarEvento()"><ion-icon name="close-outline"></ion-icon></ion-button>
-      
-      <img alt="Imagen del Evento" src="../../../assets/icon/Logo.png">
-      
-      <div class="informacionEvento">
-    
-          <p id="informacion">Informacion</p>
-      
-      </div>
-      
-    </div>
-    
-    <div class="listaEventos" *ngIf="!evento">  
-        <ion-card>
-            <ion-card-content>
-                <ion-row>
-                    <ion-col size="3">
-                        <ion-button>Esta Semana</ion-button>
-                    </ion-col>
-                    <ion-col size="3">
-                  <ion-button>Este Mes</ion-button>
+    <ion-card>
+        <ion-card-content>
+            <ion-row>
+                <ion-col size="4">
+                    <ion-button>Esta Semana</ion-button>
                 </ion-col>
-              <ion-col offset="3">
-                  <p>Fecha de hoy</p>
-              </ion-col>
-          </ion-row>
-          <ion-list>
-              <div>
-                  <p>Hoy</p>
-                  <hr id="lineaHorizontal">
-                </div>
-              <ion-item>
-                  <ion-grid>
-                      <ion-row (click)="mostrarEvento('uno')">
-                          <ion-col size="2">
-                              <ion-avatar>
-                                  <img alt="Evento" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-                              </ion-avatar>
-                          </ion-col>
-                          <ion-col size="10">
-                              <p id="nombreEvento">Titulo</p><br>
-                              <p id="datosEvento">Datos</p><br>
-                              <p id="descripcionEvento">Descripcion</p>
-                          </ion-col>
-                      </ion-row>
-                  </ion-grid>
-              </ion-item>
-              <div>
-                <p>00/00/0000</p>
-                <hr id="lineaHorizontal">
-            </div>
-              <ion-item>
-                  <ion-grid>
-                      <ion-row (click)="mostrarEvento('dos')">
-                          <ion-col size="2">
-                              <ion-avatar>
-                                  <img alt="Evento" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-                              </ion-avatar>
-                          </ion-col>
-                          <ion-col size="10">
-                              <p id="nombreEvento">Titulo</p><br>
-                              <p id="datosEvento">Datos</p><br>
-                              <p id="descripcionEvento">Descripcion</p>
+                <ion-col size="4">
+                    <ion-button>Esta Mes</ion-button>
+                </ion-col>
+                <ion-col offset="3">
+                    <ion-button>Hoy</ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-list>
+                <ion-item>
+                    <ion-grid>
+                        <ion-row *ngFor="let evento of eventos" id="mostrarEvento" (click)="abrirEvento(evento)">
+                            <ion-col size="1.5">
+                                <ion-avatar>
+                                    <img alt="evento.titulo" [src]="evento.foto"/>
+                                </ion-avatar>
                             </ion-col>
-                      </ion-row>
-                  </ion-grid>
-              </ion-item>
+                            <ion-col>
+                                <p id="nombre">{{evento.titulo}}</p><br>
+                                <ion-row>
+                                    <ion-col size="4">
+                                        <p id="tema">{{evento.tema}}</p>
+                                    </ion-col>
+                                    <ion-col size="2">
+                                        <p id="fecha">{{evento.fecha}}</p>
+                                    </ion-col>
+                                </ion-row><br>
+                                <p id="descripcion">{{resumen(evento.informacion)}}</p>
+                            </ion-col>
+                            <hr id="lineaHorizontal">
+                        </ion-row>
+                    </ion-grid>
+                </ion-item>
             </ion-list>
-      </ion-card-content>
+        </ion-card-content>
     </ion-card>
-    </div>
 
+    <ion-modal trigger="mostrarEvento" [isOpen]="isModalOpen">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="end">
+                    <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+            <p id="tituloEvento">{{eventoMostrar.titulo}}</p>
+            <img [src]="eventoMostrar.foto" id="imagenEvento">
+            <ion-row>
+                <ion-col size="3">
+                    <p id="fecha">{{eventoMostrar.fecha}}</p>
+                </ion-col>
+                <ion-col size="3">
+                    <p id="tema">{{eventoMostrar.tema}}</p>
+                </ion-col>
+            </ion-row>
+            <div class="informacion">
+                <p [innerHTML]="eventoMostrar.informacion"></p>
+            </div>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
 
 </ion-content>

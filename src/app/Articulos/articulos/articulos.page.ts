@@ -68,6 +68,8 @@ export class ArticulosPage implements OnInit {
 
   resumen(texto: string){
 
+    texto = texto.replace(/<br>/g, "");
+
     const resumen = texto.substring(0,309) + "...";
     return resumen;
 

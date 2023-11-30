@@ -32,9 +32,9 @@ export class GaleriaPage implements OnInit {
 
    }
 
-  async ngOnInit() {
+  ngOnInit() {
 
-    await this.getGaleria();
+    this.getGaleria();
 
   }
 
@@ -94,7 +94,7 @@ export class GaleriaPage implements OnInit {
 
   getUsuario(uid: string){
 
-    this.bd.getDoc<Usuarios>('Usuario', uid).subscribe(res => {
+    this.bd.getDoc<Usuarios>('Usuarios', uid).subscribe(res => {
 
       if(res != null){
 
@@ -177,10 +177,14 @@ export class GaleriaPage implements OnInit {
 
   async subirMultimedia(){
 
-    this.setMultmedia.uid = this.bd.crearId();
-    const res = await this.fireStorage.subirImagen(this.files, 'Usuarios', this.usuario.usuario); 
+    const tiempoTranscurrido = Date.now();
+    const hoy = new Date(tiempoTranscurrido);
+    const res = await this.fireStorage.subirImagen(this.files, 'Galeria', this.setMultmedia.titulo);
+
+    this.setMultmedia.fecha = hoy.toLocaleDateString();
     this.setMultmedia.foto = res;
     this.setMultmedia.autor = this.usuario.usuario;
+    this.setMultmedia.uid = this.bd.crearId();
 
     await this.bd.createDocument<Galeria>(this.setMultmedia, 'Galeria', this.setMultmedia.uid);
     

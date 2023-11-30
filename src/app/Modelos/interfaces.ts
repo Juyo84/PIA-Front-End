@@ -25,12 +25,12 @@ export interface Constelaciones {
 
 export interface Eventos {
 
-    descripcion: string;
     fecha: string;
     foto: string;
     informacion: string;
     tema: string;
     titulo: string;
+    uid: string;
 
 }
 
@@ -75,6 +75,8 @@ export interface Guias {
     foto: string;
     informacion: string;
     titulo: string;
+    uid: string;
+    tema: string;
 
 }
 
@@ -86,6 +88,7 @@ export interface Noticias {
     informacion: string;
     tema: string;
     titulo: string;
+    uid: string;
 
 }
 

@@ -1,19 +1,44 @@
 .guia {
 
     position: relative;
+    width: 97%;
+    left: 20px;
     background-color: white;
     color: black;
-    height: 480px;
-    width: 1475px;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-radius: 2%;
+
+}
+
+img {
+
+    position: relative;
     left: 20px;
+    width: 750px;
+    height: 430px;
+    display: block;
+    margin: auto;
 
 }
 
 #titulo {
 
-    font-size: 40px;
-    font-weight: bold;
+    position: relative;
+    top: 20px;
     text-align: center;
-    margin: 20px;
+    left: 20px;
+    font-size: xx-large;
+    font-weight: bold;
+
+}
+
+.informacion {
+
+    position: relative;
+    left: 10px;
+    font-size: large;
+    text-align: justify;
+    width: 98%;
 
 }

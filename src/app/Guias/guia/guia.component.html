@@ -1,12 +1,15 @@
 <ion-content>
 
   <app-menu-guias-guia></app-menu-guias-guia>
-
-  <p id="titulo">Guia</p>
-
   <div class="guia">
 
-    <p>Informacion sobre la guia</p>
+    <p id="titulo">{{guia.titulo}}</p>
+
+    <img alt="guia.titulo" [src]="guia.foto">
+
+    <div class="informacion">
+      <p [innerHTML]="guia.informacion"></p>
+    </div>
 
   </div>
 

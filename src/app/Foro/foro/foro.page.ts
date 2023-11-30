@@ -87,6 +87,15 @@ export class ForoPage implements OnInit {
 
   }
 
+  resumen(texto: string){
+
+    texto = texto.replace(/<br>/g, "");
+
+    const resumen = texto.substring(0,310) + "...";
+    return resumen;
+
+  }
+
   irForo(idPublicacionForo: any){
 
     this.router.navigate(['/Foro', idPublicacionForo]);

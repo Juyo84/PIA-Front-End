@@ -79,7 +79,7 @@
                     </ion-row>
                   </ion-grid>
 
-                  <ion-modal trigger="imagen" [isOpen]="isModalOpenImagen" class="imagenMostrar">
+                  <ion-modal [canDismiss]="!isModalOpenImagen" [isOpen]="isModalOpenImagen" class="imagenMostrar">
                     <ng-template>
                       <ion-content>
                         <div class="iconoContainer">
@@ -95,7 +95,7 @@
                     </ng-template>
                   </ion-modal>
 
-                  <ion-modal trigger="video" [isOpen]="isModalOpenVideo" class="imagenMostrar">
+                  <ion-modal [canDismiss]="!isModalOpenVideo" [isOpen]="isModalOpenVideo" class="imagenMostrar">
                     <ng-template>
                       <ion-content>
                         <div class="iconoContainer">

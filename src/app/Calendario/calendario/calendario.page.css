@@ -1,14 +1,3 @@
-#lineaHorizontal {
-
-    position: relative;
-    bottom: 20px;
-    left: 80px;
-    width: 1250px;
-    display: inline-block;
-    background-color: rgb(182, 182, 182);
-
-}
-
 #titulo {
 
     font-size: 50px;
@@ -24,62 +13,73 @@ ion-card {
 
 }
 
-.informacionEvento {
+#tema, #nombre, #fecha {
 
-    position: relative;
-    left: 570px;
-    bottom: 0px;
-    width: 512px;
-    height: 550px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    overflow: overlay;
-  
-  }
-  
-.evento > img {
-  
-    position: relative;
-    bottom: 30px;
-    left: 20px;
-    width: 460px;
-  
-}
-
-.evento > .informacionEvento {
-
-    position: relative;
-    bottom: 510px;
-    height: 470px;
-    overflow-y: auto;
-
-}
-
-.evento {
-
-    position: sticky;
-    bottom: -110px;
-    left: 20px;
-    width: 1310px;
-    height: 545px;
-    background: white;
-    color: black;
-
-}
-
-.evento > #tituloEvento{
-
-    position: relative;
     font-weight: bold;
-    text-align: center;
-    font-size: 40px;
+    
+}
+
+ion-avatar {
+
+    width: 150px;
+    height: 150px;
 
 }
 
-.evento > ion-button {
+
+#nombre {
+
+    font-size: 22px;
+    
+}
+
+#tema, #autor, #descripcion {
+
+    font-size: 16px;
+    
+}
+
+#descripcion {
+    
+    height: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+
+}
+
+#lineaHorizontal {
 
     position: relative;
-    bottom: 525px;
+    width: 1300px;
+    display: inline-block;
+    background-color: rgb(182, 182, 182);
+
+}
+
+#imagenEvento {
+
+    display: block;
+    margin: auto;
+
+}
+
+#tituloEvento {
+
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+
+
+.informacion {
+
+    position: relative;
+    font-size: large;
+    text-align: justify;
 
 }
