@@ -27,9 +27,26 @@ img {
     position: relative;
     top: 20px;
     text-align: center;
-    left: 20px;
+    left: 50px;
+    width: 93%;
     font-size: xx-large;
     font-weight: bold;
+
+}
+
+ion-content {
+
+    --background: rgba(12, 12, 31, 100);
+
+}
+
+#iconoAtras {
+
+    position: absolute;
+    font-size: xx-large;
+    left: 1%;
+    top: 20px;
+    z-index: 1;
 
 }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { FireStorageService } from 'src/app/Modelos/fire-storage.service';
@@ -13,7 +14,7 @@ import { Galeria, Usuarios } from 'src/app/Modelos/interfaces';
 export class GaleriaPage implements OnInit {
 
   constructor(private bd: BaseDatosService, private auth: AuthService, private router: Router,
-    private fireStorage: FireStorageService) {
+    private fireStorage: FireStorageService, private loadingCtrl: LoadingController) {
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -89,6 +90,7 @@ export class GaleriaPage implements OnInit {
   tipos = ['Imagen/Video', 'Imagen', 'Video'];
 
   files: any
+  loading: any
 
   uid = ""
 
@@ -128,6 +130,23 @@ export class GaleriaPage implements OnInit {
   
   }
 
+  async showLoading() {
+    
+    this.loading = await this.loadingCtrl.create({
+      spinner: "circles",
+      message: "Cargando",
+    });
+
+    await this.loading.present();
+  }
+
+  async dismissLoading() {
+    const loading = await this.loadingCtrl.getTop();
+    if (loading) {
+      await loading.dismiss();
+    }
+  }
+
   handleInput(event: any){
 
     const query = event.target.value.toLowerCase();
@@ -135,12 +154,45 @@ export class GaleriaPage implements OnInit {
   
   }
 
+  handleSelectTipo(event: any) {
+
+    const query = event.target.value;
+    
+    if(query == "Imagen/Video" || query == ""){
+
+      this.resultados = this.galeria;
+      return;
+
+    }
+
+    this.resultados = this.galeria.filter((d) => d.tipo.indexOf(query) > -1);
+  
+  }
+
+  handleSelectTema(event: any) {
+
+    const query = event.target.value;
+    
+    if(query == "Todos" || query == ""){
+
+      this.resultados = this.galeria;
+      return;
+
+    }
+
+    this.resultados = this.galeria.filter((d) => d.tema.indexOf(query) > -1);
+  
+  }
+
   getGaleria(){
+
+    this.showLoading();
 
     this.bd.getCollectionChanges<Galeria>('Galeria').subscribe(res =>{
 
       this.galeria = res;
       this.resultados = res;
+      this.dismissLoading();
 
     });
 
@@ -177,6 +229,8 @@ export class GaleriaPage implements OnInit {
 
   async subirMultimedia(){
 
+    this.showLoading();
+
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
     const res = await this.fireStorage.subirImagen(this.files, 'Galeria', this.setMultmedia.titulo);
@@ -202,6 +256,8 @@ export class GaleriaPage implements OnInit {
 
     this.isModalOpenGaleria = false;
     this.botonGuardar = false;
+
+    this.dismissLoading();
 
   }
 

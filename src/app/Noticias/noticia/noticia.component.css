@@ -1,0 +1,62 @@
+.noticia {
+
+    position: relative;
+    width: 97%;
+    left: 20px;
+    background-color: white;
+    color: black;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-radius: 2%;
+
+}
+
+img {
+
+    position: relative;
+    left: 20px;
+    width: 750px;
+    height: 430px;
+    display: block;
+    margin: auto;
+
+}
+
+#titulo {
+
+    position: relative;
+    top: 20px;
+    text-align: center;
+    left: 50px;
+    width: 93%;
+    font-size: xx-large;
+    font-weight: bold;
+
+}
+
+#iconoAtras {
+
+    position: absolute;
+    font-size: xx-large;
+    left: 1%;
+    top: 20px;
+    z-index: 1;
+
+}
+
+
+ion-content {
+
+    --background: rgba(12, 12, 31, 100);
+
+}
+
+.informacion {
+
+    position: relative;
+    left: 10px;
+    font-size: large;
+    text-align: justify;
+    width: 98%;
+
+}

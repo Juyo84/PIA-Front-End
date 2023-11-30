@@ -7,36 +7,42 @@
     <ion-card>
         <ion-card-content>
             <ion-row>
-                <ion-col size="4">
-                    <ion-button>Esta Semana</ion-button>
+                <ion-col size="2" class="opciones">
+                    <div>
+                        <ion-button (click)="mostrarHoy()">Hoy</ion-button>
+                    </div>
                 </ion-col>
-                <ion-col size="4">
-                    <ion-button>Esta Mes</ion-button>
+                <ion-col size="2" class="opciones">
+                    <div>
+                        <ion-button (click)="mostrarSemana()">Esta Semana</ion-button>
+                    </div>
                 </ion-col>
-                <ion-col offset="3">
-                    <ion-button>Hoy</ion-button>
+                <ion-col size="2" class="opciones">
+                    <div>
+                        <ion-button (click)="mostrarMes()">Esta Mes</ion-button>
+                    </div>
                 </ion-col>
             </ion-row>
             <ion-list>
                 <ion-item>
                     <ion-grid>
-                        <ion-row *ngFor="let evento of eventos" id="mostrarEvento" (click)="abrirEvento(evento)">
+                        <ion-row *ngFor="let resultado of resultados" id="mostrarEvento" (click)="abrirEvento(resultado)">
                             <ion-col size="1.5">
                                 <ion-avatar>
-                                    <img alt="evento.titulo" [src]="evento.foto"/>
+                                    <img alt="resultado.titulo" [src]="resultado.foto"/>
                                 </ion-avatar>
                             </ion-col>
                             <ion-col>
-                                <p id="nombre">{{evento.titulo}}</p><br>
+                                <p id="nombre">{{resultado.titulo}}</p><br>
                                 <ion-row>
                                     <ion-col size="4">
-                                        <p id="tema">{{evento.tema}}</p>
+                                        <p id="tema">{{resultado.tema}}</p>
                                     </ion-col>
                                     <ion-col size="2">
-                                        <p id="fecha">{{evento.fecha}}</p>
+                                        <p id="fecha">{{resultado.fecha}}</p>
                                     </ion-col>
                                 </ion-row><br>
-                                <p id="descripcion">{{resumen(evento.informacion)}}</p>
+                                <p id="descripcion">{{resumen(resultado.informacion)}}</p>
                             </ion-col>
                             <hr id="lineaHorizontal">
                         </ion-row>

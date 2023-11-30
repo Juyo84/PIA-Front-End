@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Usuarios } from 'src/app/Modelos/interfaces';
@@ -11,7 +12,8 @@ import { Usuarios } from 'src/app/Modelos/interfaces';
 })
 export class LogInComponent  implements OnInit {
 
-  constructor(private router: Router, public auth: AuthService, private bd: BaseDatosService) { 
+  constructor(private router: Router, public auth: AuthService, private bd: BaseDatosService,
+    private loadingCtrl: LoadingController) { 
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -30,11 +32,7 @@ export class LogInComponent  implements OnInit {
 
   }
 
-  async ngOnInit() {
-
-    const uid = this.auth.getUid();
-
-  }
+  async ngOnInit() { }
 
   usuario: Usuarios = {
 
@@ -53,6 +51,26 @@ export class LogInComponent  implements OnInit {
 
   contra =  '';
   uid = '';
+
+  loading: any;
+
+  async showLoading() {
+    
+    this.loading = await this.loadingCtrl.create({
+      spinner: "circles",
+      message: "Cargando",
+    });
+
+    await this.loading.present();
+  }
+
+  async dismissLoading() {
+    const loading = await this.loadingCtrl.getTop();
+    if (loading) {
+      await loading.dismiss();
+    }
+  }
+
 
   regresarHome(){
 
@@ -88,10 +106,20 @@ export class LogInComponent  implements OnInit {
 
   async logInCorreo(){
 
-    await this.auth.login(this.usuario.correo, this.contra);
+    this.showLoading();
+
+    await this.auth.login(this.usuario.correo, this.contra).catch(error => {
+
+      console.log("error")
+      this.dismissLoading();
+      return;
+
+    });
     
     const uid = await this.auth.getUid();
     this.usuario.uid = uid!;
+
+    this.dismissLoading();
 
     this.router.navigate(['Inicio']);
 
@@ -99,10 +127,14 @@ export class LogInComponent  implements OnInit {
 
   async logInGoogle(){
 
+    this.showLoading();
+
     await this.auth.logInGoogle();
     
     const uid = await this.auth.getUid();
     this.usuario.uid = uid!;
+
+    this.dismissLoading();
 
     this.router.navigate(['Inicio']);
 

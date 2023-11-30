@@ -7,9 +7,9 @@
 
 }
 
-ion-card {
+ion-content {
 
-    margin: 0px;
+    --background: rgba(12, 12, 31, 100);
 
 }
 
@@ -31,6 +31,23 @@ ion-avatar {
 
     font-size: 22px;
     
+}
+
+.opciones, .opcionAgregar {
+
+    text-align: center;
+    display: grid;
+    align-content: center;
+    align-items: start;
+
+}
+
+.opciones > div {
+
+    display: grid;
+    align-content: center;
+    align-items: start;
+
 }
 
 #tema, #autor, #fecha, #descripcion {

@@ -7,16 +7,27 @@
 
 }
 
-ion-card {
-
-    margin: 0px;
-
-}
-
 #tema, #nombre {
 
     font-weight: bold;
     
+}
+
+.opciones, .opcionAgregar {
+
+    text-align: center;
+    display: grid;
+    align-content: center;
+    align-items: start;
+
+}
+
+.opciones > div {
+
+    display: grid;
+    align-content: center;
+    align-items: start;
+
 }
 
 ion-avatar {
@@ -26,6 +37,11 @@ ion-avatar {
 
 }
 
+ion-content {
+
+    --background: rgba(12, 12, 31, 100);
+
+}
 
 #nombre {
 

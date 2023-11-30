@@ -13,11 +13,11 @@
         <p>Sign Up con Google</p>
     </ion-button>
     
-    <ion-input type="email" [(ngModel)]="usuario.correo" label="Email" color="primary" label-placement="floating" fill="solid" id="email"></ion-input>
+    <ion-input type="email" [(ngModel)]="usuario.correo" label="Email" color="primary" label-placement="floating" fill="outline" id="email"></ion-input>
 
-    <ion-input label="Usuario" [(ngModel)]="usuario.usuario" color="primary" label-placement="floating" fill="solid" id="usuario"></ion-input>
+    <ion-input label="Usuario" [(ngModel)]="usuario.usuario" color="primary" label-placement="floating" fill="outline" id="usuario"></ion-input>
 
-    <ion-input type="password" [(ngModel)]="contrasena" label="Contraseña" color="primary" label-placement="floating" fill="solid" id="contra"></ion-input>
+    <ion-input type="password" [(ngModel)]="contrasena" label="Contraseña" color="primary" label-placement="floating" fill="outline" id="contra"></ion-input>
     
     <div id="ingresar">
       <ion-button (click)="signUpCorreo()">Sign Up</ion-button>

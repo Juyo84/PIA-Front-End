@@ -82,7 +82,6 @@ export interface Guias {
 
 export interface Noticias {
 
-    descripcion: string;
     fecha: string;
     foto: string;
     informacion: string;

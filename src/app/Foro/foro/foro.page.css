@@ -7,16 +7,33 @@
 
 }
 
-ion-card {
-
-    margin: 0px;
-
-}
-
 #tema, #nombre, #autor, #fecha {
 
     font-weight: bold;
     
+}
+
+ion-content {
+
+    --background: rgba(12, 12, 31, 100);
+
+}
+
+.opciones, .opcionAgregar {
+
+    text-align: center;
+    display: grid;
+    align-content: center;
+    align-items: start;
+
+}
+
+.opciones > div {
+
+    display: grid;
+    align-content: center;
+    align-items: start;
+
 }
 
 #crearPublicacion {

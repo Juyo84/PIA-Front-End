@@ -7,12 +7,6 @@
 
 }
 
-ion-card {
-
-    margin: 0px;
-
-}
-
 #nombreConstelacion {
 
     font-weight: bold;
@@ -39,5 +33,17 @@ ion-avatar {
 
     width: 90px;
     height: 90px;
+
+}
+
+ion-content {
+
+    --background: rgba(12, 12, 31, 100);
+
+}
+
+ion-grid {
+
+    width: 100%;
 
 }

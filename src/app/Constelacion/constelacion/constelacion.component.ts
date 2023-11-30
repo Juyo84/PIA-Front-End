@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Constelaciones } from 'src/app/Modelos/interfaces';
 
@@ -11,7 +10,8 @@ import { Constelaciones } from 'src/app/Modelos/interfaces';
 })
 export class ConstelacionComponent  implements OnInit {
 
-  constructor(private ruta: ActivatedRoute, private bd: BaseDatosService) { }
+  constructor(private ruta: ActivatedRoute, private bd: BaseDatosService,
+    private router: Router) { }
 
   nombreConstelacion = this.ruta.snapshot.params['id'];
 
@@ -45,5 +45,12 @@ export class ConstelacionComponent  implements OnInit {
     });
 
   }
+
+  irAtras(){
+
+    this.router.navigateByUrl('Constelaciones');
+
+  }
+
 
 }

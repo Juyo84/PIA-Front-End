@@ -2,6 +2,8 @@
 
     <app-menu-constelaciones-constelacion></app-menu-constelaciones-constelacion>
     
+    <ion-icon name="chevron-back-circle" (click)="irAtras()" id="iconoAtras"></ion-icon>
+    
     <p id="nombreConstelacion">{{nombreConstelacion}}</p>
 
     <img alt="{{constelacion.nombre}}" [src]="'../../../assets/Texturas/' + constelacion.nombre + '.jpg'">

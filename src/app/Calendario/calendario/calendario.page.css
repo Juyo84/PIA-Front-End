@@ -7,12 +7,6 @@
 
 }
 
-ion-card {
-
-    margin: 0px;
-
-}
-
 #tema, #nombre, #fecha {
 
     font-weight: bold;
@@ -54,6 +48,14 @@ ion-avatar {
     width: 1300px;
     display: inline-block;
     background-color: rgb(182, 182, 182);
+    
+}
+
+#fechaHoy {
+
+    position: absolute;
+    font-size: medium;
+    font-weight: bold;
 
 }
 
@@ -74,12 +76,33 @@ ion-avatar {
 
 }
 
-
-
 .informacion {
 
     position: relative;
     font-size: large;
     text-align: justify;
+
+}
+
+ion-content {
+
+    --background:rgba(12, 12, 31, 100);
+
+}
+
+.opciones {
+
+    text-align: center;
+    display: grid;
+    align-content: center;
+    align-items: start;
+
+}
+
+.opciones > div {
+
+    display: grid;
+    align-content: center;
+    align-items: start;
 
 }

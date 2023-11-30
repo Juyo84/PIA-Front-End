@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Foro, Usuarios } from 'src/app/Modelos/interfaces';
@@ -11,7 +12,8 @@ import { Foro, Usuarios } from 'src/app/Modelos/interfaces';
 })
 export class ForoPage implements OnInit {
 
-  constructor(private router: Router, public bd: BaseDatosService, private auth: AuthService) {
+  constructor(private router: Router, public bd: BaseDatosService, private auth: AuthService,
+    private loadingCtrl: LoadingController) {
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -69,9 +71,11 @@ export class ForoPage implements OnInit {
 
   isModalOpen = false;
 
+  loading: any
+
   uid = "";
 
-  temas =['Todos', 'Sistema Solar', 'Planetas', 'Astrologia', 'Tecnologia'];  
+  temas = ['Todos', 'Sistema Solar', 'Planetas', 'Astrologia', 'Tecnologia'];  
 
   getUsuario(uid: string){
 
@@ -104,14 +108,35 @@ export class ForoPage implements OnInit {
 
   getForo(){
 
+    this.showLoading();
+
     this.bd.getCollectionChanges<Foro>('Foro').subscribe(res =>{
 
       this.foro = res;
       this.resultados = res;
+      this.dismissLoading();
 
     });
 
   }
+
+  async showLoading() {
+    
+    this.loading = await this.loadingCtrl.create({
+      spinner: "circles",
+      message: "Cargando",
+    });
+
+    await this.loading.present();
+  }
+
+  async dismissLoading() {
+    const loading = await this.loadingCtrl.getTop();
+    if (loading) {
+      await loading.dismiss();
+    }
+  }
+
   
   setOpen(isOpen: boolean) {
 
@@ -126,7 +151,24 @@ export class ForoPage implements OnInit {
   
   }
 
+  handleSelect(event: any) {
+
+    const query = event.target.value;
+    
+    if(query == "Todos" || query == ""){
+
+      this.resultados = this.foro;
+      return;
+
+    }
+
+    this.resultados = this.foro.filter((d) => d.tema.indexOf(query) > -1);
+  
+  }
+
   async nuevaPublicacion(){
+
+    this.showLoading();
 
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
@@ -154,6 +196,7 @@ export class ForoPage implements OnInit {
     }
 
     this.isModalOpen = false;
+    this.dismissLoading();
 
   }
 

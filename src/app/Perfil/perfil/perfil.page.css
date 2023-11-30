@@ -74,6 +74,12 @@ ion-avatar {
   
 }
 
+ion-content {
+
+  --background: rgba(12, 12, 31, 100);
+
+}
+
 input {
 
   display: none;

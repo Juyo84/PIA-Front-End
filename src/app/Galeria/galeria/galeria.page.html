@@ -11,12 +11,12 @@
                 <ion-searchbar placeholder="Busqueda" (ionInput)="handleInput($event)"></ion-searchbar>
               </ion-col>
               <ion-col size="3">
-                  <ion-select label="Tema" label-placement="floating" fill="solid">
+                  <ion-select label="Tema" label-placement="floating" fill="outline" (ionChange)="handleSelectTema($event)">
                     <ion-select-option *ngFor="let tema of temas" [value]="tema">{{tema}}</ion-select-option>
                   </ion-select>
               </ion-col>
               <ion-col size="3">
-                  <ion-select label="Tipo" label-placement="floating" fill="solid">
+                  <ion-select label="Tipo" label-placement="floating" fill="outline" (ionChange)="handleSelectTipo($event)">
                     <ion-select-option *ngFor="let tipo of tipos" [value]="tipo">{{tipo}}</ion-select-option>
                   </ion-select>
               </ion-col>
@@ -40,7 +40,7 @@
               <ion-content class="ion-padding">
                 <ion-input placeholder="Titulo" [(ngModel)]="setMultmedia.titulo"></ion-input><br>
 
-                <ion-select label="Tema" label-placement="floating" fill="solid" [(ngModel)]="setMultmedia.tema">
+                <ion-select label="Tema" label-placement="floating" fill="outline" [(ngModel)]="setMultmedia.tema">
                   <ion-select-option *ngFor="let tema of temas" [value]="tema">{{tema}}</ion-select-option>
                 </ion-select>
                 

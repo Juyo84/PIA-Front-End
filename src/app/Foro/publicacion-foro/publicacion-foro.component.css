@@ -69,6 +69,12 @@
 
 }
 
+ion-content {
+
+    --background: rgba(12, 12, 31, 100);
+
+}
+
 #lineaVertical {
 
     position: relative;
@@ -78,6 +84,16 @@
     height: 170px;
     bottom: 20px;
     left: 95px;
+
+}
+
+#iconoAtras {
+
+    position: sticky;
+    font-size: xx-large;
+    left: 1%;
+    top: 160px;
+    z-index: 1;
 
 }
 

@@ -4,6 +4,8 @@
 
   <div class="articulo">
 
+    <ion-icon name="chevron-back-circle" (click)="irAtras()" id="iconoAtras"></ion-icon>
+
     <p id="titulo">{{articulo.titulo}}</p>
 
     <img alt="imagen del Articulo" [src]="articulo.foto">
@@ -18,7 +20,7 @@
     </ion-row>
 
     <div class="informacion">
-      <p>{{articulo.informacion}}</p>
+      <p [innerHTML]="articulo.informacion"></p>
     </div>
 
   </div>

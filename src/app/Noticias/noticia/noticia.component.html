@@ -2,6 +2,18 @@
 
   <app-menu-noticias-noticia></app-menu-noticias-noticia>
 
+  <div class="noticia">
 
+    <ion-icon name="chevron-back-circle" (click)="irAtras()" id="iconoAtras"></ion-icon>
+
+    <p id="titulo">{{noticia.titulo}}</p>
+
+    <img alt="noticia.titulo" [src]="noticia.foto">
+
+    <div class="informacion">
+      <p [innerHTML]="noticia.informacion"></p>
+    </div>
+
+  </div>  
   
 </ion-content>

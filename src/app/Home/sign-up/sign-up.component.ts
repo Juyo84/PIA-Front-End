@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Usuarios } from 'src/app/Modelos/interfaces';
@@ -11,7 +12,8 @@ import { Usuarios } from 'src/app/Modelos/interfaces';
 })
 export class SignUpComponent  implements OnInit {
 
-  constructor(private router: Router, public auth: AuthService, private bd: BaseDatosService) { 
+  constructor(private router: Router, public auth: AuthService, private bd: BaseDatosService,
+    private loadingCtrl: LoadingController) { 
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -48,6 +50,25 @@ export class SignUpComponent  implements OnInit {
 
   contrasena = '';
 
+  loading: any;
+
+  async showLoading() {
+    
+    this.loading = await this.loadingCtrl.create({
+      spinner: "circles",
+      message: "Cargando",
+    });
+
+    await this.loading.present();
+  }
+
+  async dismissLoading() {
+    const loading = await this.loadingCtrl.getTop();
+    if (loading) {
+      await loading.dismiss();
+    }
+  }
+
   regresarHome(){
 
     this.router.navigateByUrl('Home');
@@ -62,6 +83,8 @@ export class SignUpComponent  implements OnInit {
 
   async signUpCorreo(){
 
+    this.showLoading();
+    
     await this.auth.logout();
     
     const crendenciales = {
@@ -93,17 +116,15 @@ export class SignUpComponent  implements OnInit {
 
         this.usuario.uid = res;
 
-      }else{
-
-        return console.log("FALLO");
-
       }
 
     });
 
     await this.bd.createDocument<Usuarios>(this.usuario, 'Usuarios', this.usuario.uid);
     
-    this.router.navigate(['Inicio']);  
+    this.dismissLoading();
+
+    this.router.navigate(['Perfil']);
 
   }
 

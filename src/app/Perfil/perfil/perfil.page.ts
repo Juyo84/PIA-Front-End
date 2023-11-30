@@ -5,8 +5,7 @@ import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { FireStorageService } from 'src/app/Modelos/fire-storage.service';
 import { Usuarios } from 'src/app/Modelos/interfaces';
 import { countries } from 'countries-list';
-import { AlertController, IonSelect } from '@ionic/angular';
-import PerfectScrollbar from 'perfect-scrollbar';
+import { AlertController, IonSelect, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfil',
@@ -16,7 +15,8 @@ import PerfectScrollbar from 'perfect-scrollbar';
 export class PerfilPage implements OnInit {
 
   constructor(private fireStorage: FireStorageService, private bd: BaseDatosService,
-    private auth: AuthService, private router: Router, private alertController: AlertController) {
+    private auth: AuthService, private router: Router, private alertController: AlertController,
+    private loadingCtrl: LoadingController) {
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -39,14 +39,6 @@ export class PerfilPage implements OnInit {
     
     this.cambiarProfesion();
     this.cambiarPais();
-
-    const container = document.querySelector('#informacion');
-
-    if(container != null){
-      
-      const ps = new PerfectScrollbar(container);
-      
-    }
 
   }
   
@@ -79,6 +71,24 @@ export class PerfilPage implements OnInit {
   
   files: any;
   paises: any;
+  loading: any;
+
+  async showLoading() {
+    
+    this.loading = await this.loadingCtrl.create({
+      spinner: "circles",
+      message: "Cargando",
+    });
+
+    await this.loading.present();
+  }
+
+  async dismissLoading() {
+    const loading = await this.loadingCtrl.getTop();
+    if (loading) {
+      await loading.dismiss();
+    }
+  }
 
   mostrarIntereses() {
 
@@ -129,15 +139,19 @@ export class PerfilPage implements OnInit {
             
             if(this.files != undefined || this.files != null){
 
+              this.showLoading();
+
               const res = await this.fireStorage.subirImagen(this.files, 'Usuarios', this.usuario.usuario); 
               this.usuario.foto = res;
+              
+              this.bd.createDocument<Usuarios>(this.usuario, 'Usuarios', this.usuario.uid);
+  
+              this.files = null;            
+              this.botonGuardar = false;
 
+              this.dismissLoading();
+            
             }
-
-            this.bd.createDocument<Usuarios>(this.usuario, 'Usuarios', this.usuario.uid);
-
-            this.files = null;            
-            this.botonGuardar = false;
             
           },
         },
@@ -154,17 +168,17 @@ export class PerfilPage implements OnInit {
 
   getUsuario(id: string){
 
+    this.showLoading();
+
     this.bd.getDoc<Usuarios>('Usuarios', id).subscribe(res => {
 
       if (res != undefined) {
 
         this.usuario = res;
 
-      } else {
-
-        console.log("Error de Query");
-
       }
+
+      this.dismissLoading();
 
     });
 
@@ -209,12 +223,6 @@ export class PerfilPage implements OnInit {
           text: 'Si',
           role: 'confirm',
           handler: async() => {
-            
-            await this.auth.enviarCorreoRestablecimiento(this.usuario.correo).catch(error => {
-              
-              console.log("Error al enviar el correo");
-              
-            });
             
             this.router.navigateByUrl('ReLogIn');
 

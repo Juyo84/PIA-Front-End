@@ -7,9 +7,20 @@
 
 }
 
-ion-card {
+.opciones, .opcionAgregar {
 
-    margin: 0px;
+    text-align: center;
+    display: grid;
+    align-content: center;
+    align-items: start;
+
+}
+
+.opciones > div {
+
+    display: grid;
+    align-content: center;
+    align-items: start;
 
 }
 
@@ -19,6 +30,20 @@ ion-card {
     
 }
 
+.agregarMultimedia {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+input {
+
+    display: none;
+
+}
+
 ion-avatar {
 
     width: 150px;
@@ -26,6 +51,15 @@ ion-avatar {
 
 }
 
+.botonAgregarMultimedia {
+
+    position: sticky;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 
 #nombre {
 
@@ -45,6 +79,12 @@ ion-avatar {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: justify;
+
+}
+
+ion-content {
+
+    --background: rgba(12, 12, 31, 100);
 
 }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Auth } from 'firebase/auth';
+import { LoadingController } from '@ionic/angular';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Eventos, Usuarios } from 'src/app/Modelos/interfaces';
 
@@ -11,17 +10,26 @@ import { Eventos, Usuarios } from 'src/app/Modelos/interfaces';
 })
 export class CalendarioPage implements OnInit {
 
-  constructor(private router: Router, private bd: BaseDatosService) { }
+  constructor(private bd: BaseDatosService, private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
 
     this.getEventos();
 
+    const tiempoTranscurrido = Date.now();
+    const hoy = new Date(tiempoTranscurrido);
+
+    this.fechaHoy = hoy.toLocaleDateString();
+    
   }
 
   isModalOpen = false;
+  esteMes = false;
+  estaSemana = false;
+  soloHoy = false;
 
   uid = '';
+  fechaHoy = '';
 
   eventos: Eventos[] = [];
   resultados: Eventos[] = [];
@@ -52,6 +60,26 @@ export class CalendarioPage implements OnInit {
 
   };
 
+  loading: any
+
+  async showLoading() {
+    
+    this.loading = await this.loadingCtrl.create({
+      spinner: "circles",
+      message: "Cargando",
+    });
+
+    await this.loading.present();
+  }
+
+  async dismissLoading() {
+    const loading = await this.loadingCtrl.getTop();
+    if (loading) {
+      await loading.dismiss();
+    }
+  }
+
+
   setOpen(isOpen: boolean) {
 
     this.isModalOpen = isOpen;
@@ -76,38 +104,92 @@ export class CalendarioPage implements OnInit {
 
   getEventos(){
 
+    this.showLoading();
+
     this.bd.getCollectionChanges<Eventos>('Eventos').subscribe(res => {
 
-      this.eventos = res;
-      this.resultados = res;
+      this.eventos = res.sort((a, b) => {
+        return new Date(a.fecha).getTime() - new Date(b.fecha).getTime();
+      });
+
+      this.resultados = this.eventos;
+
+      this.dismissLoading();
 
     });
 
   }
 
-  getUsuario(uid: string){
+  mostrarSemana(){
 
-    this.bd.getDoc<Usuarios>('Usuarios', uid).subscribe(res => {
+    this.estaSemana = !this.estaSemana;
 
-      if(res != null){
+    if(!this.estaSemana){
 
-        this.usuario = res;
+      this.resultados = this.eventos;
+      return;
 
-      }else{
+    }
 
-        console.log("ERROR EN EL QUERY");
+    const hoy = new Date();
+    const primerDiaSemana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() - hoy.getDay());
+    const ultimoDiaSemana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() - hoy.getDay() + 6);
 
-      }
-
+    this.resultados = this.eventos.filter((d) => {
+      const partesFecha = d.fecha.split('/');
+      const fechaNoticia = new Date(`${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`);
+      
+      return (fechaNoticia >= primerDiaSemana && fechaNoticia <= ultimoDiaSemana);
     });
 
   }
 
-  handleInput(event: any) {
+  mostrarMes(){
 
-    const query = event.target.value.toLowerCase();
-    this.resultados = this.eventos.filter((d) => d.titulo.toLowerCase().indexOf(query) > -1);
-  
+    this.esteMes = !this.esteMes;
+
+    if(!this.esteMes){
+
+      this.resultados = this.eventos;
+      return;
+
+    }
+    
+    const hoy = new Date();
+    const primerDiaMes = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+    const ultimoDiaMes = new Date(hoy.getFullYear(), hoy.getMonth() + 1, 0);
+
+    this.resultados = this.eventos.filter((d) => {
+      const partesFecha = d.fecha.split('/');
+      const fechaNoticia = new Date(`${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`);
+      
+      return (fechaNoticia >= primerDiaMes && fechaNoticia <= ultimoDiaMes);
+    });
+    
+  }
+
+  mostrarHoy(){
+
+    this.soloHoy = !this.soloHoy;
+
+    if(!this.soloHoy){
+
+      this.resultados = this.eventos;
+      return;
+
+    }
+    
+    const hoy = new Date();
+    this.resultados = this.eventos.filter((d) => {
+    const partesFecha = d.fecha.split('/');
+    const fechaNoticia = new Date(`${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`);
+    return (
+      fechaNoticia.getDate() === hoy.getDate() &&
+      fechaNoticia.getMonth() === hoy.getMonth() &&
+      fechaNoticia.getFullYear() === hoy.getFullYear()
+    );
+    });
+    
   }
 
 }

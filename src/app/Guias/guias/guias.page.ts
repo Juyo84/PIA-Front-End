@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Guias, Usuarios } from 'src/app/Modelos/interfaces';
@@ -11,24 +12,25 @@ import { Guias, Usuarios } from 'src/app/Modelos/interfaces';
 })
 export class GuiasPage implements OnInit {
 
-  constructor(private router: Router, private bd: BaseDatosService, private auth: AuthService) { 
+  constructor(private router: Router, private bd: BaseDatosService, private auth: AuthService,
+    private loadingCtrl: LoadingController) {
 
-    this.auth.stateAuth().subscribe(res => {
+      this.auth.stateAuth().subscribe(res => {
 
-      if(res != null){
-
-        this.uid = res.uid;
-        this.getUsuario(this.uid);
-
-      }else{
+        if(res != null){
+  
+          this.uid = res.uid;
+          this.getUsuario(this.uid);
+  
+        }else{
+          
+          this.router.navigateByUrl('Home/LogIn');
+          
+        }
         
-        this.router.navigateByUrl('Home/LogIn');
-        
-      }
-      
-    });
+      });
 
-  }
+     }
 
   ngOnInit() {
 
@@ -57,13 +59,49 @@ export class GuiasPage implements OnInit {
 
   }
 
+  isModalOpen = false;
+
   temas =['Todos', 'Instrumentos', 'Astrologia', 'Tecnologia'];
+
+  loading: any
 
   irGuia(idGuia: any){
 
     this.router.navigate(['/Guias', idGuia]);
 
   }
+
+  getUsuario(id: string){
+
+    this.bd.getDoc<Usuarios>('Usuarios', id).subscribe(res => {
+
+      if (res != undefined) {
+
+        this.usuario = res;
+
+      }
+
+    });
+
+  }
+
+  async showLoading() {
+    
+    this.loading = await this.loadingCtrl.create({
+      spinner: "circles",
+      message: "Cargando",
+    });
+
+    await this.loading.present();
+  }
+
+  async dismissLoading() {
+    const loading = await this.loadingCtrl.getTop();
+    if (loading) {
+      await loading.dismiss();
+    }
+  }
+
 
   resumen(texto: string){
 
@@ -76,28 +114,13 @@ export class GuiasPage implements OnInit {
 
   getGuias(){
 
+    this.showLoading();
+
     this.bd.getCollectionChanges<Guias>('Guias').subscribe(res => {
 
       this.guias = res;
       this.resultados = res;
-
-    });
-
-  }
-
-  getUsuario(uid: string){
-
-    this.bd.getDoc<Usuarios>('Usuarios', uid).subscribe(res => {
-
-      if(res != null){
-
-        this.usuario = res;
-
-      }else{
-
-        console.log("ERROR EN EL QUERY");
-
-      }
+      this.dismissLoading();
 
     });
 
@@ -107,6 +130,27 @@ export class GuiasPage implements OnInit {
 
     const query = event.target.value.toLowerCase();
     this.resultados = this.guias.filter((d) => d.titulo.toLowerCase().indexOf(query) > -1);
+  
+  }
+
+  handleSelect(event: any) {
+
+    const query = event.target.value;
+    
+    if(query == "Todos" || query == ""){
+
+      this.resultados = this.guias;
+      return;
+
+    }
+
+    this.resultados = this.guias.filter((d) => d.tema.indexOf(query) > -1);
+  
+  }
+
+  setOpen(isOpen: boolean) {
+
+    this.isModalOpen = isOpen;
   
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Foro, RespuestaForo, Usuarios } from 'src/app/Modelos/interfaces';
@@ -12,7 +13,7 @@ import { Foro, RespuestaForo, Usuarios } from 'src/app/Modelos/interfaces';
 export class PublicacionForoComponent  implements OnInit {
 
   constructor(private bd: BaseDatosService, private ruta: ActivatedRoute, private router: Router,
-    private auth: AuthService) { 
+    private auth: AuthService, private loadingCtrl: LoadingController) { 
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -81,6 +82,32 @@ export class PublicacionForoComponent  implements OnInit {
 
   isModalOpen = false;
 
+  loading: any;
+
+  irAtras(){
+
+    this.router.navigateByUrl('Foro');
+
+  }
+
+  async showLoading() {
+    
+    this.loading = await this.loadingCtrl.create({
+      spinner: "circles",
+      message: "Cargando",
+    });
+
+    await this.loading.present();
+  }
+
+  async dismissLoading() {
+    const loading = await this.loadingCtrl.getTop();
+    if (loading) {
+      await loading.dismiss();
+    }
+  }
+
+
   getUsuario(uid: string){
 
     this.bd.getDoc<Usuarios>('Usuarios', uid).subscribe(res =>{
@@ -101,6 +128,8 @@ export class PublicacionForoComponent  implements OnInit {
 
   getPublicacionForo(){
 
+    this.showLoading();
+
     this.bd.getDoc<Foro>('Foro', this.idForo).subscribe(res => {
 
       if(res != null){
@@ -113,6 +142,8 @@ export class PublicacionForoComponent  implements OnInit {
 
       }
 
+      this.dismissLoading();
+
     });
 
   }
@@ -124,6 +155,8 @@ export class PublicacionForoComponent  implements OnInit {
   }
 
   nuevaRespuesta(){
+
+    this.showLoading();
     
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
@@ -149,6 +182,8 @@ export class PublicacionForoComponent  implements OnInit {
     };
 
     this.isModalOpen = false;
+
+    this.dismissLoading();
 
   }
 
