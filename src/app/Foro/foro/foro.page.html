@@ -48,7 +48,7 @@
                 
                 <ion-textarea placeholder="Texto" [(ngModel)]="publicacion.informacion"></ion-textarea>
         
-                <ion-button expand="full" (click)="nuevaPublicacion()" id="crearPublicacion">Enviar</ion-button>
+                <ion-button expand="full" (click)="nuevaPublicacion()" *ngIf="validarCampos()" id="crearPublicacion">Enviar</ion-button>
               </ion-content>
             </ng-template>
           </ion-modal>

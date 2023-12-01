@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
+import { FireStorageService } from 'src/app/Modelos/fire-storage.service';
 import { Articulos, Usuarios } from 'src/app/Modelos/interfaces';
 
 @Component({
@@ -13,7 +13,7 @@ import { Articulos, Usuarios } from 'src/app/Modelos/interfaces';
 export class ArticulosPage implements OnInit {
 
   constructor(private router: Router, public bd: BaseDatosService, private auth: AuthService,
-    private loadingCtrl: LoadingController) {
+    private fireStorage: FireStorageService) {
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -62,13 +62,50 @@ export class ArticulosPage implements OnInit {
 
   };
 
+  articulo: Articulos = {
+
+    autor: '',
+    fecha: '',
+    foto: '',
+    informacion: '',
+    titulo: '',
+    tema: '',
+    uid: '',
+
+  }
+
   uid = "";
 
   nuevoArticulo = false;
+  isModalOpen = false;
 
-  temas =['Todos', 'Sistema Solar', 'Planetas', 'Astrologia', 'Tecnologia'];
+  files: any
 
-  loading: any
+  temas = [
+    "Todos",
+    "Estrella",
+    "Planeta",
+    "Constelación",
+    "Galaxia",
+    "Nebulosa",
+    "Cúmulo estelar",
+    "Agujero negro",
+    "Telescopio",
+    "Órbita",
+    "Eclipse",
+    "Satélite",
+    "Planeta enano",
+    "Espacio interestelar",
+    "Astronauta",
+    "Sistema Solar",
+    "Exoplaneta",
+    "Meteorito",
+    "Astrofísica",
+    "Cosmología",
+    "Observatorio",
+    "Tecnologia",
+    "Otros"
+  ];
 
   resumen(texto: string){
 
@@ -79,21 +116,12 @@ export class ArticulosPage implements OnInit {
 
   }
 
-  async showLoading() {
+  cambiarImagen(event: any){
+
+    this.files = event.target.files[0];
     
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
-
-    await this.loading.present();
-  }
-
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
-    }
+    this.articulo.foto = URL.createObjectURL(this.files);
+    
   }
 
   irArticulo(idArticulo: any){
@@ -104,16 +132,65 @@ export class ArticulosPage implements OnInit {
 
   getArticulos(){
 
-    this.showLoading();
-
     this.bd.getCollectionChanges<Articulos>('Articulos').subscribe(res => {
 
       this.articulos = res;
       this.resultados = res;
-      this.dismissLoading();
 
     });
 
+  }
+
+  async agregarArticulo(){
+
+    const tiempoTranscurrido = Date.now();
+    const hoy = new Date(tiempoTranscurrido);
+
+    this.articulo.fecha = hoy.toLocaleDateString();
+    this.articulo.uid = this.bd.crearId();
+    
+    const res = await this.fireStorage.subirImagen(this.files, 'Articulos', this.articulo.uid);
+    this.articulo.foto = res;
+
+    this.articulo.autor = this.usuario.nombre + " " + this.usuario.apellido;
+
+    await this.bd.createDocument<Articulos>(this.articulo, 'Articulos', this.articulo.uid);
+
+    this.isModalOpen = false;
+
+    this.articulo = {
+
+      autor: '',
+      fecha: '',
+      foto: '',
+      informacion: '',
+      titulo: '',
+      tema: '',
+      uid: '',
+    
+    };
+
+  }
+
+  validarCampos(){
+
+    if(this.articulo.foto != "" && this.articulo.informacion != "" && this.articulo.tema != ""){
+
+      return true;
+
+    }else{
+
+      return false;
+
+    }
+
+  }
+
+
+  setOpen(isOpen: boolean) {
+
+    this.isModalOpen = isOpen;
+  
   }
 
   getUsuario(uid: string){

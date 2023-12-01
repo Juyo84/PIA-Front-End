@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Foro, Usuarios } from 'src/app/Modelos/interfaces';
@@ -12,8 +11,7 @@ import { Foro, Usuarios } from 'src/app/Modelos/interfaces';
 })
 export class ForoPage implements OnInit {
 
-  constructor(private router: Router, public bd: BaseDatosService, private auth: AuthService,
-    private loadingCtrl: LoadingController) {
+  constructor(private router: Router, public bd: BaseDatosService, private auth: AuthService) {
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -75,7 +73,31 @@ export class ForoPage implements OnInit {
 
   uid = "";
 
-  temas = ['Todos', 'Sistema Solar', 'Planetas', 'Astrologia', 'Tecnologia'];  
+  temas = [
+    "Todos",
+    "Estrella",
+    "Planeta",
+    "Constelación",
+    "Galaxia",
+    "Nebulosa",
+    "Cúmulo estelar",
+    "Agujero negro",
+    "Telescopio",
+    "Órbita",
+    "Eclipse",
+    "Satélite",
+    "Planeta enano",
+    "Espacio interestelar",
+    "Astronauta",
+    "Sistema Solar",
+    "Exoplaneta",
+    "Meteorito",
+    "Astrofísica",
+    "Cosmología",
+    "Observatorio",
+    "Tecnologia",
+    "Otros"
+  ];
 
   getUsuario(uid: string){
 
@@ -88,6 +110,20 @@ export class ForoPage implements OnInit {
       }
 
     })
+
+  }
+
+  validarCampos(){
+
+    if(this.publicacion.informacion != "" && this.publicacion.tema != "" && this.publicacion.titulo != ""){
+
+      return true;
+
+    }else{
+
+      return false;
+
+    }
 
   }
 
@@ -108,34 +144,16 @@ export class ForoPage implements OnInit {
 
   getForo(){
 
-    this.showLoading();
-
     this.bd.getCollectionChanges<Foro>('Foro').subscribe(res =>{
 
       this.foro = res;
       this.resultados = res;
-      this.dismissLoading();
 
     });
 
   }
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
-
-    await this.loading.present();
-  }
-
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
-    }
-  }
+  
 
   
   setOpen(isOpen: boolean) {
@@ -168,8 +186,6 @@ export class ForoPage implements OnInit {
 
   async nuevaPublicacion(){
 
-    this.showLoading();
-
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
     const hora: number = hoy.getHours();
@@ -196,7 +212,7 @@ export class ForoPage implements OnInit {
     }
 
     this.isModalOpen = false;
-    this.dismissLoading();
+    
 
   }
 

@@ -42,6 +42,27 @@ ion-avatar {
 
 }
 
+ion-textarea {
+
+    height: 270px;
+    margin-bottom: 10px;
+
+}
+
+.agregarMultimedia {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+input {
+
+    display: none;
+
+}
+
 #lineaHorizontal {
 
     position: relative;

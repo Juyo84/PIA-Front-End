@@ -44,6 +44,13 @@ input {
 
 }
 
+ion-textarea {
+
+    height: 220px;
+    margin-bottom: 10px;
+
+}
+
 ion-avatar {
 
     width: 150px;

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { FireStorageService } from 'src/app/Modelos/fire-storage.service';
@@ -14,7 +13,7 @@ import { Galeria, Usuarios } from 'src/app/Modelos/interfaces';
 export class GaleriaPage implements OnInit {
 
   constructor(private bd: BaseDatosService, private auth: AuthService, private router: Router,
-    private fireStorage: FireStorageService, private loadingCtrl: LoadingController) {
+    private fireStorage: FireStorageService) {
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -86,7 +85,31 @@ export class GaleriaPage implements OnInit {
   resultados: Galeria[] = [];
   galeria: Galeria[] = [];
 
-  temas = ['Todos', 'Sistema Solar', 'Planetas', 'Astrologia', 'Tecnologia'];
+  temas = [
+    "Todos",
+    "Estrella",
+    "Planeta",
+    "Constelación",
+    "Galaxia",
+    "Nebulosa",
+    "Cúmulo estelar",
+    "Agujero negro",
+    "Telescopio",
+    "Órbita",
+    "Eclipse",
+    "Satélite",
+    "Planeta enano",
+    "Espacio interestelar",
+    "Astronauta",
+    "Sistema Solar",
+    "Exoplaneta",
+    "Meteorito",
+    "Astrofísica",
+    "Cosmología",
+    "Observatorio",
+    "Tecnologia",
+    "Otros"
+  ];
   tipos = ['Imagen/Video', 'Imagen', 'Video'];
 
   files: any
@@ -130,22 +153,7 @@ export class GaleriaPage implements OnInit {
   
   }
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
-
-    await this.loading.present();
-  }
-
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
-    }
-  }
+  
 
   handleInput(event: any){
 
@@ -186,13 +194,10 @@ export class GaleriaPage implements OnInit {
 
   getGaleria(){
 
-    this.showLoading();
-
     this.bd.getCollectionChanges<Galeria>('Galeria').subscribe(res =>{
 
       this.galeria = res;
       this.resultados = res;
-      this.dismissLoading();
 
     });
 
@@ -202,7 +207,7 @@ export class GaleriaPage implements OnInit {
 
     this.files = event.target.files[0];
     
-    if(this.files.type.includes("video")){
+    if(this.files.type.includes("video") || this.files.type == "video/gif"){
 
       this.setMultmedia.tipo = "Video";
       
@@ -228,8 +233,6 @@ export class GaleriaPage implements OnInit {
   }
 
   async subirMultimedia(){
-
-    this.showLoading();
 
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
@@ -257,7 +260,7 @@ export class GaleriaPage implements OnInit {
     this.isModalOpenGaleria = false;
     this.botonGuardar = false;
 
-    this.dismissLoading();
+    
 
   }
 

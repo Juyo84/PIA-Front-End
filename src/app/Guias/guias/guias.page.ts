@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Guias, Usuarios } from 'src/app/Modelos/interfaces';
@@ -12,8 +11,7 @@ import { Guias, Usuarios } from 'src/app/Modelos/interfaces';
 })
 export class GuiasPage implements OnInit {
 
-  constructor(private router: Router, private bd: BaseDatosService, private auth: AuthService,
-    private loadingCtrl: LoadingController) {
+  constructor(private router: Router, private bd: BaseDatosService, private auth: AuthService) {
 
       this.auth.stateAuth().subscribe(res => {
 
@@ -59,11 +57,69 @@ export class GuiasPage implements OnInit {
 
   }
 
+  guia: Guias = {
+
+    descripcion: '',
+    foto: '',
+    informacion: '',
+    titulo: '',
+    uid: '',
+    tema: '',
+    
+  }
+
   isModalOpen = false;
 
-  temas =['Todos', 'Instrumentos', 'Astrologia', 'Tecnologia'];
+  temas = [
+    "Todos",
+    "Estrella",
+    "Planeta",
+    "Constelación",
+    "Galaxia",
+    "Nebulosa",
+    "Cúmulo estelar",
+    "Agujero negro",
+    "Telescopio",
+    "Órbita",
+    "Eclipse",
+    "Satélite",
+    "Planeta enano",
+    "Espacio interestelar",
+    "Astronauta",
+    "Sistema Solar",
+    "Exoplaneta",
+    "Meteorito",
+    "Astrofísica",
+    "Cosmología",
+    "Observatorio",
+    "Tecnologia",
+    "Otros"
+  ];
 
-  loading: any
+  loading: any;
+  files: any;
+
+  async nuevaGuia(){
+
+    this.guia.uid = this.bd.crearId();
+
+    await this.bd.createDocument<Guias>(this.guia, 'Guia', this.guia.uid);
+
+    this.guia = {
+
+      descripcion: '',
+    foto: '',
+    informacion: '',
+    titulo: '',
+    uid: '',
+    tema: '',
+
+    }
+
+    this.isModalOpen = false;
+    
+
+  }
 
   irGuia(idGuia: any){
 
@@ -85,23 +141,27 @@ export class GuiasPage implements OnInit {
 
   }
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
+  validarCampos(){
 
-    await this.loading.present();
-  }
+    if(this.guia.informacion != "" && this.guia.tema != "" && this.guia.titulo != "" && this.guia.foto != ""){
 
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
+      return true;
+
+    }else{
+
+      return false;
+
     }
+
   }
 
+  cambiarImagen(event: any){
+
+    this.files = event.target.files[0];
+    
+    this.guia.foto = URL.createObjectURL(this.files);
+    
+  }
 
   resumen(texto: string){
 
@@ -114,13 +174,10 @@ export class GuiasPage implements OnInit {
 
   getGuias(){
 
-    this.showLoading();
-
     this.bd.getCollectionChanges<Guias>('Guias').subscribe(res => {
 
       this.guias = res;
       this.resultados = res;
-      this.dismissLoading();
 
     });
 

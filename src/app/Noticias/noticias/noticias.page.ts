@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { FireStorageService } from 'src/app/Modelos/fire-storage.service';
@@ -13,8 +12,7 @@ import { Noticias, Usuarios} from 'src/app/Modelos/interfaces';
 })
 export class NoticiasPage implements OnInit {
 
-  constructor(private router: Router, private auth: AuthService, private bd: BaseDatosService,
-    private loadingCtrl: LoadingController, private fireStorage: FireStorageService) { 
+  constructor(private router: Router, private auth: AuthService, private bd: BaseDatosService, private fireStorage: FireStorageService) { 
 
       this.auth.stateAuth().subscribe(res => {
 
@@ -79,7 +77,31 @@ export class NoticiasPage implements OnInit {
   isModalOpen = false;
   admin = false;
 
-  temas = ['Todos', 'Sistema Solar', 'Planetas', 'Astrologia', 'Tecnologia'];
+  temas = [
+    "Todos",
+    "Estrella",
+    "Planeta",
+    "Constelación",
+    "Galaxia",
+    "Nebulosa",
+    "Cúmulo estelar",
+    "Agujero negro",
+    "Telescopio",
+    "Órbita",
+    "Eclipse",
+    "Satélite",
+    "Planeta enano",
+    "Espacio interestelar",
+    "Astronauta",
+    "Sistema Solar",
+    "Exoplaneta",
+    "Meteorito",
+    "Astrofísica",
+    "Cosmología",
+    "Observatorio",
+    "Tecnologia",
+    "Otros"
+  ];
 
   irNoticia(idPublicacionNoticia: any){
 
@@ -123,34 +145,16 @@ export class NoticiasPage implements OnInit {
     
   }
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
-
-    await this.loading.present();
-  }
-
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
-    }
-  }
+  
 
 
   getNoticias(){
-
-    this.showLoading();
 
     this.bd.getCollectionChanges<Noticias>('Noticias').subscribe(res => {
 
       this.noticias = res;
       this.resultados = res;
 
-      this.dismissLoading();
 
     });
 
@@ -245,15 +249,15 @@ export class NoticiasPage implements OnInit {
 
   async agregarNoticia(){
 
-    this.showLoading();
-
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
 
     this.noticia.fecha = hoy.toLocaleDateString();
     this.noticia.uid = this.bd.crearId();
     
-    await this.fireStorage.subirImagen(this.files, 'Noticias', this.noticia.uid);
+    const res = await this.fireStorage.subirImagen(this.files, 'Noticias', this.noticia.uid);
+    this.noticia.foto = res;
+
     await this.bd.createDocument<Noticias>(this.noticia, 'Noticias', this.noticia.uid);
 
     this.isModalOpen = false;
@@ -268,8 +272,6 @@ export class NoticiasPage implements OnInit {
       uid: '',
   
     };
-
-    this.dismissLoading();
 
   }
 

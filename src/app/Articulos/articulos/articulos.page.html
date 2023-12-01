@@ -20,7 +20,7 @@
               </ion-col>
               <ion-col offset="3" class="opcionAgregar">
                 <div>
-                    <ion-button *ngIf="usuario.veridico">
+                    <ion-button *ngIf="usuario.veridico" id="nuevoArticulo" (click)="setOpen(true)">
                         <ion-icon name="add-outline"></ion-icon>
                     </ion-button>
                 </div>
@@ -57,5 +57,42 @@
           </ion-list>
       </ion-card-content>
   </ion-card>
+
+  <ion-modal trigger="nuevoArticulo" [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Agregar Articulo</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-input placeholder="Titulo" [(ngModel)]="articulo.titulo"></ion-input><br>
+        <ion-select label="Tema" label-placement="floating" fill="outline" [(ngModel)]="articulo.tema">
+          <ion-select-option *ngFor="let tema of temas" [value]="tema">{{tema}}</ion-select-option>
+        </ion-select>
+        
+        <ion-textarea placeholder="Texto" [(ngModel)]="articulo.informacion"></ion-textarea>
+
+        <div class="agregarMultimedia">
+            <ion-button>
+              <label for="subirImagen">
+                <ion-icon name="add-outline"></ion-icon>
+              </label>
+              <input (change)="cambiarImagen($event)" type="file" accept="image/*,video/*" id="subirImagen"/>
+            </ion-button>
+          </div>
+        <div class="vistaPrevia">
+          <img [src]="articulo.foto">
+        </div>
+
+        <div class="botonAgregarMultimedia">
+          <ion-button expand="full" (click)="agregarArticulo()" id="crearPublicacion" *ngIf="validarCampos()">Enviar</ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
 </ion-content>

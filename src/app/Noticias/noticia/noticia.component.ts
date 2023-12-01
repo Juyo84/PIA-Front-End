@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Noticias } from 'src/app/Modelos/interfaces';
 
@@ -11,8 +10,7 @@ import { Noticias } from 'src/app/Modelos/interfaces';
 })
 export class NoticiaComponent  implements OnInit {
 
-  constructor(private ruta: ActivatedRoute, private bd: BaseDatosService, 
-    private loadingCtrl: LoadingController, private router: Router) { }
+  constructor(private ruta: ActivatedRoute, private bd: BaseDatosService, private router: Router) { }
 
   ngOnInit() {
 
@@ -35,22 +33,7 @@ export class NoticiaComponent  implements OnInit {
 
   loading: any
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
-
-    await this.loading.present();
-  }
-
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
-    }
-  }
+  
 
   irAtras(){
 
@@ -59,8 +42,6 @@ export class NoticiaComponent  implements OnInit {
   }
 
   getNoticia(){
-
-    this.showLoading();
 
     this.bd.getDoc<Noticias>('Noticias', this.idNoticia).subscribe(res => {
 
@@ -74,7 +55,6 @@ export class NoticiaComponent  implements OnInit {
 
       }
 
-      this.dismissLoading();
 
     });
 

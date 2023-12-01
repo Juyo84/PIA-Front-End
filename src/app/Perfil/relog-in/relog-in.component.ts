@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Usuarios } from 'src/app/Modelos/interfaces';
@@ -13,7 +13,7 @@ import { Usuarios } from 'src/app/Modelos/interfaces';
 export class RelogInComponent  implements OnInit {
 
   constructor(private router: Router, public auth: AuthService, private bd: BaseDatosService,
-    private alertController: AlertController, private loadingCtrl: LoadingController) { 
+    private alertController: AlertController) { 
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -87,22 +87,7 @@ export class RelogInComponent  implements OnInit {
 
   }
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
-
-    await this.loading.present();
-  }
-
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
-    }
-  }
+  
 
 
   async alerta(titulo: string, sub: string, mensaje: string, botones: any) {
@@ -120,8 +105,6 @@ export class RelogInComponent  implements OnInit {
 
   getUsuario(id: string){
 
-    this.showLoading();
-
     this.bd.getDoc<Usuarios>('Usuarios', id).subscribe(res => {
 
       if (res != undefined) {
@@ -134,7 +117,6 @@ export class RelogInComponent  implements OnInit {
 
       }
 
-      this.dismissLoading();
 
     });
 
@@ -142,12 +124,9 @@ export class RelogInComponent  implements OnInit {
 
   async logInCorreo(){
 
-    this.showLoading();
-
     if(this.usuario.correo != this.correo){
 
       this.alerta('Error en el Login', '', 'Intente de nuevo', this.okBoton);
-      this.dismissLoading();
       return;
 
     }
@@ -155,7 +134,6 @@ export class RelogInComponent  implements OnInit {
     await this.auth.login(this.correo, this.contra).catch(_ => {
 
       this.alerta('Error de login', '', 'Intente de nuevo', this.okBoton);
-      this.dismissLoading();
       return;
 
     });
@@ -172,14 +150,12 @@ export class RelogInComponent  implements OnInit {
 
     });
 
-    this.dismissLoading();
+    
 
   }
 
   async logInGoogle(){
     
-    this.showLoading();
-
     if(this.usuario.correo != this.correo){
 
       this.alerta('Error en el Login', '', 'Intente de nuevo', this.confirmacionBotones);
@@ -205,7 +181,7 @@ export class RelogInComponent  implements OnInit {
 
     });
 
-    this.dismissLoading();
+    
 
   }
 

@@ -5,7 +5,7 @@ import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { FireStorageService } from 'src/app/Modelos/fire-storage.service';
 import { Usuarios } from 'src/app/Modelos/interfaces';
 import { countries } from 'countries-list';
-import { AlertController, IonSelect, LoadingController } from '@ionic/angular';
+import { AlertController, IonSelect } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfil',
@@ -15,8 +15,7 @@ import { AlertController, IonSelect, LoadingController } from '@ionic/angular';
 export class PerfilPage implements OnInit {
 
   constructor(private fireStorage: FireStorageService, private bd: BaseDatosService,
-    private auth: AuthService, private router: Router, private alertController: AlertController,
-    private loadingCtrl: LoadingController) {
+    private auth: AuthService, private router: Router, private alertController: AlertController) {
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -73,22 +72,7 @@ export class PerfilPage implements OnInit {
   paises: any;
   loading: any;
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
-
-    await this.loading.present();
-  }
-
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
-    }
-  }
+  
 
   mostrarIntereses() {
 
@@ -139,7 +123,7 @@ export class PerfilPage implements OnInit {
             
             if(this.files != undefined || this.files != null){
 
-              this.showLoading();
+              
 
               const res = await this.fireStorage.subirImagen(this.files, 'Usuarios', this.usuario.usuario); 
               this.usuario.foto = res;
@@ -149,7 +133,7 @@ export class PerfilPage implements OnInit {
               this.files = null;            
               this.botonGuardar = false;
 
-              this.dismissLoading();
+              
             
             }
             
@@ -168,8 +152,6 @@ export class PerfilPage implements OnInit {
 
   getUsuario(id: string){
 
-    this.showLoading();
-
     this.bd.getDoc<Usuarios>('Usuarios', id).subscribe(res => {
 
       if (res != undefined) {
@@ -178,7 +160,6 @@ export class PerfilPage implements OnInit {
 
       }
 
-      this.dismissLoading();
 
     });
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Usuarios } from 'src/app/Modelos/interfaces';
@@ -13,7 +13,7 @@ import { Usuarios } from 'src/app/Modelos/interfaces';
 export class SignUpComponent  implements OnInit {
 
   constructor(private router: Router, public auth: AuthService, private bd: BaseDatosService,
-    private loadingCtrl: LoadingController) { 
+    private alertController: AlertController) { 
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -48,26 +48,20 @@ export class SignUpComponent  implements OnInit {
 
   }
 
+  usuarioRepetido: Usuarios[] = [];
+
+  okBoton = [
+    {
+      text: 'Ok',
+      role: 'confirm',
+    }
+  ];
+
   contrasena = '';
 
   loading: any;
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
-
-    await this.loading.present();
-  }
-
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
-    }
-  }
+  
 
   regresarHome(){
 
@@ -82,21 +76,74 @@ export class SignUpComponent  implements OnInit {
   }
 
   async signUpCorreo(){
-
-    this.showLoading();
-    
-    await this.auth.logout();
     
     const crendenciales = {
-
+      
       correo: this.usuario.correo,
       contrasena: this.contrasena
-
+      
     }
     
-    await this.auth.registro(crendenciales.correo, crendenciales.contrasena);
+    if(this.contrasena == '' || this.usuario.usuario == '' || this.usuario.correo == ''){
+      
+      this.alerta("Error", "Campos", "Llene todos los campos", this.okBoton);
+      return;
+      
+    }
+    
+    if(this.contrasena.length < 6){
+      
+      this.alerta("Error", "Contraseña", "El tamaño de la contraseña debe de ser mas de 6 caracteres", this.okBoton);
+      return;
+      
+    }
+    
+    this.bd.getCollectionChanges<Usuarios>('Usuarios').subscribe(res => {
+      
+      this.usuarioRepetido = res;
+      
+    });
+    
+    for(let repetido of this.usuarioRepetido){
+      
+      if(repetido.usuario == this.usuario.usuario){
+        
+        this.alerta("Error", "Usuario", "El nombre de usuario ya existe", this.okBoton);
+        return;
+        
+      }
+      
+      if(repetido.correo == this.usuario.correo){
+        
+        this.alerta("Error", "Correo", "El correo ya existe", this.okBoton);
+        return;
+        
+      }
+      
+    }
+    
+    await this.auth.logout();
+    await this.auth.registro(crendenciales.correo, crendenciales.contrasena).catch(error => {
+      
+      this.alerta("Error", "", "Intente de nuevo", this.okBoton);
+      return;
+
+    });
     
     this.entrar();
+
+  }
+
+  async alerta(titulo: string, sub: string, mensaje: string, botones: any) {
+    
+    const alert = await this.alertController.create({
+      header: titulo,
+      subHeader: sub,
+      message: mensaje,
+      buttons: botones,
+    });
+
+    await alert.present();
 
   }
 
@@ -121,8 +168,6 @@ export class SignUpComponent  implements OnInit {
     });
 
     await this.bd.createDocument<Usuarios>(this.usuario, 'Usuarios', this.usuario.uid);
-    
-    this.dismissLoading();
 
     this.router.navigate(['Perfil']);
 

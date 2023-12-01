@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
+import { FireStorageService } from 'src/app/Modelos/fire-storage.service';
 import { Eventos, Usuarios } from 'src/app/Modelos/interfaces';
 
 @Component({
@@ -10,7 +12,25 @@ import { Eventos, Usuarios } from 'src/app/Modelos/interfaces';
 })
 export class CalendarioPage implements OnInit {
 
-  constructor(private bd: BaseDatosService, private loadingCtrl: LoadingController) { }
+  constructor(private bd: BaseDatosService, private auth: AuthService,
+    private router: Router, private fireStorage: FireStorageService) { 
+
+    this.auth.stateAuth().subscribe(res => {
+
+      if(res != null){
+
+        this.uid = res.uid;
+        this.getUsuario(this.uid);
+
+      }else{
+        
+        this.router.navigateByUrl('Home/LogIn');
+        
+      }
+      
+    });
+
+  }
 
   ngOnInit() {
 
@@ -45,6 +65,17 @@ export class CalendarioPage implements OnInit {
 
   }
 
+  evento: Eventos = {
+
+    fecha: '',
+    foto: '',
+    informacion: '',
+    tema: '',
+    titulo: '',
+    uid: '',
+
+  }
+
   usuario: Usuarios = {
 
     apellido: "",
@@ -60,30 +91,103 @@ export class CalendarioPage implements OnInit {
 
   };
 
-  loading: any
+  loading: any;
+  files: any;
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
+  temas = [
+    "Todos",
+    "Estrella",
+    "Planeta",
+    "Constelación",
+    "Galaxia",
+    "Nebulosa",
+    "Cúmulo estelar",
+    "Agujero negro",
+    "Telescopio",
+    "Órbita",
+    "Eclipse",
+    "Satélite",
+    "Planeta enano",
+    "Espacio interestelar",
+    "Astronauta",
+    "Sistema Solar",
+    "Exoplaneta",
+    "Meteorito",
+    "Astrofísica",
+    "Cosmología",
+    "Observatorio",
+    "Tecnologia",
+    "Otros"
+  ];
 
-    await this.loading.present();
-  }
+  validarCampos(){
 
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
+    if(this.evento.foto != "" && this.evento.informacion != "" && this.evento.tema != ""){
+
+      return true;
+
+    }else{
+
+      return false;
+
     }
-  }
 
+  }
 
   setOpen(isOpen: boolean) {
 
     this.isModalOpen = isOpen;
   
+  }
+
+  cambiarImagen(event: any){
+
+    this.files = event.target.files[0];
+    
+    this.evento.foto = URL.createObjectURL(this.files);
+    
+  }
+
+  async agregarEvento(){
+
+    const tiempoTranscurrido = Date.now();
+    const hoy = new Date(tiempoTranscurrido);
+
+    this.evento.fecha = hoy.toLocaleDateString();
+    this.evento.uid = this.bd.crearId();
+    
+    const res = await this.fireStorage.subirImagen(this.files, 'Eventos', this.evento.uid);
+    this.evento.foto = res;
+
+    await this.bd.createDocument<Eventos>(this.evento, 'Eventos', this.evento.uid);
+
+    this.isModalOpen = false;
+
+    this.evento = {
+
+      fecha: '',
+      foto: '',
+      informacion: '',
+      tema: '',
+      titulo: '',
+      uid: '',
+  
+    };
+
+  }
+
+  getUsuario(id: string){
+
+    this.bd.getDoc<Usuarios>('Usuarios', id).subscribe(res => {
+
+      if (res != undefined) {
+
+        this.usuario = res;
+
+      }
+
+    });
+
   }
 
   resumen(texto: string){
@@ -104,8 +208,6 @@ export class CalendarioPage implements OnInit {
 
   getEventos(){
 
-    this.showLoading();
-
     this.bd.getCollectionChanges<Eventos>('Eventos').subscribe(res => {
 
       this.eventos = res.sort((a, b) => {
@@ -114,7 +216,6 @@ export class CalendarioPage implements OnInit {
 
       this.resultados = this.eventos;
 
-      this.dismissLoading();
 
     });
 

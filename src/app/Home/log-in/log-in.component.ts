@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/Modelos/auth.service';
 import { BaseDatosService } from 'src/app/Modelos/base-datos.service';
 import { Usuarios } from 'src/app/Modelos/interfaces';
@@ -13,7 +13,7 @@ import { Usuarios } from 'src/app/Modelos/interfaces';
 export class LogInComponent  implements OnInit {
 
   constructor(private router: Router, public auth: AuthService, private bd: BaseDatosService,
-    private loadingCtrl: LoadingController) { 
+    private alertController: AlertController) { 
 
     this.auth.stateAuth().subscribe(res => {
 
@@ -54,23 +54,12 @@ export class LogInComponent  implements OnInit {
 
   loading: any;
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
-
-    await this.loading.present();
-  }
-
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
+  okBoton = [
+    {
+      text: 'Ok',
+      role: 'confirm',
     }
-  }
-
+  ];
 
   regresarHome(){
 
@@ -104,14 +93,33 @@ export class LogInComponent  implements OnInit {
 
   }
 
+  async alerta(titulo: string, sub: string, mensaje: string, botones: any) {
+    
+    const alert = await this.alertController.create({
+      header: titulo,
+      subHeader: sub,
+      message: mensaje,
+      buttons: botones,
+    });
+
+    await alert.present();
+
+  }
+
   async logInCorreo(){
 
-    this.showLoading();
+    if(this.usuario.correo == '' || this.contra == ''){
+
+      this.alerta("Error", "Campos", "Llene todos los campos", this.okBoton);
+      return;
+
+    }
+
+
 
     await this.auth.login(this.usuario.correo, this.contra).catch(error => {
 
-      console.log("error")
-      this.dismissLoading();
+      this.alerta("Error", "Campos", "Intente de nuevo", this.okBoton);
       return;
 
     });
@@ -119,7 +127,7 @@ export class LogInComponent  implements OnInit {
     const uid = await this.auth.getUid();
     this.usuario.uid = uid!;
 
-    this.dismissLoading();
+    
 
     this.router.navigate(['Inicio']);
 
@@ -127,18 +135,13 @@ export class LogInComponent  implements OnInit {
 
   async logInGoogle(){
 
-    this.showLoading();
-
     await this.auth.logInGoogle();
     
     const uid = await this.auth.getUid();
     this.usuario.uid = uid!;
 
-    this.dismissLoading();
-
     this.router.navigate(['Inicio']);
 
   }
-
 
 }

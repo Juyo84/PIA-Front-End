@@ -22,14 +22,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 50px;
-  padding-top: 50px;
+  padding-bottom: 150px;
+  padding-top: 150px;
 
 }
 
 #imagen > img {
 
-  width: 472px;
+  width: 640px;
+  border: solid 5px black;
 
 }
 

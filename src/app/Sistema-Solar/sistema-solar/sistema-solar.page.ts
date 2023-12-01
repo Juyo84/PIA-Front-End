@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sistema-solar',
@@ -9,7 +8,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class SistemaSolarPage implements OnInit {
 
-  constructor(private router: Router, private loadingCtrl: LoadingController) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
@@ -21,21 +20,6 @@ export class SistemaSolarPage implements OnInit {
     
   }
 
-  async showLoading() {
-    
-    this.loading = await this.loadingCtrl.create({
-      spinner: "circles",
-      message: "Cargando",
-    });
-
-    await this.loading.present();
-  }
-
-  async dismissLoading() {
-    const loading = await this.loadingCtrl.getTop();
-    if (loading) {
-      await loading.dismiss();
-    }
-  }
+  
 
 }

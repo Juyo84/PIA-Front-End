@@ -33,12 +33,33 @@ ion-avatar {
     
 }
 
+input {
+
+    display: none;
+
+}
+
+ion-textarea {
+
+    height: 220px;
+    margin-bottom: 10px;
+
+}
+
 .opciones, .opcionAgregar {
 
     text-align: center;
     display: grid;
     align-content: center;
     align-items: start;
+
+}
+
+.agregarMultimedia {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 

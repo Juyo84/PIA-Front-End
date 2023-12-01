@@ -156,6 +156,13 @@ ion-content {
 
 }
 
+ion-textarea {
+
+    height: 220px;
+    margin-bottom: 10px;
+
+}
+
 .botonAgregarMultimedia {
 
     position: sticky;

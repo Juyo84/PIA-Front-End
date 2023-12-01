@@ -30,6 +30,27 @@
 
 }
 
+ion-textarea {
+
+    height: 200px;
+    margin-bottom: 10px;
+
+}
+
+.agregarMultimedia {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+input {
+
+    display: none;
+
+}
+
 ion-avatar {
 
     width: 150px;
