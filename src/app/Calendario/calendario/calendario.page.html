@@ -31,7 +31,7 @@
             <ion-list>
                 <ion-item>
                     <ion-grid>
-                        <ion-row *ngFor="let resultado of resultados" id="mostrarEvento" (click)="abrirEvento(resultado)">
+                        <ion-row *ngFor="let resultado of resultados" id="abrirEvento" (click)="abrirEvento(resultado)">
                             <ion-col size="1.5">
                                 <ion-avatar>
                                     <img alt="resultado.titulo" [src]="resultado.foto"/>
@@ -56,6 +56,33 @@
             </ion-list>
         </ion-card-content>
     </ion-card>
+
+    <ion-modal trigger="abrirEvento" [isOpen]="isModalOpenEvento">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="end">
+                    <ion-button (click)="setOpenEvento(false)">Cerrar</ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+            <p id="tituloEvento">{{eventoMostrar.titulo}}</p>
+            <img [src]="eventoMostrar.foto" id="imagenEvento">
+            <ion-row>
+                <ion-col size="3">
+                    <p id="fecha">{{eventoMostrar.fecha}}</p>
+                </ion-col>
+                <ion-col size="3">
+                    <p id="tema">{{eventoMostrar.tema}}</p>
+                </ion-col>
+            </ion-row>
+            <div class="informacion">
+                <p [innerHTML]="eventoMostrar.informacion"></p>
+            </div>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
 
     <ion-modal trigger="mostrarEvento" [isOpen]="isModalOpen">
         <ng-template>

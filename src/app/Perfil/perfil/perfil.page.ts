@@ -72,7 +72,11 @@ export class PerfilPage implements OnInit {
   paises: any;
   loading: any;
 
-  
+  admin(){
+
+    this.usuario.veridico = true;
+
+  }
 
   mostrarIntereses() {
 

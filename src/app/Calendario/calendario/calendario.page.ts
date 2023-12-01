@@ -44,6 +44,7 @@ export class CalendarioPage implements OnInit {
   }
 
   isModalOpen = false;
+  isModalOpenEvento = false;
   esteMes = false;
   estaSemana = false;
   soloHoy = false;
@@ -140,6 +141,15 @@ export class CalendarioPage implements OnInit {
   
   }
 
+  
+  setOpenEvento(isOpen: boolean) {
+
+    this.isModalOpenEvento = isOpen;
+  
+  }
+
+  
+
   cambiarImagen(event: any){
 
     this.files = event.target.files[0];
@@ -202,7 +212,7 @@ export class CalendarioPage implements OnInit {
   abrirEvento(evento: Eventos){
 
     this.eventoMostrar = evento;
-    this.isModalOpen = true;
+    this.isModalOpenEvento = true;
 
   }
 
